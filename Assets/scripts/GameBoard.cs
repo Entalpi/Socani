@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameBoard : MonoBehaviour {
 	public TileMapping[] mappings;
+
 	public Level curr_lvl;
 	public Dictionary<Vector2Int, List<GameObject>> board;
 
@@ -41,12 +42,10 @@ public class GameBoard : MonoBehaviour {
 
 	// Take a world position and return the board position
 	public Vector3Int transform_to_board_position(Vector3 pos) {
-		Debug.Log (pos);
 		Vector3 origo = Camera.main.ViewportToWorldPoint (new Vector3 (0.08f, 0.1f, 10f));
 		pos -= origo;
 		pos.x /= tile_size.x;
 		pos.y /= tile_size.y;
-		Debug.Log (pos);
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
 	}
 }
