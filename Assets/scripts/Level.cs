@@ -39,7 +39,6 @@ public class Level : MonoBehaviour {
 				}
 			}
 		}
-
 		return board;
 	}
 }

@@ -13,8 +13,6 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 		GetComponent<Rigidbody2D> ().freezeRotation = true;
-		position = board.starting_position ();
-		transform.position = board.board_to_transform_position (position);
 	}
 	
 	void FixedUpdate () {

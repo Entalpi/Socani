@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour {
-
-	// Use this for initialization
+	public Player player;
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		player.transform.position = transform.position;
 	}
 }
