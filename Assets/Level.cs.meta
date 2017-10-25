@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: eba79f6235f20f04ebe5fada44e74d72
+timeCreated: 1508654119
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ground: {fileID: 1030321919153670, guid: 8d95671349899754db31871e546466e7, type: 2}
+  - wall: {fileID: 1166694769697236, guid: f8e286bd0fb62c747abff80efd8e28ba, type: 2}
+  - crate: {fileID: 1738318453303068, guid: 3ad75dd3c094cb843be2b9f6bb8f9665, type: 2}
+  - player_spawn: {fileID: 1604510961551290, guid: 7933fc4b33eebdb4bbdf4cb532231d07,
+      type: 2}
+  - red_spawn: {fileID: 1367101869538576, guid: dff436542925f2244a31883a22a8dd44,
+      type: 2}
+  - red_goal: {fileID: 1898895186277084, guid: b04b0d829ed993145a65371d22097c6d, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
