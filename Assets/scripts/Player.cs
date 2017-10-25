@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	public GameBoard board;
-	// Board position 
-	public Vector3Int position; 
-
 	// Private
 	private const float move_cooldown = 0.10f;
 	private float since_last_move = 0.0f;
 
+	// Board position 
+	private Vector3Int position; 
+
+	private GameBoard board;
+
 	void Start () {
+		board = FindObjectOfType<GameBoard> ();
+		position = board.transform_to_board_position (transform.position);
 		GetComponent<Rigidbody2D> ().freezeRotation = true;
 	}
 	

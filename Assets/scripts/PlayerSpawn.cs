@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSpawn : MonoBehaviour {
 	public Player player;
 	void Start () {
-		player.transform.position = transform.position;
+		Debug.Log ("PlayerSpawn");
+		Instantiate (player, transform.position, Quaternion.identity);
 	}
 }

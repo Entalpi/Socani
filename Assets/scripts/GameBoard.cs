@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameBoard : MonoBehaviour {
-	public Player player;
 	public TileMapping[] mappings;
 	public Level curr_lvl;
 	public Dictionary<Vector2Int, List<GameObject>> board;
 
+	// Private
 	private Vector2 tile_size = new Vector2 (1.25f, 1.25f);
+	private Player player;
 
 	void Start () {
 		board = curr_lvl.load (this);
@@ -21,6 +22,7 @@ public class GameBoard : MonoBehaviour {
 				board[pos][i] = Instantiate (tile, position, Quaternion.identity);
 			}
 		}
+		player = FindObjectOfType<Player> ();
 	}
 		
 	// Checks if the board position is a valid position
@@ -35,5 +37,16 @@ public class GameBoard : MonoBehaviour {
 	public Vector3 board_to_transform_position(Vector3Int pos) {
 		Vector3 origo = Camera.main.ViewportToWorldPoint (new Vector3 (0.08f, 0.1f, 10f));
 		return origo + new Vector3 (pos.x * tile_size.x, pos.y * tile_size.y, -pos.z);
+	}
+
+	// Take a world position and return the board position
+	public Vector3Int transform_to_board_position(Vector3 pos) {
+		Debug.Log (pos);
+		Vector3 origo = Camera.main.ViewportToWorldPoint (new Vector3 (0.08f, 0.1f, 10f));
+		pos -= origo;
+		pos.x /= tile_size.x;
+		pos.y /= tile_size.y;
+		Debug.Log (pos);
+		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
 	}
 }
