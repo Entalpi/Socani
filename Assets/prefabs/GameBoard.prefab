@@ -38,7 +38,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0cdd87caffd9a4fa687c3ae8942896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   mappings:
   - color: {r: 0, g: 0, b: 0, a: 1}
     prefab: {fileID: 1030321919153670, guid: 8d95671349899754db31871e546466e7, type: 2}
@@ -53,7 +52,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283895169767548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

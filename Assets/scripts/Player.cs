@@ -46,6 +46,9 @@ public class Player : MonoBehaviour {
 			}
 			if (did_move) {
 				since_last_move = 0.0f;
+				if (board.check_gamestate ()) {
+					Debug.Log ("Victory!");
+				}
 			}
 		}
     }

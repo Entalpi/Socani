@@ -31,7 +31,8 @@ public class GameBoard : MonoBehaviour {
 		Vector2Int board_key_from = new Vector2Int(from.x, from.y);
 		Vector2Int board_key_to = new Vector2Int (to.x, to.y);
 		board [board_key_from].RemoveAt (from.z);
-		board [board_key_to].Insert (to.z, obj);
+		board [board_key_to].Add (obj);
+		to.z = board [board_key_to].Count - 1; // Place objects on top of the tile
 		Tile tile = obj.GetComponent<Tile> ();
 		if (tile) {
 			tile.board_position = to; // Update tile board position
@@ -83,5 +84,26 @@ public class GameBoard : MonoBehaviour {
 		pos.x /= tile_size.x;
 		pos.y /= tile_size.y;
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
+	}
+
+	// Checks if all the crate goals are fulfilled and returns the result
+	public bool check_gamestate() {
+		foreach (var key in board.Keys) {
+			var stack = board [key];
+			for (int z = 0; z < stack.Count; z++) {
+				GameObject obj = stack [z];
+				// Check if all the crate goals have a crate on top of them
+				if (obj.GetComponent<CrateGoal> ()) {
+					z++;
+					if (z < stack.Count) {
+						if (stack [z].GetComponent<Crate> ()) {
+							continue;
+						} 
+					}
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }
