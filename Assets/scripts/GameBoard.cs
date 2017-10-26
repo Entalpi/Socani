@@ -49,15 +49,17 @@ public class GameBoard : MonoBehaviour {
 		if (!board.ContainsKey (delta_key)) { 
 			return false;
 		} else {
-			// Check for moveable tiles
-			foreach (var game_obj in board[delta_key]) {
-				Tile tile = game_obj.GetComponent<Tile> ();
+            // Check for moveable tiles
+            for (int z = 0; z < board[delta_key].Count; z++) {
+                GameObject game_obj = board[delta_key][z];
+                Tile tile = game_obj.GetComponent<Tile> ();
 				if (tile) {
 					if (tile.moveable) {
-						bool moveable = valid_move (game_obj, pos + delta, delta);
+                        Vector3Int from = new Vector3Int(pos.x, pos.y, z) + delta;
+                        bool moveable = valid_move (game_obj, from, delta);
 						if (moveable) {
-							// Move the object at (pos.x, pos.y) to (pos + delta)
-							move_object(obj, pos, pos + delta);
+                            // Move the object at (pos.x, pos.y, z) to (pos + delta)
+                            move_object(obj, from, from + delta);
 						}
 						return moveable;
 					} else {
@@ -66,8 +68,9 @@ public class GameBoard : MonoBehaviour {
 				}
 			}
 		}
-		// Move the object at (pos) to (pos + delta)
-		move_object(obj, pos, pos + delta);
+        // Move the object at (pos) to the top of the stack at (pos + delta)
+        Vector3Int from2 = new Vector3Int(pos.x, pos.y, board[delta_key].Count - 1);
+		move_object(obj, from2, from2 + delta);
 		return true;
 	}
 
