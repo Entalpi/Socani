@@ -25,12 +25,48 @@ public class GameBoard : MonoBehaviour {
 		}
 		player = FindObjectOfType<Player> ();
 	}
+
+	private void move_object(GameObject obj, Vector3Int from, Vector3Int to) {
+		// Move the tiles in the board 
+		Vector2Int board_key_from = new Vector2Int(from.x, from.y);
+		Vector2Int board_key_to = new Vector2Int (to.x, to.y);
+		board [board_key_from].RemoveAt (from.z);
+		board [board_key_to].Insert (to.z, obj);
+		Tile tile = obj.GetComponent<Tile> ();
+		if (tile) {
+			tile.board_position = to; // Update tile board position
+			// Start the transform movement
+			StartCoroutine (tile.smoothMovement (board_to_transform_position (to)));
+		}
+	}
 		
 	// Checks if the board position is a valid position
-	public bool valid_move(Vector3Int pos) {
+	public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
 		if (pos.x < 0)  { return false; }
 		if (pos.y < 0)  { return false; }
-		if (!board.ContainsKey (new Vector2Int(pos.x, pos.y))) { return false; } 
+		Vector2Int delta_key = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
+		if (!board.ContainsKey (delta_key)) { 
+			return false;
+		} else {
+			// Check for moveable tiles
+			foreach (var game_obj in board[delta_key]) {
+				Tile tile = game_obj.GetComponent<Tile> ();
+				if (tile) {
+					if (tile.moveable) {
+						bool moveable = valid_move (game_obj, pos + delta, delta);
+						if (moveable) {
+							// Move the object at (pos.x, pos.y) to (pos + delta)
+							move_object(obj, pos, pos + delta);
+						}
+						return moveable;
+					} else {
+						return false;
+					}
+				}
+			}
+		}
+		// Move the object at (pos) to (pos + delta)
+		move_object(obj, pos, pos + delta);
 		return true;
 	}
 
