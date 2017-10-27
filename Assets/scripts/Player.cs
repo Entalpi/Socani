@@ -16,10 +16,14 @@ public class Player : MonoBehaviour {
 	// Player board tile
 	private Tile tile; 
 	private GameBoard board;
+    private Rigidbody2D rb2D;
 
 	void Start () {
 		board = FindObjectOfType<GameBoard> ();
 		tile = GetComponent<Tile> ();
+        // Disable rotation on the RB
+        rb2D = GetComponent<Rigidbody2D>();
+        rb2D.freezeRotation = true;
         // Setup internal tile in the GameBoard
         tile.board_position = board.transform_to_board_position(transform.position);
         Vector2Int position = new Vector2Int(tile.board_position.x, tile.board_position.y);
@@ -56,5 +60,9 @@ public class Player : MonoBehaviour {
 				Debug.Log (tile.board_position);
 			}
 		}
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("We hit something!");
     }
 }

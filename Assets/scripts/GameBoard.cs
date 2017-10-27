@@ -51,8 +51,7 @@ public class GameBoard : MonoBehaviour {
         }
         return false;
 	}
-
-		
+	
 	// Checks if the board position is a valid position
 	public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
 		if (pos.x < 0)  { return false; }
@@ -118,4 +117,16 @@ public class GameBoard : MonoBehaviour {
 		}
 		return true;
 	}
+
+    // Tries to find the relevant obj in the stack at pos and removes it from the board
+    public bool remove_from_board(GameObject obj, Vector3Int pos) {
+        var stack = board[new Vector2Int(pos.x, pos.y)];
+        for (int z = 0; z < stack.Count; z++) {
+            if (obj.Equals(stack[z])) {
+                stack.RemoveAt(z);
+                return true;
+            }
+        }
+        return false;
+    }
 }
