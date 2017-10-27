@@ -26,20 +26,32 @@ public class GameBoard : MonoBehaviour {
 		player = FindObjectOfType<Player> ();
 	}
 
-	private void move_object(GameObject obj, Vector3Int from, Vector3Int to) {
+    // Tries to move the object located at 'from' to 'to'
+	private bool move_object(GameObject obj, Vector3Int from, Vector3Int to) {
 		// Move the tiles in the board 
 		Vector2Int board_key_from = new Vector2Int(from.x, from.y);
 		Vector2Int board_key_to = new Vector2Int (to.x, to.y);
-		board [board_key_from].RemoveAt (from.z);
-		board [board_key_to].Add (obj);
-		to.z = board [board_key_to].Count - 1; // Place objects on top of the tile
-		Tile tile = obj.GetComponent<Tile> ();
-		if (tile) {
-			tile.board_position = to; // Update tile board position
-			// Start the transform movement
-			StartCoroutine (tile.smoothMovement (board_to_transform_position (to)));
-		}
+
+        // Search for the object in the tile stack
+        for (int z = 0; z < board[board_key_from].Count; z++) {
+            GameObject game_object = board[board_key_from][z];
+            if (obj.Equals(game_object)) {
+                board[board_key_from].RemoveAt(z);
+                board[board_key_to].Add(obj);
+
+                to.z = board[board_key_to].Count - 1; // Place objects on top of the tile
+                Tile tile = obj.GetComponent<Tile>();
+                if (tile) {
+                    tile.board_position = to; // Update tile board position
+                    // Start the transform movement
+                    StartCoroutine(tile.smoothMovement(board_to_transform_position(to)));
+                }
+                return true;
+            }
+        }
+        return false;
 	}
+
 		
 	// Checks if the board position is a valid position
 	public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
@@ -55,11 +67,10 @@ public class GameBoard : MonoBehaviour {
                 Tile tile = game_obj.GetComponent<Tile> ();
 				if (tile) {
 					if (tile.moveable) {
-                        Vector3Int from = new Vector3Int(pos.x, pos.y, z) + delta;
-                        bool moveable = valid_move (game_obj, from, delta);
+                        bool moveable = valid_move (game_obj, pos + delta, delta);
 						if (moveable) {
                             // Move the object at (pos.x, pos.y, z) to (pos + delta)
-                            move_object(obj, from, from + delta);
+                            return move_object(obj, pos, pos + delta);
 						}
 						return moveable;
 					} else {
@@ -69,9 +80,7 @@ public class GameBoard : MonoBehaviour {
 			}
 		}
         // Move the object at (pos) to the top of the stack at (pos + delta)
-        Vector3Int from2 = new Vector3Int(pos.x, pos.y, board[delta_key].Count - 1);
-		move_object(obj, from2, from2 + delta);
-		return true;
+		return move_object(obj, pos, pos + delta);
 	}
 
 	// Takes a board position returns the world position
