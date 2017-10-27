@@ -20,6 +20,10 @@ public class Player : MonoBehaviour {
 	void Start () {
 		board = FindObjectOfType<GameBoard> ();
 		tile = GetComponent<Tile> ();
+        // Setup internal tile in the GameBoard
+        tile.board_position = board.transform_to_board_position(transform.position);
+        Vector2Int position = new Vector2Int(tile.board_position.x, tile.board_position.y);
+        board.board[position].Add(gameObject);
 	}
 	
 	void Update () {
