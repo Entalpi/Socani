@@ -13,6 +13,7 @@ public class GameBoard : MonoBehaviour {
 	private Player player;
 
 	void Start () {
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 8, 10f));
 		board = curr_lvl.load (this);
 		foreach (Vector2Int pos in board.Keys) {
 			var tiles = board[pos];
