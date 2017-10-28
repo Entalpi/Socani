@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSpawn : MonoBehaviour {
 	public Player player;
 	void Start () {
-		Instantiate (player, transform.position, Quaternion.identity);
+        Vector3 delta = new Vector3(0f, 0f, -1.0f);
+		Instantiate (player, transform.position + delta, Quaternion.identity);
 	}
 }
