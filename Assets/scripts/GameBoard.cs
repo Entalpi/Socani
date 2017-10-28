@@ -16,12 +16,14 @@ public class GameBoard : MonoBehaviour {
 		board = curr_lvl.load (this);
 		foreach (Vector2Int pos in board.Keys) {
 			var tiles = board[pos];
-			for(int i = 0; i < tiles.Count; i++) {
-				GameObject tile = tiles [i];
-				Vector3 position = board_to_transform_position (new Vector3Int(pos.x, pos.y, i));
+			for(int z = 0; z < tiles.Count; z++) {
+				GameObject tile = tiles [z];
+				Vector3 position = board_to_transform_position (new Vector3Int(pos.x, pos.y, z));
 				// Fill the board with objects created from the references
-				board[pos][i] = Instantiate (tile, position, Quaternion.identity);
-			}
+				GameObject obj = Instantiate (tile, position, Quaternion.identity);
+                obj.transform.SetParent(transform);
+                board[pos][z] = obj;
+            }
 		}
 		player = FindObjectOfType<Player> ();
 	}
