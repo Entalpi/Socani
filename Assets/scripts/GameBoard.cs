@@ -86,14 +86,14 @@ public class GameBoard : MonoBehaviour {
 
 	// Takes a board position returns the world position
 	public Vector3 board_to_transform_position(Vector3Int pos) {
-		Vector3 origo = Camera.main.ViewportToWorldPoint (new Vector3 (0.08f, 0.1f, 10f));
-		return origo + new Vector3 (pos.x * tile_size.x, pos.y * tile_size.y, -pos.z);
+        Vector3 origo = transform.position;
+        return origo + new Vector3 (pos.x * tile_size.x, pos.y * tile_size.y, -pos.z);
 	}
 
 	// Take a world position and return the board position
 	public Vector3Int transform_to_board_position(Vector3 pos) {
-		Vector3 origo = Camera.main.ViewportToWorldPoint (new Vector3 (0.08f, 0.1f, 10f));
-		pos -= origo;
+        Vector3 origo = transform.position;
+        pos -= origo;
 		pos.x /= tile_size.x;
 		pos.y /= tile_size.y;
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
