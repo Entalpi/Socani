@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameBoard : MonoBehaviour {
+    // Time remaining on the level
+    public Text timer_text;
+
 	public TileMapping[] mappings;
 
 	public Level curr_lvl;
@@ -15,6 +19,7 @@ public class GameBoard : MonoBehaviour {
 	void Start () {
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 8, 10f));
 		board = curr_lvl.load (this);
+        timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
 		foreach (Vector2Int pos in board.Keys) {
 			var tiles = board[pos];
 			for(int z = 0; z < tiles.Count; z++) {
@@ -29,8 +34,17 @@ public class GameBoard : MonoBehaviour {
 		player = FindObjectOfType<Player> ();
 	}
 
+    public void Update() {
+        curr_lvl.time -= Time.deltaTime;
+        curr_lvl.time = Mathf.Clamp(curr_lvl.time, 0f, Mathf.Infinity);
+        timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
+        if (curr_lvl.time == 0) {
+            Debug.Log("TIME IS UP!");
+        }
+    }
+
     // Tries to move the object located at 'from' to 'to'
-	private bool move_object(GameObject obj, Vector3Int from, Vector3Int to) {
+    private bool move_object(GameObject obj, Vector3Int from, Vector3Int to) {
 		// Move the tiles in the board 
 		Vector2Int board_key_from = new Vector2Int(from.x, from.y);
 		Vector2Int board_key_to = new Vector2Int (to.x, to.y);
