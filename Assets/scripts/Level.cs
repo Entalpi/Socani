@@ -4,6 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class Level : MonoBehaviour {
+    public int num_coins = 0;
 	public Texture2D[] tile_layers;
 
 	public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {
@@ -29,6 +30,10 @@ public class Level : MonoBehaviour {
 						TileMapping tile_mapping = game_board.mappings[i];
 						if (color.Equals (tile_mapping.color)) {
 							board [position].Add(tile_mapping.prefab);
+                            // Construct level variables
+                            if (tile_mapping.prefab.GetComponent<Coin>()) {
+                                num_coins++;
+                            }
 						}
 					}
 				}
