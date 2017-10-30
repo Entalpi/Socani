@@ -15,6 +15,7 @@ public class GameBoard : MonoBehaviour {
 	// Private
 	private Vector2 tile_size = new Vector2 (1.25f, 1.25f);
 	private Player player;
+    private bool countdown = false;
 
 	void Start () {
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 8, 10f));
@@ -38,9 +39,23 @@ public class GameBoard : MonoBehaviour {
         curr_lvl.time -= Time.deltaTime;
         curr_lvl.time = Mathf.Clamp(curr_lvl.time, 0f, Mathf.Infinity);
         timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
+        if (!countdown && curr_lvl.time <= 10) {
+            countdown = true;
+            StartCoroutine(CountDown(11));
+        } 
         if (curr_lvl.time == 0) {
             Debug.Log("TIME IS UP!");
         }
+    }
+
+    private IEnumerator CountDown(int seconds) {
+        for (int i = 0; i < seconds; i++) {
+            Sound sound = AudioManager.instance.GetSound("time-beat");
+            sound.source.pitch = 1.0f + i * 0.25f;
+            AudioManager.instance.Play(sound);
+            yield return new WaitForSeconds(1);
+        }
+        yield return null;
     }
 
     // Tries to move the object located at 'from' to 'to'
