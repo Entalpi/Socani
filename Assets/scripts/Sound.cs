@@ -3,6 +3,12 @@ using UnityEngine.Audio;
 
 [System.Serializable]
 public class Sound {
+    public enum SoundType {
+        Effect, Music
+    }
+
+    public SoundType type = SoundType.Effect;
+
     public bool enabled = true;
     public bool loop = false;
 
