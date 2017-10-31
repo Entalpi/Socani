@@ -18,7 +18,7 @@ public class GameBoard : MonoBehaviour {
     private bool countdown = false;
 
 	void Start () {
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 8, 10f));
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 5, 10f));
 		board = curr_lvl.load (this);
         timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
 		foreach (Vector2Int pos in board.Keys) {
