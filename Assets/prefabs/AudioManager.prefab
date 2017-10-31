@@ -51,19 +51,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00626595edee3f42bab71d4907e7a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabled: 1
+  on: 0
+  music: 1
+  sound: 1
   sounds:
-  - enabled: 1
+  - type: 1
+    enabled: 1
     loop: 1
     clip: {fileID: 8300000, guid: da5c6f5cd6e5b754aaa99ec6e9b7ba42, type: 3}
-    name: theme
-    volume: 0.54
-    pitch: 0
+    name: theme-song
+    volume: 0.1
+    pitch: 1
     source: {fileID: 0}
-  - enabled: 1
+  - type: 0
+    enabled: 1
     loop: 0
     clip: {fileID: 8300000, guid: 9c4574aec1fa7a240b825f839a4b677e, type: 3}
     name: coin-pickup
     volume: 0.51
-    pitch: 0
+    pitch: 1
+    source: {fileID: 0}
+  - type: 0
+    enabled: 1
+    loop: 0
+    clip: {fileID: 8300000, guid: 86dbf9ff7f7eade4098d6e8530e0f6b5, type: 3}
+    name: time-beat
+    volume: 1
+    pitch: 1
     source: {fileID: 0}

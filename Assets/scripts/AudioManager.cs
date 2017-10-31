@@ -5,11 +5,17 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour {
-
+    // Singleton instance 
     public static AudioManager instance;
 
     // Disable/enable all the sounds
     public bool on;
+
+    // Disable/enable theme music
+    public bool music = true;
+
+    // Disable/enable sound effects
+    public bool effect = true;
 
     public Sound[] sounds;
 
@@ -34,7 +40,9 @@ public class AudioManager : MonoBehaviour {
 	}
 
     void Start () {
-        Play("theme-song");
+        if (on && music) {
+            Play("theme-song");
+        }
     }
 
     public Sound GetSound(string name) {
@@ -42,7 +50,14 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void Play(Sound s) {
+        if (!on) {
+            return;
+        }
+
         if (s != null) {
+            if (s.type == Sound.SoundType.Music && !music || s.type == Sound.SoundType.Effect && !effect) {
+                return;
+            }
             s.source.Play();
         }
     }
@@ -51,10 +66,13 @@ public class AudioManager : MonoBehaviour {
         if (!on) {
             return;
         }
-
+   
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null) {
             Debug.LogWarning("Could not find sound with name: " + name);
+            return;
+        }
+        if (s.type == Sound.SoundType.Music && !music || s.type == Sound.SoundType.Effect && !effect) {
             return;
         }
         s.source.Play();
