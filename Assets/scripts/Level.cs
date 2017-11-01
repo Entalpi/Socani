@@ -8,7 +8,9 @@ public class Level : MonoBehaviour {
     public float time;
     // # of coins on the level 
     public int num_coins = 0;
-
+    // User visible level number 
+    public int levelIndex = 0;
+    // Textures representing the level composition
 	public Texture2D[] tile_layers;
 
 	public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {

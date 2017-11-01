@@ -228,7 +228,7 @@ Prefab:
         type: 2}
       propertyPath: curr_lvl
       value: 
-      objectReference: {fileID: 2090140788}
+      objectReference: {fileID: 0}
     - target: {fileID: 114564227623181238, guid: 1370dbf389acae545aee273434a5b3b6,
         type: 2}
       propertyPath: mappings.Array.data[3].color.g
@@ -352,7 +352,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4615984358038906, guid: bbb40d8679d3e9248864ceb483eb40af, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbb40d8679d3e9248864ceb483eb40af, type: 2}
@@ -615,7 +615,7 @@ RectTransform:
   - {fileID: 1014717004}
   - {fileID: 1930823052}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -682,7 +682,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930823051
 GameObject:
@@ -794,52 +794,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1930823051}
---- !u!1 &2090140787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2090140789}
-  - component: {fileID: 2090140788}
-  m_Layer: 0
-  m_Name: level1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2090140788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2090140787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 11
-  num_coins: 0
-  tile_layers:
-  - {fileID: 2800000, guid: 51f074ada433b554ebe1038edc6dcb01, type: 3}
-  - {fileID: 2800000, guid: c883031713cbee7489d2b2e8b5c515f7, type: 3}
-  - {fileID: 2800000, guid: bab8fb4a7ab01514bafe6ed73ebc5711, type: 3}
-  - {fileID: 2800000, guid: a858568b61241a343b94654d9e0c2c5d, type: 3}
-  - {fileID: 2800000, guid: e86e686075ae1ee4cb6c0b7dc3da2391, type: 3}
-  - {fileID: 2800000, guid: 6921f2042e79b7f449dddeb3c648c7bc, type: 3}
---- !u!4 &2090140789
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2090140787}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16191782, y: 0.23760758, z: 0.08579098}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

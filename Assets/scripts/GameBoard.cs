@@ -14,26 +14,33 @@ public class GameBoard : MonoBehaviour {
 
 	// Private
 	private Vector2 tile_size = new Vector2 (1.25f, 1.25f);
-	private Player player;
     private bool countdown = false;
+    // Plays the countdown sounds by increasing pitches
+    private Coroutine countDownRoutine;
 
 	void Start () {
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 5, 10f));
-		board = curr_lvl.load (this);
+        LoadLevel();
+	}
+
+    public void LoadLevel() {
+        curr_lvl = LevelManager.instance.getLevel();
+
+        // Load the current level
+        board = curr_lvl.load(this);
         timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
-		foreach (Vector2Int pos in board.Keys) {
-			var tiles = board[pos];
-			for(int z = 0; z < tiles.Count; z++) {
-				GameObject tile = tiles [z];
-				Vector3 position = board_to_transform_position (new Vector3Int(pos.x, pos.y, z));
-				// Fill the board with objects created from the references
-				GameObject obj = Instantiate (tile, position, Quaternion.identity);
+        foreach (Vector2Int pos in board.Keys) {
+            var tiles = board[pos];
+            for (int z = 0; z < tiles.Count; z++) {
+                GameObject tile = tiles[z];
+                Vector3 position = board_to_transform_position(new Vector3Int(pos.x, pos.y, z));
+                // Fill the board with objects created from the references
+                GameObject obj = Instantiate(tile, position, Quaternion.identity);
                 obj.transform.SetParent(transform);
                 board[pos][z] = obj;
             }
-		}
-		player = FindObjectOfType<Player> ();
-	}
+        }
+    }
 
     public void Update() {
         curr_lvl.time -= Time.deltaTime;
@@ -41,7 +48,7 @@ public class GameBoard : MonoBehaviour {
         timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
         if (!countdown && curr_lvl.time <= 10) {
             countdown = true;
-            StartCoroutine(CountDown(11));
+            countDownRoutine = StartCoroutine(CountDown(10));
         } 
         if (curr_lvl.time == 0) {
             Debug.Log("TIME IS UP!");
@@ -147,6 +154,10 @@ public class GameBoard : MonoBehaviour {
 				}
 			}
 		}
+        if (countDownRoutine != null) {
+            StopCoroutine(countDownRoutine);
+        }
+        
 		return true;
 	}
 
