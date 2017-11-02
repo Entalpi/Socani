@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameBoard : MonoBehaviour {
     // Time remaining on the level
@@ -51,7 +52,7 @@ public class GameBoard : MonoBehaviour {
             countDownRoutine = StartCoroutine(CountDown(10));
         } 
         if (curr_lvl.time == 0) {
-            Debug.Log("TIME IS UP!");
+			SceneManager.LoadScene ("afterlevelmenu");
         }
     }
 
@@ -157,7 +158,7 @@ public class GameBoard : MonoBehaviour {
         if (countDownRoutine != null) {
             StopCoroutine(countDownRoutine);
         }
-        
+		SceneManager.LoadScene ("afterlevelmenu");
 		return true;
 	}
 

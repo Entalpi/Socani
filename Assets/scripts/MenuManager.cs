@@ -8,9 +8,8 @@ public class MenuManager : MonoBehaviour {
     public GameObject musicButton;
     public GameObject soundButton;
 
-    // TODO: Load level selection scene
     public void Play() {
-        SceneManager.LoadScene("player");
+        SceneManager.LoadScene("levelselectionmenu");
     } 
 
     public void ToggleMusic() {
