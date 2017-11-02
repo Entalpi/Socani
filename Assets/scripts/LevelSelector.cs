@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class LevelSelector : MonoBehaviour {
             GameObject obj = Instantiate(buttonPrefab);
             Button btn = obj.GetComponent<Button>();
             if (btn) {
+				btn.GetComponentInChildren<Text>().text = string.Format("Level #{0}", i + 1);
                 int idx = i; // Using only 'i' does not work (C# lambda uses the variable value at i AFTER the loop is done)
                 btn.onClick.AddListener(() => onButtonClicked(levels[idx]));
                 btn.transform.SetParent(scrollView.transform, false);
@@ -23,6 +25,7 @@ public class LevelSelector : MonoBehaviour {
 	}
 
     private void onButtonClicked(Level level) {
-        Debug.Log("Button clicked with Level: " + level.levelIndex);
+		LevelManager.instance.currentLevel = level;
+		SceneManager.LoadScene ("player");
     }
 }

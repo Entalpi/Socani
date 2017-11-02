@@ -9,8 +9,8 @@ public class LevelManager : MonoBehaviour {
     // All the levels in the game
     public Level[] levels;
 
-    // The index of the lvl that is going be to played by the GameBoard
-    public int currentLevel;
+    // The lvl that is going be to played by the GameBoard
+    public Level currentLevel;
 
     void Awake() {
         if (instance == null) {
@@ -26,12 +26,11 @@ public class LevelManager : MonoBehaviour {
     }
 
     public Level getLevel() {
-        Level level = levels[currentLevel];
-        if (level) {
-            return level;
-        } else {
-            Debug.LogWarning("Current level index is invalid: " + currentLevel);
-            return null;
-        }
+		if (currentLevel) {
+			return currentLevel;
+		} else {
+			Debug.LogWarning ("Scene 'player' started without a current level");
+			return null;
+		}
     }
 }
