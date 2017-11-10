@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameBoard : MonoBehaviour {
     // Time remaining on the level
-    public Text timer_text;
+    public Text timerText;
 
 	public TileMapping[] mappings;
 
@@ -29,7 +29,7 @@ public class GameBoard : MonoBehaviour {
 
         // Load the current level
         board = curr_lvl.load(this);
-        timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
+		timerText.text = string.Format("{0:0.0}", curr_lvl.time);
         foreach (Vector2Int pos in board.Keys) {
             var tiles = board[pos];
             for (int z = 0; z < tiles.Count; z++) {
@@ -46,13 +46,13 @@ public class GameBoard : MonoBehaviour {
     public void Update() {
         curr_lvl.time -= Time.deltaTime;
         curr_lvl.time = Mathf.Clamp(curr_lvl.time, 0f, Mathf.Infinity);
-        timer_text.text = string.Format("{0:0.0}", curr_lvl.time);
+		timerText.text = string.Format("{0:0.0}", curr_lvl.time);
         if (!countdown && curr_lvl.time <= 10) {
             countdown = true;
             countDownRoutine = StartCoroutine(CountDown(10));
         } 
         if (curr_lvl.time == 0) {
-			SceneManager.LoadScene ("afterlevelmenu");
+			StartCoroutine(GetComponent<Fading>().loadScene("afterlevelmenu"));
         }
     }
 
@@ -138,7 +138,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	// Checks if all the crate goals are fulfilled and returns the result
-	public bool check_gamestate() {
+	public bool checkGamestate() {
 		foreach (var key in board.Keys) {
 			var stack = board [key];
 			for (int z = 0; z < stack.Count; z++) {
@@ -158,7 +158,7 @@ public class GameBoard : MonoBehaviour {
         if (countDownRoutine != null) {
             StopCoroutine(countDownRoutine);
         }
-		SceneManager.LoadScene ("afterlevelmenu");
+		StartCoroutine(GetComponent<Fading>().loadScene("afterlevelmenu"));
 		return true;
 	}
 

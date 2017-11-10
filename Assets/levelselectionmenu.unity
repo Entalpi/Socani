@@ -728,6 +728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480498610}
   - component: {fileID: 1480498609}
+  - component: {fileID: 1480498611}
   m_Layer: 5
   m_Name: LevelSelector
   m_TagString: Untagged
@@ -767,3 +768,16 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1480498611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1480498608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a459d07aec620d4da50f85ad7e553bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: fe08d753201ef834b8abf7f2c54bd7ca, type: 3}
+  fadeSpeed: 0.8

@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
-  num_coins: 15
+  time: 2
+  num_coins: 1
   levelIndex: 1
   tile_layers:
   - {fileID: 2800000, guid: 51f074ada433b554ebe1038edc6dcb01, type: 3}

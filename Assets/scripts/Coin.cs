@@ -11,8 +11,6 @@ public class Coin : MonoBehaviour {
                 // Play effects
                 if (col.collider.tag == "Player") {
                     AudioManager.instance.Play("coin-pickup");
-                } else {
-                    
                 }
                 Destroy(gameObject);
             }

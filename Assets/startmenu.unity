@@ -651,6 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395121714}
   - component: {fileID: 395121713}
+  - component: {fileID: 395121715}
   m_Layer: 5
   m_Name: MenuManager
   m_TagString: Untagged
@@ -689,6 +690,19 @@ RectTransform:
   m_AnchoredPosition: {x: 255.5, y: 313}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &395121715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 395121712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a459d07aec620d4da50f85ad7e553bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: fe08d753201ef834b8abf7f2c54bd7ca, type: 3}
+  fadeSpeed: 0.8
 --- !u!1 &439204054
 GameObject:
   m_ObjectHideFlags: 0

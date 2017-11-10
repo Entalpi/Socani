@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224678583355417938}
   - component: {fileID: 114564227623181238}
+  - component: {fileID: 114574995885837506}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -38,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0cdd87caffd9a4fa687c3ae8942896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
   mappings:
   - color: {r: 0, g: 0, b: 0, a: 1}
     prefab: {fileID: 1030321919153670, guid: 8d95671349899754db31871e546466e7, type: 2}
@@ -45,7 +47,26 @@ MonoBehaviour:
     prefab: {fileID: 1166694769697236, guid: f8e286bd0fb62c747abff80efd8e28ba, type: 2}
   - color: {r: 0, g: 1, b: 1, a: 1}
     prefab: {fileID: 1604510961551290, guid: 7933fc4b33eebdb4bbdf4cb532231d07, type: 2}
+  - color: {r: 1, g: 0.84705883, b: 0, a: 1}
+    prefab: {fileID: 1738318453303068, guid: 3ad75dd3c094cb843be2b9f6bb8f9665, type: 2}
+  - color: {r: 1, g: 1, b: 0, a: 1}
+    prefab: {fileID: 1656939004182494, guid: cd4c76f8d2366814c960cf154856a676, type: 2}
+  - color: {r: 0.78431374, g: 0.78431374, b: 0, a: 1}
+    prefab: {fileID: 1440638646891008, guid: 8db28103e5c821d4db689d03b48b4c84, type: 2}
   curr_lvl: {fileID: 0}
+--- !u!114 &114574995885837506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283895169767548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a459d07aec620d4da50f85ad7e553bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: fe08d753201ef834b8abf7f2c54bd7ca, type: 3}
+  fadeSpeed: 0.8
 --- !u!224 &224678583355417938
 RectTransform:
   m_ObjectHideFlags: 1

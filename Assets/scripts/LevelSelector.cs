@@ -26,6 +26,6 @@ public class LevelSelector : MonoBehaviour {
 
     private void onButtonClicked(Level level) {
 		LevelManager.instance.currentLevel = level;
-		SceneManager.LoadScene ("player");
+		StartCoroutine(GetComponent<Fading>().loadScene("player"));
     }
 }
