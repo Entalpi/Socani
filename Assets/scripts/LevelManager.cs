@@ -27,10 +27,10 @@ public class LevelManager : MonoBehaviour {
 
     public Level getLevel() {
 		if (currentLevel) {
-			return currentLevel;
+			return Instantiate(currentLevel);
 		} else {
 			Debug.LogWarning ("Scene 'player' started without a current level");
-			return null;
+			return Instantiate(levels[0]);
 		}
     }
 }
