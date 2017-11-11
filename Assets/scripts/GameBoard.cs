@@ -165,5 +165,9 @@ public class GameBoard : MonoBehaviour {
 	public void pressedLevelsButton() {
 		StartCoroutine(GetComponent<Fading>().loadScene("levelselectionmenu"));
 	}
+
+	public void pressedMenuCancelButton() {
+		menuPanel.SetActive (!menuPanel.activeSelf);
+	}
 }
    
