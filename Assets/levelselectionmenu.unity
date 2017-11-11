@@ -145,7 +145,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 450, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142597934
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7941176, g: 0.72324306, b: 0.1518166, a: 1}
+  m_Color: {r: 1, g: 0.88965523, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -168,18 +168,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: c4ddd0e8075dcf442aca6b0d5462aa8f, type: 3}
-    m_FontSize: 40
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Levels
+  m_Text: LEVELS
 --- !u!222 &142597935
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.5661765, g: 0.50370187, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.6358132, g: 0.8109414, b: 0.88235295, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.198}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
