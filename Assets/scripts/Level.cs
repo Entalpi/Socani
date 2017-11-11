@@ -4,8 +4,6 @@ using UnityEngine;
 
 [System.Serializable]
 public class Level : MonoBehaviour {
-    // # of seconds to complete the level
-    public float time;
     // # of coins on the level 
     public int num_coins = 0;
     // User visible level number 

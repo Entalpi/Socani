@@ -39,7 +39,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0cdd87caffd9a4fa687c3ae8942896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
   mappings:
   - color: {r: 0, g: 0, b: 0, a: 1}
     prefab: {fileID: 1030321919153670, guid: 8d95671349899754db31871e546466e7, type: 2}
@@ -54,6 +53,7 @@ MonoBehaviour:
   - color: {r: 0.78431374, g: 0.78431374, b: 0, a: 1}
     prefab: {fileID: 1440638646891008, guid: 8db28103e5c821d4db689d03b48b4c84, type: 2}
   curr_lvl: {fileID: 0}
+  menuPanel: {fileID: 0}
 --- !u!114 &114574995885837506
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameBoard : MonoBehaviour {
-    // Time remaining on the level
-    public Text timerText;
-
 	public TileMapping[] mappings;
 
 	public Level curr_lvl;
@@ -15,11 +12,11 @@ public class GameBoard : MonoBehaviour {
 
 	// Private
 	private Vector2 tile_size = new Vector2 (1.25f, 1.25f);
-    private bool countdown = false;
-    // Plays the countdown sounds by increasing pitches
-    private Coroutine countDownRoutine;
 
 	void Start () {
+		// Hide menu per default
+		menuPanel.SetActive (false);
+
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 5, 10f));
         LoadLevel();
 	}
@@ -29,7 +26,6 @@ public class GameBoard : MonoBehaviour {
 
         // Load the current level
         board = curr_lvl.load(this);
-		timerText.text = string.Format("{0:0.0}", curr_lvl.time);
         foreach (Vector2Int pos in board.Keys) {
             var tiles = board[pos];
             for (int z = 0; z < tiles.Count; z++) {
@@ -41,29 +37,6 @@ public class GameBoard : MonoBehaviour {
                 board[pos][z] = obj;
             }
         }
-    }
-
-    public void Update() {
-        curr_lvl.time -= Time.deltaTime;
-        curr_lvl.time = Mathf.Clamp(curr_lvl.time, 0f, Mathf.Infinity);
-		timerText.text = string.Format("{0:0.0}", curr_lvl.time);
-        if (!countdown && curr_lvl.time <= 10) {
-            countdown = true;
-            countDownRoutine = StartCoroutine(CountDown(10));
-        } 
-        if (curr_lvl.time == 0) {
-			StartCoroutine(GetComponent<Fading>().loadScene("afterlevelmenu"));
-        }
-    }
-
-    private IEnumerator CountDown(int seconds) {
-        for (int i = 0; i < seconds; i++) {
-            Sound sound = AudioManager.instance.GetSound("time-beat");
-            sound.source.pitch = 1.0f + i * 0.25f;
-            AudioManager.instance.Play(sound);
-            yield return new WaitForSeconds(1);
-        }
-        yield return null;
     }
 
     // Tries to move the object located at 'from' to 'to'
@@ -155,9 +128,6 @@ public class GameBoard : MonoBehaviour {
 				}
 			}
 		}
-        if (countDownRoutine != null) {
-            StopCoroutine(countDownRoutine);
-        }
 		StartCoroutine(GetComponent<Fading>().loadScene("afterlevelmenu"));
 		return true;
 	}
@@ -173,4 +143,27 @@ public class GameBoard : MonoBehaviour {
         }
         return false;
     }
+
+	// Menu interactions
+	public GameObject menuPanel;
+
+	public void pressedMenuButton() {
+		menuPanel.SetActive (!menuPanel.activeSelf);
+	}
+
+	public void pressedRestartButton() {
+		foreach(Vector2Int tilePosition in board.Keys) {
+			foreach (GameObject gameObject in board[tilePosition]) {
+				Destroy (gameObject);
+			}
+		}
+		LoadLevel ();
+		menuPanel.SetActive (false);
+		Destroy (GameObject.FindGameObjectWithTag("Player"));
+	}
+
+	public void pressedLevelsButton() {
+		StartCoroutine(GetComponent<Fading>().loadScene("levelselectionmenu"));
+	}
 }
+   
