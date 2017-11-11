@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00626595edee3f42bab71d4907e7a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  on: 0
-  music: 1
+  on: 1
+  music: 0
   effect: 1
   sounds:
   - type: 1
@@ -74,8 +74,8 @@ MonoBehaviour:
   - type: 0
     enabled: 1
     loop: 0
-    clip: {fileID: 8300000, guid: 86dbf9ff7f7eade4098d6e8530e0f6b5, type: 3}
-    name: time-beat
-    volume: 1
+    clip: {fileID: 8300000, guid: efc70f2946d07c240aca22b75d8ab3aa, type: 3}
+    name: move
+    volume: 0.39
     pitch: 1
     source: {fileID: 0}

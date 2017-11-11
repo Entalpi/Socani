@@ -58,6 +58,7 @@ public class GameBoard : MonoBehaviour {
                     tile.board_position = to; // Update tile board position
                     // Start the transform movement
                     StartCoroutine(tile.smoothMovement(board_to_transform_position(to)));
+					AudioManager.instance.Play ("move");
                 }
                 return true;
             }
