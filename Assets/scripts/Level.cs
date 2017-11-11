@@ -4,6 +4,8 @@ using UnityEngine;
 
 [System.Serializable]
 public class Level : MonoBehaviour {
+	// Is the level completed
+	public bool completed = false;
     // # of coins on the level 
     public int num_coins = 0;
     // User visible level number 
@@ -11,6 +13,7 @@ public class Level : MonoBehaviour {
     // Textures representing the level composition
 	public Texture2D[] tile_layers;
 
+	// Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
 	public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>> ();
 

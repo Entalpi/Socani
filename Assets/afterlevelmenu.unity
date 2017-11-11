@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 640892097}
   - component: {fileID: 640892096}
   m_Layer: 5
-  m_Name: retryButton
+  m_Name: nextLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,7 +377,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1144629918}
-        m_MethodName: RetryButtonPressed
+        m_MethodName: nextLevelButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -556,7 +556,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.09888624, g: 0.43382353, b: 0.32294768, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -604,6 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144629919}
   - component: {fileID: 1144629918}
+  - component: {fileID: 1144629920}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -623,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuTitle: {fileID: 0}
-  retryButton: {fileID: 640892094}
+  nextLevelButton: {fileID: 0}
   levelSelectionButton: {fileID: 1997564384}
 --- !u!4 &1144629919
 Transform:
@@ -638,6 +639,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144629920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144629917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a459d07aec620d4da50f85ad7e553bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: fe08d753201ef834b8abf7f2c54bd7ca, type: 3}
+  fadeSpeed: 0.8
 --- !u!1 &1230548636
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +793,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sweet
+  m_Text: Nice!
 --- !u!222 &1318523902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -853,7 +867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next level / Retry
+  m_Text: NEXT LEVEL
 --- !u!222 &1690566346
 CanvasRenderer:
   m_ObjectHideFlags: 0

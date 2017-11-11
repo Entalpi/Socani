@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class LevelManager : MonoBehaviour {
@@ -33,4 +34,23 @@ public class LevelManager : MonoBehaviour {
 			return Instantiate(levels[0]);
 		}
     }
+
+	public bool nextLevel() {
+		// Out of levels! End of game?
+		if (levels.Length <= currentLevel.levelIndex + 1) {
+			return false;
+		}
+		currentLevel = levels [currentLevel.levelIndex + 1];
+		return true;
+	}
+
+	// Returns whether or not it found the level 
+	public bool levelCompleted(Level level) {
+		Level levelPrefab = Array.Find (levels, match => match.levelIndex == level.levelIndex);
+		if (levelPrefab) {
+			levelPrefab.completed = true;
+			return true;
+		}
+		return false;
+	}
 }

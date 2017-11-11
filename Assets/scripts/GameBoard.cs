@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameBoard : MonoBehaviour {
 	public TileMapping[] mappings;
 
-	public Level curr_lvl;
+	public Level currentLevel;
 	public Dictionary<Vector2Int, List<GameObject>> board;
 
 	// Private
@@ -22,10 +22,10 @@ public class GameBoard : MonoBehaviour {
 	}
 
     public void LoadLevel() {
-        curr_lvl = LevelManager.instance.getLevel();
+		currentLevel = LevelManager.instance.getLevel();
 
         // Load the current level
-        board = curr_lvl.load(this);
+		board = currentLevel.load(this);
         foreach (Vector2Int pos in board.Keys) {
             var tiles = board[pos];
             for (int z = 0; z < tiles.Count; z++) {
@@ -128,6 +128,7 @@ public class GameBoard : MonoBehaviour {
 				}
 			}
 		}
+		LevelManager.instance.levelCompleted (currentLevel);
 		StartCoroutine(GetComponent<Fading>().loadScene("afterlevelmenu"));
 		return true;
 	}

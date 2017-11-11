@@ -7,16 +7,12 @@ using UnityEngine.SceneManagement;
 public class AfterLevelMenuManager : MonoBehaviour {
 
 	public Text menuTitle;
-	public GameObject retryButton;
+	public GameObject nextLevelButton;
 	public GameObject levelSelectionButton;
 
-	void Start() {
-		// TODO: Change text
-	}
-
-	public void RetryButtonPressed() {
-		// Restart the level with the same level in the LevelManager
-		SceneManager.LoadScene ("player");
+	public void nextLevelButtonPressed() {
+		LevelManager.instance.nextLevel ();
+		StartCoroutine(GetComponent<Fading>().loadScene("player"));
 	}
 
 	public void LevelSelectionButtonPressed() {
