@@ -7,12 +7,6 @@ public class Player : MonoBehaviour {
 	private const float move_cooldown = 0.25f;
 	private float since_last_move = 0.0f;
 
-	// Movement directions
-	private Vector3Int delta_up   = new Vector3Int(0, 1, 0);
-	private Vector3Int delta_down = new Vector3Int(0, -1, 0);
-	private Vector3Int delta_left = new Vector3Int(-1, 0, 0);
-	private Vector3Int delta_right = new Vector3Int(1, 0, 0);
-
 	// Player board tile
 	private Tile tile; 
 	private GameBoard board;
@@ -36,23 +30,24 @@ public class Player : MonoBehaviour {
 		if (since_last_move >= move_cooldown) {
 			bool did_move = false;
 			if (Input.GetKey ("up")) {
-				if (board.valid_move (gameObject, tile.board_position, delta_up)) {
+				if (board.valid_move (gameObject, tile.board_position, Vector3Int.up)) {
 					did_move = true;
 				}
 			} else if (Input.GetKey ("down")) {
-				if (board.valid_move (gameObject, tile.board_position, delta_down)) {
+				if (board.valid_move (gameObject, tile.board_position, Vector3Int.down)) {
 					did_move = true;
 				}
 			} else if (Input.GetKey ("left")) {
-				if (board.valid_move (gameObject, tile.board_position, delta_left)) {
+				if (board.valid_move (gameObject, tile.board_position, Vector3Int.left)) {
 					did_move = true;
 				}
 			} else if (Input.GetKey ("right")) {
-				if (board.valid_move (gameObject, tile.board_position, delta_right)) {
+				if (board.valid_move (gameObject, tile.board_position, Vector3Int.right)) {
 					did_move = true;
 				}
 			}
 			if (did_move) {
+				board.endMove ();
 				since_last_move = 0.0f;
 				if (board.checkGamestate ()) {
 					Debug.Log ("Victory!");

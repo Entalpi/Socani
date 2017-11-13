@@ -13,9 +13,21 @@ public class GameBoard : MonoBehaviour {
 	// Private
 	private Vector2 tile_size = new Vector2 (1.25f, 1.25f);
 
+	// Represents one tiles movement from one place to another
+	struct BoardMove {
+		public GameObject movee;
+		public Vector2Int from, to;
+	}
+	// History of all the moves thus far
+	private Stack<List<BoardMove>> moveHistory;
+	// All the tiles moved in a single move (stored later in move history)
+	private List<BoardMove> tilesMoved;
+
 	void Start () {
 		// Hide menu per default
 		menuPanel.SetActive (false);
+		moveHistory = new Stack<List<BoardMove>> ();
+		tilesMoved = new List<BoardMove> ();
 
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 5, 10f));
         LoadLevel();
@@ -23,6 +35,7 @@ public class GameBoard : MonoBehaviour {
 
     public void LoadLevel() {
 		currentLevel = LevelManager.instance.getLevel();
+		moveHistory.Clear ();
 
         // Load the current level
 		board = currentLevel.load(this);
@@ -39,27 +52,40 @@ public class GameBoard : MonoBehaviour {
         }
     }
 
+	// Called to end the move and record all the tiles moves during this move
+	public void endMove() {
+		if (tilesMoved.Count > 0) {
+            BoardMove[] boardMoves = new BoardMove[tilesMoved.Count];
+            
+			moveHistory.Push (tilesMoved);
+			tilesMoved.Clear ();
+		}
+	}
+
     // Tries to move the object located at 'from' to 'to'
-    private bool move_object(GameObject obj, Vector3Int from, Vector3Int to) {
-		// Move the tiles in the board 
-		Vector2Int board_key_from = new Vector2Int(from.x, from.y);
-		Vector2Int board_key_to = new Vector2Int (to.x, to.y);
-
+    private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to) {
         // Search for the object in the tile stack
-        for (int z = 0; z < board[board_key_from].Count; z++) {
-            GameObject game_object = board[board_key_from][z];
+        for (int z = 0; z < board[from].Count; z++) {
+            GameObject game_object = board[from][z];
             if (obj.Equals(game_object)) {
-                board[board_key_from].RemoveAt(z);
-                board[board_key_to].Add(obj);
+                board[from].RemoveAt(z);
+                board[to].Add(obj);
 
-                to.z = board[board_key_to].Count - 1; // Place objects on top of the tile
+				// Place objects on top of the tile
+				Vector3Int newPosition = new Vector3Int (to.x, to.y, board [to].Count - 1);
                 Tile tile = obj.GetComponent<Tile>();
                 if (tile) {
-                    tile.board_position = to; // Update tile board position
+					tile.board_position = newPosition; // Update tile board position
                     // Start the transform movement
-                    StartCoroutine(tile.smoothMovement(board_to_transform_position(to)));
+					StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
 					AudioManager.instance.Play ("move");
                 }
+				// Add move to history
+				BoardMove boardMove;
+				boardMove.movee = obj;
+				boardMove.from = from;
+				boardMove.to = to;
+				tilesMoved.Add (boardMove);
                 return true;
             }
         }
@@ -71,6 +97,8 @@ public class GameBoard : MonoBehaviour {
 		if (pos.x < 0)  { return false; }
 		if (pos.y < 0)  { return false; }
 		Vector2Int delta_key = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
+		Vector2Int from = new Vector2Int(pos.x, pos.y);
+		Vector2Int to   = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
 		if (!board.ContainsKey (delta_key)) { 
 			return false;
 		} else {
@@ -83,7 +111,7 @@ public class GameBoard : MonoBehaviour {
                         bool moveable = valid_move (game_obj, pos + delta, delta);
 						if (moveable) {
                             // Move the object at (pos.x, pos.y, z) to (pos + delta)
-                            return move_object(obj, pos, pos + delta);
+							return moveObject(obj, from, to);
 						}
 						return moveable;
 					} else {
@@ -93,7 +121,7 @@ public class GameBoard : MonoBehaviour {
 			}
 		}
         // Move the object at (pos) to the top of the stack at (pos + delta)
-		return move_object(obj, pos, pos + delta);
+		return moveObject(obj, from, to);
 	}
 
 	// Takes a board position returns the world position
@@ -170,6 +198,17 @@ public class GameBoard : MonoBehaviour {
 
 	public void pressedMenuCancelButton() {
 		menuPanel.SetActive (!menuPanel.activeSelf);
+	}
+
+	public void pressedRewindButton() {
+		if (moveHistory.Count == 0) {
+			return;
+		} 
+		List<BoardMove> boardMoves = moveHistory.Pop ();
+		for (int i = 0; i < boardMoves.Count; i++) {
+			BoardMove boardMove = boardMoves [i];
+			moveObject (boardMove.movee, boardMove.to, boardMove.from);
+		}
 	}
 }
    
