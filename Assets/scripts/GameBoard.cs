@@ -14,9 +14,17 @@ public class GameBoard : MonoBehaviour {
 	private Vector2 tile_size = new Vector2 (1.25f, 1.25f);
 
 	// Represents one tiles movement from one place to another
-	struct BoardMove {
+    public interface ICloneable<T> {
+        T Clone();
+    }
+	struct BoardMove: ICloneable<BoardMove> {
 		public GameObject movee;
 		public Vector2Int from, to;
+        public BoardMove Clone() {
+            BoardMove clone = new BoardMove();
+            clone.movee = movee; clone.to = to; clone.from = from;
+            return clone;
+        }
 	}
 	// History of all the moves thus far
 	private Stack<List<BoardMove>> moveHistory;
@@ -54,10 +62,8 @@ public class GameBoard : MonoBehaviour {
 
 	// Called to end the move and record all the tiles moves during this move
 	public void endMove() {
-		if (tilesMoved.Count > 0) {
-            BoardMove[] boardMoves = new BoardMove[tilesMoved.Count];
-            
-			moveHistory.Push (tilesMoved);
+		if (tilesMoved.Count > 0) {            
+			moveHistory.Push (tilesMoved.ConvertAll(move => move.Clone())); // Deep copy
 			tilesMoved.Clear ();
 		}
 	}
