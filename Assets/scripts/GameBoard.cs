@@ -69,7 +69,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
     // Tries to move the object located at 'from' to 'to'
-    private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to) {
+    private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to, bool recordMove = true) {
         // Search for the object in the tile stack
         for (int z = 0; z < board[from].Count; z++) {
             GameObject game_object = board[from][z];
@@ -86,12 +86,14 @@ public class GameBoard : MonoBehaviour {
 					StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
 					AudioManager.instance.Play ("move");
                 }
-				// Add move to history
-				BoardMove boardMove;
-				boardMove.movee = obj;
-				boardMove.from = from;
-				boardMove.to = to;
-				tilesMoved.Add (boardMove);
+                if (recordMove) {
+                    // Add move to history
+                    BoardMove boardMove;
+                    boardMove.movee = obj;
+                    boardMove.from = from;
+                    boardMove.to = to;
+                    tilesMoved.Add(boardMove);
+                }
                 return true;
             }
         }
@@ -209,11 +211,12 @@ public class GameBoard : MonoBehaviour {
 	public void pressedRewindButton() {
 		if (moveHistory.Count == 0) {
 			return;
-		} 
+		}
+        const bool recordMove = false;
 		List<BoardMove> boardMoves = moveHistory.Pop ();
 		for (int i = 0; i < boardMoves.Count; i++) {
 			BoardMove boardMove = boardMoves [i];
-			moveObject (boardMove.movee, boardMove.to, boardMove.from);
+			moveObject (boardMove.movee, boardMove.to, boardMove.from, recordMove);
 		}
 	}
 }
