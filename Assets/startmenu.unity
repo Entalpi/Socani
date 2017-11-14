@@ -956,8 +956,8 @@ Canvas:
   m_GameObject: {fileID: 729506850}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1871398283}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -975,8 +975,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 729506850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.5, y: 318, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.015723271, y: 0.015723271, z: 0.015723271}
   m_Children:
   - {fileID: 360679783}
   - {fileID: 1628197471}
@@ -1174,6 +1174,11 @@ Prefab:
         type: 2}
       propertyPath: sounds.Array.data[2].volume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114384883312857634, guid: bbb40d8679d3e9248864ceb483eb40af,
+        type: 2}
+      propertyPath: on
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbb40d8679d3e9248864ceb483eb40af, type: 2}
@@ -1690,7 +1695,7 @@ Prefab:
     - target: {fileID: 114590633813330254, guid: ba90fc63ee7963a4881989c75a4ef376,
         type: 2}
       propertyPath: levels.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4942948540275800, guid: ba90fc63ee7963a4881989c75a4ef376, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1728,13 +1733,19 @@ Prefab:
         type: 2}
       propertyPath: currentLevel
       value: 
-      objectReference: {fileID: 114919944565962558, guid: 4f0fe349eda9873458f0c09aaa522573,
+      objectReference: {fileID: 114497351476026216, guid: 54200988998a8ac4d9daa8804ec9c672,
         type: 2}
     - target: {fileID: 114590633813330254, guid: ba90fc63ee7963a4881989c75a4ef376,
         type: 2}
       propertyPath: levels.Array.data[4]
       value: 
       objectReference: {fileID: 114919944565962558, guid: 4f0fe349eda9873458f0c09aaa522573,
+        type: 2}
+    - target: {fileID: 114590633813330254, guid: ba90fc63ee7963a4881989c75a4ef376,
+        type: 2}
+      propertyPath: levels.Array.data[5]
+      value: 
+      objectReference: {fileID: 114497351476026216, guid: 54200988998a8ac4d9daa8804ec9c672,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba90fc63ee7963a4881989c75a4ef376, type: 2}
