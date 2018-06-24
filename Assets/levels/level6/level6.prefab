@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completed: 1
   num_coins: 1
-  levelIndex: 3
+  levelIndex: 5
   tile_layers:
   - {fileID: 2800000, guid: 3041059e950e7e246bb7fe8b02db12c9, type: 3}
   - {fileID: 2800000, guid: 5e28aaad476da57458720cf314fe00c7, type: 3}
