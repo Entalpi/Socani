@@ -12,7 +12,7 @@ public class AfterLevelMenuManager : MonoBehaviour {
 
 	public void nextLevelButtonPressed() {
 		LevelManager.instance.nextLevel ();
-		StartCoroutine(GetComponent<Fading>().loadScene("player"));
+		StartCoroutine(GetComponent<Fading>().LoadScene("player"));
 	}
 
 	public void LevelSelectionButtonPressed() {

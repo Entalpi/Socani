@@ -24,7 +24,7 @@ public class Fading : MonoBehaviour {
 		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), fadeOutTexture);
 	}
 
-	public IEnumerator loadScene(string name) {
+	public IEnumerator LoadScene(string name) {
 		float fadeTime = BeginFade (1);
 		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene (name);

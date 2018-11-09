@@ -166,7 +166,7 @@ public class GameBoard : MonoBehaviour {
 			}
 		}
 		LevelManager.instance.levelCompleted (currentLevel);
-		StartCoroutine(GetComponent<Fading>().loadScene("afterlevelmenu"));
+		StartCoroutine(GetComponent<Fading>().LoadScene("afterlevelmenu"));
 		return true;
 	}
 
@@ -201,7 +201,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedLevelsButton() {
-		StartCoroutine(GetComponent<Fading>().loadScene("levelselectionmenu"));
+		StartCoroutine(GetComponent<Fading>().LoadScene("levelselectionmenu"));
 	}
 
 	public void pressedMenuCancelButton() {
