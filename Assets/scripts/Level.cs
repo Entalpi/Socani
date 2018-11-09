@@ -6,11 +6,11 @@ using UnityEngine;
 public class Level : MonoBehaviour {
 	// Is the level completed
 	public bool completed = false;
-    // # of coins on the level 
-    public int num_coins = 0;
-    // User visible level number 
-    public int levelIndex = 0;
-    // Textures representing the level composition
+  // # of coins on the level 
+  public int num_coins = 0;
+  // User visible level number 
+  public int levelIndex = 0;
+  // Textures representing the level composition
 	public Texture2D[] tile_layers;
 
 	// Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
@@ -35,12 +35,12 @@ public class Level : MonoBehaviour {
 
 					for (int i = 0; i < game_board.mappings.Length; i++) {
 						TileMapping tile_mapping = game_board.mappings[i];
-						if (color.Equals (tile_mapping.color)) {
-							board [position].Add(tile_mapping.prefab);
-                            // Construct level variables
-                            if (tile_mapping.prefab.GetComponent<Coin>()) {
-                                num_coins++;
-                            }
+						if (color.Equals(tile_mapping.color)) {
+							board[position].Add(tile_mapping.prefab);
+              // Construct level variables
+              if (tile_mapping.prefab.GetComponent<Coin>()) {
+                  num_coins++;
+              }
 						}
 					}
 				}
