@@ -601,12 +601,12 @@ Prefab:
     - target: {fileID: 224678583355417938, guid: 1370dbf389acae545aee273434a5b3b6,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224678583355417938, guid: 1370dbf389acae545aee273434a5b3b6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224678583355417938, guid: 1370dbf389acae545aee273434a5b3b6,
         type: 2}

@@ -14,9 +14,9 @@ public class GameBoard : MonoBehaviour {
 	private Vector2 tileSize = new Vector2 (1.25f, 1.25f);
 
 	// Represents one tiles movement from one place to another
-    public interface ICloneable<T> {
-        T Clone();
-    }
+  public interface ICloneable<T> {
+      T Clone();
+  }
 	struct BoardMove: ICloneable<BoardMove> {
 		public GameObject movee;
 		public Vector2Int from, to;
@@ -27,25 +27,21 @@ public class GameBoard : MonoBehaviour {
         }
 	}
 	// History of all the moves thus far
-	private Stack<List<BoardMove>> moveHistory;
+	private Stack<List<BoardMove>> moveHistory = new Stack<List<BoardMove>>();
 	// All the tiles moved in a single move (stored later in move history)
-	private List<BoardMove> tilesMoved;
+	private List<BoardMove> tilesMoved = new List<BoardMove>();
 
 	void Start () {
-		// Hide menu per default
-		menuPanel.SetActive (false);
-		moveHistory = new Stack<List<BoardMove>> ();
-		tilesMoved = new List<BoardMove> ();
+		menuPanel.SetActive(false); // Hide menu per default
+    LoadLevel();
+    transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / currentLevel.dimensions.x,  Screen.height / currentLevel.dimensions.y, 10f));
+  }
 
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 9, Screen.height / 5, 10f));
-        LoadLevel();
-	}
-
-    public void LoadLevel() {
+  public void LoadLevel() {
 		currentLevel = LevelManager.instance.getLevel();
 		moveHistory.Clear ();
 
-        // Load the current level
+    // Load the current level
 		board = currentLevel.load(this);
         foreach (Vector2Int pos in board.Keys) {
             var tiles = board[pos];
@@ -68,36 +64,36 @@ public class GameBoard : MonoBehaviour {
 		}
 	}
 
-    // Tries to move the object located at 'from' to 'to'
-    private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to, bool recordMove = true) {
-        // Search for the object in the tile stack
-        for (int z = 0; z < board[from].Count; z++) {
-            GameObject game_object = board[from][z];
-            if (obj.Equals(game_object)) {
-                board[from].RemoveAt(z);
-                board[to].Add(obj);
+  // Tries to move the object located at 'from' to 'to'
+  private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to, bool recordMove = true) {
+    // Search for the object in the tile stack
+    for (int z = 0; z < board[from].Count; z++) {
+        GameObject game_object = board[from][z];
+        if (obj.Equals(game_object)) {
+            board[from].RemoveAt(z);
+            board[to].Add(obj);
 
-				// Place objects on top of the tile
-				Vector3Int newPosition = new Vector3Int (to.x, to.y, board [to].Count - 1);
-                Tile tile = obj.GetComponent<Tile>();
-                if (tile) {
-					tile.board_position = newPosition; // Update tile board position
-                    // Start the transform movement
-					StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
-					AudioManager.instance.Play ("move");
-                }
-                if (recordMove) {
-                    // Add move to history
-                    BoardMove boardMove;
-                    boardMove.movee = obj;
-                    boardMove.from = from;
-                    boardMove.to = to;
-                    tilesMoved.Add(boardMove);
-                }
-                return true;
+		// Place objects on top of the tile
+		Vector3Int newPosition = new Vector3Int (to.x, to.y, board [to].Count - 1);
+            Tile tile = obj.GetComponent<Tile>();
+            if (tile) {
+			tile.board_position = newPosition; // Update tile board position
+                // Start the transform movement
+			StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
+			AudioManager.instance.Play ("move");
             }
+            if (recordMove) {
+                // Add move to history
+                BoardMove boardMove;
+                boardMove.movee = obj;
+                boardMove.from = from;
+                boardMove.to = to;
+                tilesMoved.Add(boardMove);
+            }
+            return true;
         }
-        return false;
+    }
+    return false;
 	}
 	
 	// Checks if the board position is a valid position
@@ -140,8 +136,8 @@ public class GameBoard : MonoBehaviour {
 
 	// Take a world position and return the board position
 	public Vector3Int transform_to_board_position(Vector3 pos) {
-        Vector3 origo = transform.position;
-        pos -= origo;
+    Vector3 origo = transform.position;
+    pos -= origo;
 		pos.x /= tileSize.x;
 		pos.y /= tileSize.y;
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
