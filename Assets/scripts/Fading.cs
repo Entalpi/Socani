@@ -25,9 +25,9 @@ public class Fading : MonoBehaviour {
 	}
 
 	public IEnumerator LoadScene(string name) {
-		float fadeTime = BeginFade (1);
-		yield return new WaitForSeconds (fadeTime);
-		SceneManager.LoadScene (name);
+		float fadeTime = BeginFade(1);
+		yield return new WaitForSeconds(fadeTime);
+		SceneManager.LoadScene(name);
 	}
 
 	private float BeginFade(int direction) {
