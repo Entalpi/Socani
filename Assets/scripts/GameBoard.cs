@@ -11,7 +11,7 @@ public class GameBoard : MonoBehaviour {
 	public Dictionary<Vector2Int, List<GameObject>> board;
 
 	// Private
-	private Vector2 tileSize = new Vector2 (1.25f, 1.25f);
+	private Vector2 tileSize = new Vector2(1.25f, 1.25f);
 
 	// Represents one tiles movement from one place to another
   public interface ICloneable<T> {
@@ -82,7 +82,7 @@ public class GameBoard : MonoBehaviour {
 			    tile.board_position = newPosition; // Update tile board position
           // Start the transform movement
 			    StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
-			    AudioManager.instance.Play ("move");
+			    AudioManager.instance.Play("move");
         }
         if (recordMove) {
           // Add move to history
@@ -146,17 +146,17 @@ public class GameBoard : MonoBehaviour {
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
 	}
 
-	// Checks if all the crate goals are fulfilled and returns the result
+	// Checks if all the crate goals are fulfilled and returns the result while loading the next level
 	public bool checkGamestate() {
 		foreach (var key in board.Keys) {
 			var stack = board [key];
 			for (int z = 0; z < stack.Count; z++) {
 				GameObject obj = stack [z];
 				// Check if all the crate goals have a crate on top of them
-				if (obj.GetComponent<CrateGoal> ()) {
+				if (obj.GetComponent<CrateGoal>()) {
 					z++;
 					if (z < stack.Count) {
-						if (stack [z].GetComponent<Crate> ()) {
+						if (stack [z].GetComponent<Crate>()) {
 							continue;
 						} 
 					}
@@ -164,7 +164,7 @@ public class GameBoard : MonoBehaviour {
 				}
 			}
 		}
-		LevelManager.instance.levelCompleted (currentLevel);
+		LevelManager.instance.levelCompleted(currentLevel);
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/afterlevelmenu"));
 		return true;
 	}
