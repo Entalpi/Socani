@@ -106,25 +106,25 @@ public class GameBoard : MonoBehaviour {
 		if (!board.ContainsKey (delta_key)) { 
 			return false;
 		} else {
-            // Check for moveable tiles
-            for (int z = 0; z < board[delta_key].Count; z++) {
-                GameObject game_obj = board[delta_key][z];
-                Tile tile = game_obj.GetComponent<Tile> ();
+      // Check for moveable tiles
+      for (int z = 0; z < board[delta_key].Count; z++) {
+        GameObject game_obj = board[delta_key][z];
+        Tile tile = game_obj.GetComponent<Tile> ();
 				if (tile) {
 					if (tile.moveable) {
-                        bool moveable = valid_move (game_obj, pos + delta, delta);
-						if (moveable) {
-                            // Move the object at (pos.x, pos.y, z) to (pos + delta)
-							return moveObject(obj, from, to);
-						}
-						return moveable;
+            bool moveable = valid_move (game_obj, pos + delta, delta);
+					if (moveable) {
+            // Move the object at (pos.x, pos.y, z) to (pos + delta)
+						return moveObject(obj, from, to);
+					}
+					return moveable;
 					} else {
 						return false;
 					}
 				}
 			}
 		}
-        // Move the object at (pos) to the top of the stack at (pos + delta)
+    // Move the object at (pos) to the top of the stack at (pos + delta)
 		return moveObject(obj, from, to);
 	}
 
@@ -216,4 +216,3 @@ public class GameBoard : MonoBehaviour {
 		}
 	}
 }
-   
