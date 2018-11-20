@@ -98,6 +98,7 @@ public class GameBoard : MonoBehaviour {
     return false;
 	}
 	
+  // TODO: Tiles overlap slightly increase the spacing by one or two pixel in each axis
   // Checks if the board position is a valid position
   public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
 		if (pos.x < 0)  { return false; }
