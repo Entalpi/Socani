@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 			if (did_move) {
 				board.endMove();
 				since_last_move = 0.0f;
-				if (board.checkGamestate ()) {
+				if (board.checkGamestate()) {
 					Debug.Log("Victory!");
 				}
 			}
