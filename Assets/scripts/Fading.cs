@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Fading : MonoBehaviour {
 
 	public Texture2D fadeOutTexture;
-	public float fadeSpeed = 0.5f;
+	public float fadeSpeed = 0.75f;
 
 	private int drawDepth = -1000;
 	private float alpha = 1.0f;
@@ -18,10 +18,10 @@ public class Fading : MonoBehaviour {
 
 	void OnGUI() {
 		alpha += fadeDir * fadeSpeed * Time.deltaTime;
-		alpha = Mathf.Clamp (alpha, 0.0f, 1.0f);
-		GUI.color = new Color (GUI.color.r, GUI.color.g, GUI.color.b, alpha);
+		alpha = Mathf.Clamp(alpha, 0.0f, 1.0f);
+		GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, alpha);
 		GUI.depth = drawDepth;
-		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), fadeOutTexture);
+		GUI.DrawTexture(new Rect (0, 0, Screen.width, Screen.height), fadeOutTexture);
 	}
 
 	public IEnumerator LoadScene(string name) {
@@ -36,6 +36,6 @@ public class Fading : MonoBehaviour {
 	}
 
 	void sceneLoaded(Scene scene, LoadSceneMode mode) {
-		BeginFade (-1); // Fade in
+		BeginFade(-1); // Fade in
 	}
 }
