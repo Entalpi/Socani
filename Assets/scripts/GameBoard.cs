@@ -39,7 +39,7 @@ public class GameBoard : MonoBehaviour {
 
   public void LoadLevel() {
 		currentLevel = LevelManager.instance.getLevel();
-		moveHistory.Clear ();
+		moveHistory.Clear();
 
     // Load the current level
 		board = currentLevel.load(this);
@@ -59,8 +59,8 @@ public class GameBoard : MonoBehaviour {
 	// Called to end the move and record all the tiles moves during this move
 	public void endMove() {
 		if (tilesMoved.Count > 0) {            
-			moveHistory.Push (tilesMoved.ConvertAll(move => move.Clone())); // Deep copy
-			tilesMoved.Clear ();
+			moveHistory.Push(tilesMoved.ConvertAll(move => move.Clone())); // Deep copy
+			tilesMoved.Clear();
 		}
 	}
 
@@ -74,7 +74,7 @@ public class GameBoard : MonoBehaviour {
         board[to].Add(obj);
 
 		    // Place objects on top of the tile
-		    Vector3Int newPosition = new Vector3Int (to.x, to.y, board [to].Count - 1);
+		    Vector3Int newPosition = new Vector3Int(to.x, to.y, board [to].Count - 1);
         Tile tile = obj.GetComponent<Tile>();
         if (tile) {
 			    tile.board_position = newPosition; // Update tile board position
@@ -103,21 +103,21 @@ public class GameBoard : MonoBehaviour {
 		Vector2Int delta_key = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
 		Vector2Int from = new Vector2Int(pos.x, pos.y);
 		Vector2Int to   = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
-		if (!board.ContainsKey (delta_key)) { 
+		if (!board.ContainsKey(delta_key)) { 
 			return false;
 		} else {
       // Check for moveable tiles
       for (int z = 0; z < board[delta_key].Count; z++) {
         GameObject game_obj = board[delta_key][z];
-        Tile tile = game_obj.GetComponent<Tile> ();
+        Tile tile = game_obj.GetComponent<Tile>();
 				if (tile) {
 					if (tile.moveable) {
             bool moveable = valid_move (game_obj, pos + delta, delta);
-					if (moveable) {
-            // Move the object at (pos.x, pos.y, z) to (pos + delta)
-						return moveObject(obj, from, to);
-					}
-					return moveable;
+				    if (moveable) {
+              // Move the object at (pos.x, pos.y, z) to (pos + delta)
+					    return moveObject(obj, from, to);
+				    }
+					  return moveable;
 					} else {
 						return false;
 					}
