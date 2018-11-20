@@ -23,7 +23,7 @@ public class Level : MonoBehaviour {
     int maxHeight = 0;
 
 		for (int z = 0; z < tile_layers.Length; z++) {
-			Texture2D tile_layer = tile_layers [z];
+			Texture2D tile_layer = tile_layers[z];
 
       if (tile_layer.width  > maxWidth)  { maxWidth = tile_layer.width; }
       if (tile_layer.height > maxHeight) { maxHeight = tile_layer.height; }
@@ -31,16 +31,13 @@ public class Level : MonoBehaviour {
       for (int x = 0; x < tile_layer.width; x++) {
 				for (int y = 0; y < tile_layer.height; y++) {
 					// Generate a new tile
-					Color color = tile_layers [z].GetPixel (x, y);
-					if (color.a == 0.0f) {
-						continue;
-					}
+					Color color = tile_layers [z].GetPixel(x, y);
+					if (color.a == 0.0f) { continue; }
 
 					var position = new Vector2Int(x, y);
 					if (!board.ContainsKey(position)) {
 						board[position] = new List<GameObject>(2);
 					}
-					List<GameObject> tile_stack = board [position];
 
 					for (int i = 0; i < game_board.mappings.Length; i++) {
 						TileMapping tile_mapping = game_board.mappings[i];
