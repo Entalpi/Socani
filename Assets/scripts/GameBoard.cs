@@ -31,10 +31,12 @@ public class GameBoard : MonoBehaviour {
 	// All the tiles moved in a single move (stored later in move history)
 	private List<BoardMove> tilesMoved = new List<BoardMove>();
 
-	void Start () {
+	void Start() {
 		menuPanel.SetActive(false); // Hide menu per default
     LoadLevel();
-    transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / currentLevel.dimensions.x,  Screen.height / currentLevel.dimensions.y, 10f));
+    Vector3 position = new Vector3(-currentLevel.dimensions.x * tileSize.x / 2.0f, -currentLevel.dimensions.y * tileSize.y / 2.0f, 10f);
+    position += new Vector3(tileSize.x / 2.0f, tileSize.y / 2.0f, 0.0f);
+    transform.position = position;
   }
 
   public void LoadLevel() {
@@ -187,13 +189,13 @@ public class GameBoard : MonoBehaviour {
 
 	public void pressedRestartButton() {
 		foreach(Vector2Int tilePosition in board.Keys) {
-			foreach (GameObject gameObject in board[tilePosition]) {
-				Destroy (gameObject);
+			foreach(GameObject gameObject in board[tilePosition]) {
+				Destroy(gameObject);
 			}
 		}
-		LoadLevel ();
-		menuPanel.SetActive (false);
-		Destroy (GameObject.FindGameObjectWithTag("Player"));
+		LoadLevel();
+		menuPanel.SetActive(false);
+		Destroy(GameObject.FindGameObjectWithTag("Player"));
 	}
 
 	public void pressedLevelsButton() {
@@ -201,7 +203,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedMenuCancelButton() {
-		menuPanel.SetActive (!menuPanel.activeSelf);
+		menuPanel.SetActive(!menuPanel.activeSelf);
 	}
 
 	public void pressedRewindButton() {
@@ -209,10 +211,10 @@ public class GameBoard : MonoBehaviour {
 			return;
 		}
     const bool recordMove = false;
-		List<BoardMove> boardMoves = moveHistory.Pop ();
+		List<BoardMove> boardMoves = moveHistory.Pop();
 		for (int i = 0; i < boardMoves.Count; i++) {
 			BoardMove boardMove = boardMoves [i];
-			moveObject (boardMove.movee, boardMove.to, boardMove.from, recordMove);
+			moveObject(boardMove.movee, boardMove.to, boardMove.from, recordMove);
 		}
 	}
 }

@@ -7,13 +7,13 @@ public class Player : MonoBehaviour {
 	private const float move_cooldown = 0.25f;
 	private float since_last_move = 0.0f;
 
-	// Player board tile
+	// Player board tile representation
 	private Tile tile; 
 	private GameBoard board;
   private Rigidbody2D rb2D;
 
 	void Start() {
-		board = FindObjectOfType<GameBoard>();
+    board = FindObjectOfType<GameBoard>();
 		tile = GetComponent<Tile>();
     // Disable rotation on the RB
     rb2D = GetComponent<Rigidbody2D>();
@@ -26,11 +26,11 @@ public class Player : MonoBehaviour {
 	
 	void Update() {
 		since_last_move += Time.deltaTime;
-		if (since_last_move >= move_cooldown) {
+    if (since_last_move >= move_cooldown) {
 			bool did_move = false;
 			if (Input.GetKey("up")) {
 				if (board.valid_move(gameObject, tile.board_position, Vector3Int.up)) {
-					did_move = true;
+          did_move = true;
 				}
 			} else if (Input.GetKey("down")) {
 				if (board.valid_move(gameObject, tile.board_position, Vector3Int.down)) {
