@@ -15,16 +15,16 @@ public class GameBoard : MonoBehaviour {
 
 	// Represents one tiles movement from one place to another
   public interface ICloneable<T> {
-      T Clone();
+    T Clone();
   }
 	struct BoardMove: ICloneable<BoardMove> {
 		public GameObject movee;
 		public Vector2Int from, to;
-        public BoardMove Clone() {
-            BoardMove clone = new BoardMove();
-            clone.movee = movee; clone.to = to; clone.from = from;
-            return clone;
-        }
+    public BoardMove Clone() {
+      BoardMove clone = new BoardMove();
+      clone.movee = movee; clone.to = to; clone.from = from;
+      return clone;
+    }
 	}
 	// History of all the moves thus far
 	private Stack<List<BoardMove>> moveHistory = new Stack<List<BoardMove>>();
@@ -43,18 +43,18 @@ public class GameBoard : MonoBehaviour {
 
     // Load the current level
 		board = currentLevel.load(this);
-        foreach (Vector2Int pos in board.Keys) {
-            var tiles = board[pos];
-            for (int z = 0; z < tiles.Count; z++) {
-                GameObject tile = tiles[z];
-                Vector3 position = board_to_transform_position(new Vector3Int(pos.x, pos.y, z));
-                // Fill the board with objects created from the references
-                GameObject obj = Instantiate(tile, position, Quaternion.identity);
-                obj.transform.SetParent(transform);
-                board[pos][z] = obj;
-            }
-        }
+    foreach (Vector2Int pos in board.Keys) {
+      var tiles = board[pos];
+      for (int z = 0; z < tiles.Count; z++) {
+        GameObject tile = tiles[z];
+        Vector3 position = board_to_transform_position(new Vector3Int(pos.x, pos.y, z));
+        // Fill the board with objects created from the references
+        GameObject obj = Instantiate(tile, position, Quaternion.identity);
+        obj.transform.SetParent(transform);
+        board[pos][z] = obj;
+      }
     }
+  }
 
 	// Called to end the move and record all the tiles moves during this move
 	public void endMove() {
@@ -68,36 +68,36 @@ public class GameBoard : MonoBehaviour {
   private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to, bool recordMove = true) {
     // Search for the object in the tile stack
     for (int z = 0; z < board[from].Count; z++) {
-        GameObject game_object = board[from][z];
-        if (obj.Equals(game_object)) {
-            board[from].RemoveAt(z);
-            board[to].Add(obj);
+      GameObject game_object = board[from][z];
+      if (obj.Equals(game_object)) {
+        board[from].RemoveAt(z);
+        board[to].Add(obj);
 
-		// Place objects on top of the tile
-		Vector3Int newPosition = new Vector3Int (to.x, to.y, board [to].Count - 1);
-            Tile tile = obj.GetComponent<Tile>();
-            if (tile) {
-			tile.board_position = newPosition; // Update tile board position
-                // Start the transform movement
-			StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
-			AudioManager.instance.Play ("move");
-            }
-            if (recordMove) {
-                // Add move to history
-                BoardMove boardMove;
-                boardMove.movee = obj;
-                boardMove.from = from;
-                boardMove.to = to;
-                tilesMoved.Add(boardMove);
-            }
-            return true;
+		    // Place objects on top of the tile
+		    Vector3Int newPosition = new Vector3Int (to.x, to.y, board [to].Count - 1);
+        Tile tile = obj.GetComponent<Tile>();
+        if (tile) {
+			    tile.board_position = newPosition; // Update tile board position
+          // Start the transform movement
+			    StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
+			    AudioManager.instance.Play ("move");
         }
+        if (recordMove) {
+          // Add move to history
+          BoardMove boardMove;
+          boardMove.movee = obj;
+          boardMove.from = from;
+          boardMove.to = to;
+          tilesMoved.Add(boardMove);
+        }
+        return true;
+      }
     }
     return false;
 	}
 	
-	// Checks if the board position is a valid position
-	public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
+  // Checks if the board position is a valid position
+  public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
 		if (pos.x < 0)  { return false; }
 		if (pos.y < 0)  { return false; }
 		Vector2Int delta_key = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
@@ -130,8 +130,8 @@ public class GameBoard : MonoBehaviour {
 
 	// Takes a board position returns the world position
 	public Vector3 board_to_transform_position(Vector3Int pos) {
-        Vector3 origo = transform.position;
-        return origo + new Vector3 (pos.x * tileSize.x, pos.y * tileSize.y, -pos.z);
+    Vector3 origo = transform.position;
+    return origo + new Vector3 (pos.x * tileSize.x, pos.y * tileSize.y, -pos.z);
 	}
 
 	// Take a world position and return the board position
@@ -166,17 +166,17 @@ public class GameBoard : MonoBehaviour {
 		return true;
 	}
 
-    // Tries to find the relevant obj in the stack at pos and removes it from the board
-    public bool remove_from_board(GameObject obj, Vector3Int pos) {
-        var stack = board[new Vector2Int(pos.x, pos.y)];
-        for (int z = 0; z < stack.Count; z++) {
-            if (obj.Equals(stack[z])) {
-                stack.RemoveAt(z);
-                return true;
-            }
-        }
-        return false;
+  // Tries to find the relevant obj in the stack at pos and removes it from the board
+  public bool remove_from_board(GameObject obj, Vector3Int pos) {
+    var stack = board[new Vector2Int(pos.x, pos.y)];
+    for (int z = 0; z < stack.Count; z++) {
+      if (obj.Equals(stack[z])) {
+        stack.RemoveAt(z);
+        return true;
+      }
     }
+    return false;
+  }
 
 	// Menu interactions
 	public GameObject menuPanel;
@@ -208,7 +208,7 @@ public class GameBoard : MonoBehaviour {
 		if (moveHistory.Count == 0) {
 			return;
 		}
-        const bool recordMove = false;
+    const bool recordMove = false;
 		List<BoardMove> boardMoves = moveHistory.Pop ();
 		for (int i = 0; i < boardMoves.Count; i++) {
 			BoardMove boardMove = boardMoves [i];
