@@ -11,11 +11,11 @@ public class AfterLevelMenuManager : MonoBehaviour {
 	public GameObject levelSelectionButton;
 
 	public void nextLevelButtonPressed() {
-		LevelManager.instance.nextLevel ();
+		LevelManager.instance.nextLevel();
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
 	}
 
 	public void LevelSelectionButtonPressed() {
-		SceneManager.LoadScene ("scenes/levelselectionmenu");
+		SceneManager.LoadScene("scenes/levelselectionmenu");
 	}
 }
