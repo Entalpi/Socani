@@ -31,7 +31,6 @@ public class GameBoard : MonoBehaviour {
 
 	void Start() {
 		menuPanel.SetActive(false); // Hide menu per default
-    Tile.Size = Vector2.Scale(Tile.Size, new Vector2(scale, scale));
     LoadLevel();
     Vector3 position = new Vector3(-currentLevel.dimensions.x * Tile.Size.x / 2.0f, -currentLevel.dimensions.y * Tile.Size.y / 2.0f, 10f);
     position += new Vector3(Tile.Size.x / 2.0f, Tile.Size.y / 2.0f, 0.0f);
@@ -43,7 +42,12 @@ public class GameBoard : MonoBehaviour {
 		moveHistory.Clear();
 
     // Load the current level
-		board = currentLevel.load(this);
+    board = currentLevel.load(this);
+
+    // Rescale tile size to fit the screen based on the Level dimensions
+    Vector2 scale = new Vector2(0.5f, 0.5f);
+    Tile.Size = Vector2.Scale(Tile.OriginalSize, scale);
+
     foreach (Vector2Int pos in board.Keys) {
       var tiles = board[pos];
       for (int z = 0; z < tiles.Count; z++) {
