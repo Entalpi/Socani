@@ -13,7 +13,7 @@ public class GameBoard : MonoBehaviour {
 	// Private
 	private Vector2 tileSize = new Vector2(1.25f, 1.25f);
 
-	// Represents one tiles movement from one place to another
+  // Represents one tiles movement from one place to another
   public interface ICloneable<T> {
     T Clone();
   }
@@ -98,7 +98,6 @@ public class GameBoard : MonoBehaviour {
     return false;
 	}
 	
-  // TODO: Tiles overlap slightly increase the spacing by one or two pixel in each axis
   // Checks if the board position is a valid position
   public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
 		if (pos.x < 0)  { return false; }
@@ -115,7 +114,7 @@ public class GameBoard : MonoBehaviour {
         Tile tile = game_obj.GetComponent<Tile>();
 				if (tile) {
 					if (tile.moveable) {
-            bool moveable = valid_move (game_obj, pos + delta, delta);
+            bool moveable = valid_move(game_obj, pos + delta, delta);
 				    if (moveable) {
               // Move the object at (pos.x, pos.y, z) to (pos + delta)
 					    return moveObject(obj, from, to);
