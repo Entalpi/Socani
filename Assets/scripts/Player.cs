@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
   private Rigidbody2D rb2D;
 
 	void Start() {
+    transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
     board = FindObjectOfType<GameBoard>();
 		tile = GetComponent<Tile>();
     // Disable rotation on the RB

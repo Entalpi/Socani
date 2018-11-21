@@ -9,9 +9,7 @@ public class GameBoard : MonoBehaviour {
 
 	public Level currentLevel;
 	public Dictionary<Vector2Int, List<GameObject>> board;
-
-	// Private
-	private Vector2 tileSize = new Vector2(1.25f, 1.25f);
+  public const float scale = 0.5f;
 
   // Represents one tiles movement from one place to another
   public interface ICloneable<T> {
@@ -33,9 +31,10 @@ public class GameBoard : MonoBehaviour {
 
 	void Start() {
 		menuPanel.SetActive(false); // Hide menu per default
+    Tile.Size = Vector2.Scale(Tile.Size, new Vector2(scale, scale));
     LoadLevel();
-    Vector3 position = new Vector3(-currentLevel.dimensions.x * tileSize.x / 2.0f, -currentLevel.dimensions.y * tileSize.y / 2.0f, 10f);
-    position += new Vector3(tileSize.x / 2.0f, tileSize.y / 2.0f, 0.0f);
+    Vector3 position = new Vector3(-currentLevel.dimensions.x * Tile.Size.x / 2.0f, -currentLevel.dimensions.y * Tile.Size.y / 2.0f, 10f);
+    position += new Vector3(Tile.Size.x / 2.0f, Tile.Size.y / 2.0f, 0.0f);
     transform.position = position;
   }
 
@@ -133,15 +132,15 @@ public class GameBoard : MonoBehaviour {
 	// Takes a board position returns the world position
 	public Vector3 board_to_transform_position(Vector3Int pos) {
     Vector3 origo = transform.position;
-    return origo + new Vector3 (pos.x * tileSize.x, pos.y * tileSize.y, -pos.z);
+    return origo + new Vector3 (pos.x * Tile.Size.x, pos.y * Tile.Size.y, -pos.z);
 	}
 
 	// Take a world position and return the board position
 	public Vector3Int transform_to_board_position(Vector3 pos) {
     Vector3 origo = transform.position;
     pos -= origo;
-		pos.x /= tileSize.x;
-		pos.y /= tileSize.y;
+		pos.x /= Tile.Size.x;
+		pos.y /= Tile.Size.y;
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
 	}
 

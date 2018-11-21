@@ -42,7 +42,9 @@ public class Level : MonoBehaviour {
 					for (int i = 0; i < game_board.mappings.Length; i++) {
 						TileMapping tile_mapping = game_board.mappings[i];
 						if (color.Equals(tile_mapping.color)) {
-							board[position].Add(tile_mapping.prefab);
+              GameObject obj = tile_mapping.prefab;
+              obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+              board[position].Add(obj);
               // Construct level variables
               if (tile_mapping.prefab.GetComponent<Coin>()) {
                   num_coins++;
