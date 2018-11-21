@@ -41,8 +41,7 @@ public class GameBoard : MonoBehaviour {
 		currentLevel = LevelManager.instance.getLevel();
 		moveHistory.Clear();
 
-    // Load the current level
-    board = currentLevel.load(this);
+    board = currentLevel.load(this);  // Load the current level
 
     // Rescale tile size to fit the screen based on the Level dimensions
     Vector2 scale = new Vector2(0.5f, 0.5f);
