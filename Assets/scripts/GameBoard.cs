@@ -9,7 +9,6 @@ public class GameBoard : MonoBehaviour {
 
 	public Level currentLevel;
 	public Dictionary<Vector2Int, List<GameObject>> board;
-  public const float scale = 0.5f;
 
   // Represents one tiles movement from one place to another
   public interface ICloneable<T> {
