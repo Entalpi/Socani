@@ -12,8 +12,9 @@ public class BackgroundAnimation : MonoBehaviour {
   private List<GameObject> spawnedTiles = new List<GameObject>();
 
   void Start() {
+    float width = Mathf.Abs(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 100.0f, 0.0f, 0.0f)).x);
     for (int i = 0; i < numberTiles; i++) {
-      Invoke("spawnTile", Random.Range(0.0f, 4.0f));
+      Invoke("spawnTile", Random.Range(0.0f, width));
     }
   }
 
@@ -29,6 +30,8 @@ public class BackgroundAnimation : MonoBehaviour {
     Vector3 randomPosition = new Vector3(Random.Range(-4.0f, 4.0f), 5.0f, 100.0f);
     obj.transform.position = randomPosition;
     obj.GetComponent<Rigidbody2D>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+    float scale = Random.Range(0.75f, 1.0f);
+    obj.transform.localScale = new Vector3(scale, scale, 1.0f);
   }
 
   void spawnTile() {
