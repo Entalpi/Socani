@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameBoard : MonoBehaviour {
+  public BoardUI boardUI; // Handles some UI related matters
+
 	public TileMapping[] mappings;
 
 	public Level currentLevel;
