@@ -43,7 +43,7 @@ public class GameBoard : MonoBehaviour {
     board = currentLevel.load(this);  // Load the current level
 
     // Rescale tile size to fit the screen based on the Level dimensions
-    Vector2 scale = new Vector2(0.5f, 0.5f);
+    Vector2 scale = new Vector2(0.5f, 0.5f); // TODO: Make dynamic so that the level fills the screen a bit nicer
     Tile.Size = Vector2.Scale(Tile.OriginalSize, scale);
 
     foreach (Vector2Int pos in board.Keys) {
