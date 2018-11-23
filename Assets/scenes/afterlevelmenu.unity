@@ -633,8 +633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ea59201dd0cf546adae1d366f3af01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  info: {fileID: 2085961019}
   menuTitle: {fileID: 0}
-  nextLevelButton: {fileID: 0}
   levelSelectionButton: {fileID: 1997564384}
 --- !u!4 &1144629919
 Transform:

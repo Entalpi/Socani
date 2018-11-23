@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class AfterLevelMenuManager : MonoBehaviour {
 
-	public Text menuTitle;
-	public GameObject nextLevelButton;
+  public Text info;
+  public Text menuTitle;
 	public GameObject levelSelectionButton;
 
-	public void nextLevelButtonPressed() {
+  void Start() {
+    info.text = "Moves: " + LevelManager.instance.currentLevel.numberOfMoves;
+  }
+
+  public void nextLevelButtonPressed() {
 		LevelManager.instance.nextLevel();
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
 	}

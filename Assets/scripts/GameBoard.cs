@@ -40,6 +40,7 @@ public class GameBoard : MonoBehaviour {
 
   public void LoadLevel() {
 		currentLevel = LevelManager.instance.getLevel();
+    currentLevel.reset();
 		moveHistory.Clear();
 
     board = currentLevel.load(this);  // Load the current level
@@ -66,8 +67,9 @@ public class GameBoard : MonoBehaviour {
 		if (tilesMoved.Count > 0) {            
 			moveHistory.Push(tilesMoved.ConvertAll(move => move.Clone())); // Deep copy
 			tilesMoved.Clear();
-		}
-	}
+      currentLevel.numberOfMoves++;
+    }
+  }
 
   // Tries to move the object located at 'from' to 'to'
   private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to, bool recordMove = true) {
@@ -213,6 +215,7 @@ public class GameBoard : MonoBehaviour {
 		if (moveHistory.Count == 0) {
 			return;
 		}
+    currentLevel.numberOfMoves--;
     const bool recordMove = false;
 		List<BoardMove> boardMoves = moveHistory.Pop();
 		for (int i = 0; i < boardMoves.Count; i++) {

@@ -18,7 +18,7 @@ public class BoardUI : MonoBehaviour {
     levelNumber.text = "#" + (LevelManager.instance.currentLevel.levelIndex + 1);
   }
 
-  public void setMovesCounter(int value = 1) {
-
+  void Update() {
+    numberOfMoves.text = "" + board.currentLevel.numberOfMoves;
   }
 }

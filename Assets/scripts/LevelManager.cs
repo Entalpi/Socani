@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour {
   public Level[] levels;
 
   // The lvl that is going be to played by the GameBoard
-  public Level currentLevel;
+  public Level currentLevel; // Level serialized and saved 
 
   void Awake() {
     if (instance == null) {
@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour {
 
 	public bool nextLevel() {
     // Out of levels! End of game?
-    Debug.LogWarning("Loading level:" + currentLevel.levelIndex + 1);
+    Debug.Log("Loading level:" + currentLevel.levelIndex + 1);
     if (levels.Length <= currentLevel.levelIndex + 1) {
 			return false;
 		}
@@ -49,7 +49,8 @@ public class LevelManager : MonoBehaviour {
 	public bool levelCompleted(Level level) {
 		Level levelPrefab = Array.Find(levels, match => match.levelIndex == level.levelIndex);
 		if (levelPrefab) {
-			levelPrefab.completed = true;
+      levelPrefab.completed = true;
+      levelPrefab.numberOfMoves = level.numberOfMoves;
 			return true;
 		}
 		return false;

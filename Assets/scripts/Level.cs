@@ -4,8 +4,13 @@ using UnityEngine;
 
 [System.Serializable]
 public class Level : MonoBehaviour {
-	// Is the level completed
-	public bool completed = false;
+  /** UPDATEABLE PROPERTIES */
+  // Is the level completed
+  public bool completed = false;
+  // Number of moves used when completed
+  public uint numberOfMoves = 0;
+
+  /** FIXED PROPERTIES */
   // # of coins on the level 
   public int num_coins = 0;
   // User visible level number 
@@ -14,9 +19,15 @@ public class Level : MonoBehaviour {
 	public Texture2D[] tile_layers;
   // Calculated at load time
   public Vector2Int dimensions;
+  
+  // Resets all progress on the Level
+  public void reset() {
+    completed = false;
+    numberOfMoves = 0;
+  }
 
-	// Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
-	public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {
+  // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
+  public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
 
     int maxWidth  = 0;
