@@ -19,6 +19,6 @@ public class BoardUI : MonoBehaviour {
   }
 
   public void setMovesCounter(int value = 1) {
-    numberOfMoves.text = "penis";
+
   }
 }
