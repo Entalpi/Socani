@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Using the Level to store some data about the 
+/// completetion of it as well. Might want to use PlayerPrefs, maybe?
+/// </summary>
+
 [System.Serializable]
 public class Level : MonoBehaviour {
   /** UPDATEABLE PROPERTIES */
@@ -30,7 +35,7 @@ public class Level : MonoBehaviour {
   public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
 
-    int maxWidth  = 0;
+    int maxWidth  = 0; // Dimensions of the loaded lvl
     int maxHeight = 0;
 
     for (int z = 0; z < tile_layers.Length; z++) {
