@@ -46,7 +46,6 @@ public class GameBoard : MonoBehaviour {
     board = currentLevel.load(this);  // Load the current level
 
     // Rescale tile size to fit the screen based on the Level dimensions and pixel scr size
-    Debug.Log(Screen.width / (100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x + 0)));
     float scaleX = Mathf.Min(Screen.width  / (100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x + 0)), 1.0f);
     float scaleY = Mathf.Min(Screen.height / (100.0f * Tile.OriginalSize.y * (currentLevel.dimensions.y + 0)), 1.0f);
     Vector2 scale = new Vector2(Mathf.Min(scaleX, scaleY), Mathf.Min(scaleX, scaleY)); 
@@ -59,8 +58,8 @@ public class GameBoard : MonoBehaviour {
         GameObject tilePrefab = tiles[z];
         Vector3Int boardPosition = new Vector3Int(pos.x, pos.y, z);
         Vector3 worldPosition = board_to_world_position(boardPosition);
-        tilePrefab.transform.localScale = new Vector3(scale.x, scale.y, 0.5f);
         GameObject obj = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
+        obj.transform.localScale = new Vector3(scale.x, scale.y, 1.0f);
         Tile tileComponent = obj.GetComponent<Tile>();
         if (tileComponent) {
           tileComponent.boardPosition = boardPosition;
