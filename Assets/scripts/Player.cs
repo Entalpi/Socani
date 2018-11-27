@@ -31,15 +31,15 @@ public class Player : MonoBehaviour {
     if (since_last_move <= move_cooldown) { return; }
 		bool did_move = false;
 		if (Input.GetKey("up")) {
-      did_move = board.valid_move(gameObject, tile.board_position, Vector3Int.up);
+      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.up);
 		} else if (Input.GetKey("down")) {
-      did_move = board.valid_move(gameObject, tile.board_position, Vector3Int.down);
+      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.down);
     }
     else if (Input.GetKey("left")) {
-      did_move = board.valid_move(gameObject, tile.board_position, Vector3Int.left);
+      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.left);
     }
     else if (Input.GetKey("right")) {
-      did_move = board.valid_move(gameObject, tile.board_position, Vector3Int.right);
+      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.right);
     }
     if (did_move) {
 			board.endMove();

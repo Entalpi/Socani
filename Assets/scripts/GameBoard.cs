@@ -45,17 +45,25 @@ public class GameBoard : MonoBehaviour {
 
     board = currentLevel.load(this);  // Load the current level
 
-    // Rescale tile size to fit the screen based on the Level dimensions
-    Vector2 scale = new Vector2(0.5f, 0.5f); // TODO: Make dynamic so that the level fills the screen a bit nicer
-    Tile.Size = Vector2.Scale(Tile.OriginalSize, scale);
+    // Rescale tile size to fit the screen based on the Level dimensions and pixel scr size
+    float scaleX = 100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x - 2) / Screen.width;
+    float scaleY = 100.0f * Tile.OriginalSize.y * (currentLevel.dimensions.y - 2) / Screen.height;
+    Vector2 scale = new Vector2(Mathf.Min(scaleX, scaleY), Mathf.Min(scaleX, scaleY)); 
+    Tile.Size = Vector2.Scale(Tile.OriginalSize, new Vector2(scale.x, scale.y));
 
+    // Fill the board with objects created from the references
     foreach (Vector2Int pos in board.Keys) {
       var tiles = board[pos];
       for (int z = 0; z < tiles.Count; z++) {
-        GameObject tile = tiles[z];
-        Vector3 position = board_to_transform_position(new Vector3Int(pos.x, pos.y, z));
-        // Fill the board with objects created from the references
-        GameObject obj = Instantiate(tile, position, Quaternion.identity);
+        GameObject tilePrefab = tiles[z];
+        Vector3Int boardPosition = new Vector3Int(pos.x, pos.y, z);
+        Vector3 worldPosition = board_to_world_position(boardPosition);
+        GameObject obj = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
+        obj.transform.localScale = new Vector3(scale.x, scale.y, 0.5f);
+        Tile tileComponent = obj.GetComponent<Tile>();
+        if (tileComponent) {
+          tileComponent.boardPosition = boardPosition;
+        }
         obj.transform.SetParent(transform);
         board[pos][z] = obj;
       }
@@ -84,7 +92,7 @@ public class GameBoard : MonoBehaviour {
 		    Vector3Int newPosition = new Vector3Int(to.x, to.y, board [to].Count - 1);
         Tile tile = obj.GetComponent<Tile>();
         if (tile) {
-			    tile.board_position = newPosition; // Update tile board position
+			    tile.boardPosition = newPosition; // Update tile board position
           // Start the transform movement
 			    StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
 			    AudioManager.instance.Play("move");
