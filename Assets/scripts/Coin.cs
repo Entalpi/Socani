@@ -11,7 +11,10 @@ public class Coin : MonoBehaviour {
                 // Play effects
                 if (col.collider.tag == "Player") {
                     AudioManager.instance.Play("coin-pickup");
+                } else {
+                    AudioManager.instance.Play("coin-destroy");
                 }
+                // TODO: Animate, positive feeling, negative feeling
                 Destroy(gameObject);
             }
         }
