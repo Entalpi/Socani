@@ -86,7 +86,7 @@ public class GameBoard : MonoBehaviour {
         if (tile) {
 			    tile.board_position = newPosition; // Update tile board position
           // Start the transform movement
-			    StartCoroutine(tile.smoothMovement(board_to_transform_position(newPosition)));
+			    StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
 			    AudioManager.instance.Play("move");
         }
         if (recordMove) {
@@ -136,13 +136,13 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	// Takes a board position returns the world position
-	public Vector3 board_to_transform_position(Vector3Int pos) {
+	public Vector3 board_to_world_position(Vector3Int pos) {
     Vector3 origo = transform.position;
     return origo + new Vector3 (pos.x * Tile.Size.x, pos.y * Tile.Size.y, -pos.z);
 	}
 
 	// Take a world position and return the board position
-	public Vector3Int transform_to_board_position(Vector3 pos) {
+	public Vector3Int world_to_board_position(Vector3 pos) {
     Vector3 origo = transform.position;
     pos -= origo;
 		pos.x /= Tile.Size.x;

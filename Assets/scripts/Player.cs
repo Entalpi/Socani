@@ -21,8 +21,8 @@ public class Player : MonoBehaviour {
     rb2D = GetComponent<Rigidbody2D>();
     rb2D.freezeRotation = true;
     // Setup internal tile in the GameBoard
-    tile.board_position = board.transform_to_board_position(transform.position);
-    Vector2Int position = new Vector2Int(tile.board_position.x, tile.board_position.y);
+    tile.boardPosition = board.world_to_board_position(transform.position);
+    Vector2Int position = new Vector2Int(tile.boardPosition.x, tile.boardPosition.y);
     board.board[position].Add(gameObject);
 	}
 	
