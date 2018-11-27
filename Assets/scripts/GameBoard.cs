@@ -58,8 +58,8 @@ public class GameBoard : MonoBehaviour {
         GameObject tilePrefab = tiles[z];
         Vector3Int boardPosition = new Vector3Int(pos.x, pos.y, z);
         Vector3 worldPosition = board_to_world_position(boardPosition);
+        tilePrefab.transform.localScale = new Vector3(scale.x, scale.y, 0.5f);
         GameObject obj = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
-        obj.transform.localScale = new Vector3(scale.x, scale.y, 0.5f);
         Tile tileComponent = obj.GetComponent<Tile>();
         if (tileComponent) {
           tileComponent.boardPosition = boardPosition;
