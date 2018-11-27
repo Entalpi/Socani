@@ -7,6 +7,7 @@ public class PlayerSpawn : MonoBehaviour {
 	void Start () {
     Vector3 delta = new Vector3(0f, 0f, -1.0f);
     Player obj = Instantiate(player, transform.position + delta, Quaternion.identity);
+    obj.transform.localScale = transform.localScale;
     obj.transform.SetParent(this.transform.parent);
   }
 }
