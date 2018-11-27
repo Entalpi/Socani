@@ -46,8 +46,9 @@ public class GameBoard : MonoBehaviour {
     board = currentLevel.load(this);  // Load the current level
 
     // Rescale tile size to fit the screen based on the Level dimensions and pixel scr size
-    float scaleX = 100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x - 2) / Screen.width;
-    float scaleY = 100.0f * Tile.OriginalSize.y * (currentLevel.dimensions.y - 2) / Screen.height;
+    Debug.Log(Screen.width / (100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x + 0)));
+    float scaleX = Mathf.Min(Screen.width  / (100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x + 0)), 1.0f);
+    float scaleY = Mathf.Min(Screen.height / (100.0f * Tile.OriginalSize.y * (currentLevel.dimensions.y + 0)), 1.0f);
     Vector2 scale = new Vector2(Mathf.Min(scaleX, scaleY), Mathf.Min(scaleX, scaleY)); 
     Tile.Size = Vector2.Scale(Tile.OriginalSize, new Vector2(scale.x, scale.y));
 
