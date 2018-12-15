@@ -51,7 +51,8 @@ public class LevelManager : MonoBehaviour {
 		if (levelPrefab) {
       levelPrefab.completed = true;
       levelPrefab.numberOfMoves = level.numberOfMoves;
-			return true;
+      levelPrefab.numRewindsLeft = level.numRewindsLeft;
+      return true;
 		}
 		return false;
 	}

@@ -83,6 +83,9 @@ MonoBehaviour:
   board: {fileID: 114564227623181238}
   levelNumber: {fileID: 0}
   numberOfMoves: {fileID: 0}
+  rewindHead1: {fileID: 0}
+  rewindHead2: {fileID: 0}
+  rewindHead3: {fileID: 0}
 --- !u!224 &224678583355417938
 RectTransform:
   m_ObjectHideFlags: 1

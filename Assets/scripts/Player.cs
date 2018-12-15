@@ -54,7 +54,8 @@ public class Player : MonoBehaviour {
     if (did_move) {
 			board.endMove();
 			since_last_move = 0.0f;
-		}
+      board.checkGamestate();
+    }
   }
 
   private void OnCollisionEnter2D(Collision2D collision) {

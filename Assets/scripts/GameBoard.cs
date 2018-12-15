@@ -176,7 +176,8 @@ public class GameBoard : MonoBehaviour {
 				}
 			}
 		}
-		LevelManager.instance.levelCompleted(currentLevel);
+    currentLevel.numRewindsLeft = boardUI.numRewindsLeft;
+    LevelManager.instance.levelCompleted(currentLevel);
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/afterlevelmenu"));
 		return true;
 	}
