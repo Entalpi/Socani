@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completed: 1
+  numberOfMoves: 0
+  numRewindsLeft: 3
   num_coins: 1
   levelIndex: 0
   tile_layers:

@@ -48,10 +48,14 @@ public class LevelManager : MonoBehaviour {
 	// Returns whether or not it found the level 
 	public bool levelCompleted(Level level) {
 		Level levelPrefab = Array.Find(levels, match => match.levelIndex == level.levelIndex);
+    if (!levelPrefab.completed) {
+      PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + level.numRewindsLeft);
+      PlayerPrefs.Save();
+    }
 		if (levelPrefab) {
       levelPrefab.completed = true;
       levelPrefab.numberOfMoves = level.numberOfMoves;
-      levelPrefab.numRewindsLeft = level.numRewindsLeft;
+      levelPrefab.numRewindsLeft = level.numRewindsLeft; 
       return true;
 		}
 		return false;

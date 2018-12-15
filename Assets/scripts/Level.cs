@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Using the Level to store some data about the 
-/// completetion of it as well. Might want to use PlayerPrefs, maybe?
+/// completetion of it as well. 
 /// </summary>
 [System.Serializable]
 public class Level : MonoBehaviour {
@@ -15,6 +15,10 @@ public class Level : MonoBehaviour {
   public uint numberOfMoves = 0;
   // Number of rewinds left when completed
   public int numRewindsLeft = 0;
+  // Is the level unlocked
+  public bool unlocked = false;
+  // Unlock price in coins
+  public uint unlockPrice = 0;
 
   /** FIXED PROPERTIES */
   // # of coins on the level 
@@ -30,6 +34,7 @@ public class Level : MonoBehaviour {
   public void reset() {
     completed = false;
     numberOfMoves = 0;
+    unlocked = false;
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value

@@ -7,11 +7,16 @@ using UnityEngine.SceneManagement;
 public class AfterLevelMenuManager : MonoBehaviour {
 
   public Text info;
-  public Text menuTitle;
 	public GameObject levelSelectionButton;
+
+  // Rewind heads related
+  public Image rewindHead1;
+  public Image rewindHead2;
+  public Image rewindHead3;
 
   void Start() {
     info.text = "Moves: " + LevelManager.instance.currentLevel.numberOfMoves;
+    StartCoroutine(RewindHeadCoinAnimation());
   }
 
   public void nextLevelButtonPressed() {
@@ -20,6 +25,10 @@ public class AfterLevelMenuManager : MonoBehaviour {
 	}
 
 	public void LevelSelectionButtonPressed() {
-		SceneManager.LoadScene("scenes/levelselectionmenu");
-	}
+    StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+  }
+
+  public IEnumerator RewindHeadCoinAnimation() {
+    yield return new WaitForSeconds(0.2f);
+  }
 }
