@@ -32,13 +32,13 @@ public class BoardUI : MonoBehaviour {
     if (numRewindsLeft == 0) { return; }
     switch (numRewindsLeft) {
       case 1:
-        rewindHead1.gameObject.active = false;
+        rewindHead1.gameObject.SetActive(false);
         break;
       case 2:
-        rewindHead2.gameObject.active = false;
+        rewindHead2.gameObject.SetActive(false);
         break;
       case 3:
-        rewindHead3.gameObject.active = false;
+        rewindHead3.gameObject.SetActive(false);
         break;
     }
     numRewindsLeft--;

@@ -41,11 +41,10 @@ public class LevelSelector : MonoBehaviour {
     float radius = 100.0f * Tile.Size.x;
     float thetaX = Mathf.Cos(Random.Range(0.0f, 2.0f * Mathf.PI));
     float thetaY = Mathf.Sin(Random.Range(0.0f, 2.0f * Mathf.PI));
-    coin.transform.localScale = new Vector3(100.0f, 100.0f); // Why..?
+    coin.transform.localScale = new Vector3(100.0f, 100.0f); 
     while (true) {
       coin.transform.localPosition = new Vector3(radius * Mathf.Cos(thetaX), radius * Mathf.Sin(thetaY));
-      thetaX += deltaTheta;
-      thetaY += deltaTheta;
+      thetaX += deltaTheta; thetaY += deltaTheta;
       yield return 0.2f;
     }
   }

@@ -19,6 +19,8 @@ public class Level : MonoBehaviour {
   public bool unlocked = false;
   // Unlock price in coins
   public uint unlockPrice = 0;
+  // Number of coins rewarded for the completion of the level
+  public uint numCoinsRewarded = 0;
 
   /** FIXED PROPERTIES */
   // # of coins on the level 
@@ -35,6 +37,7 @@ public class Level : MonoBehaviour {
     completed = false;
     numberOfMoves = 0;
     unlocked = false;
+    numCoinsRewarded = 0;
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
