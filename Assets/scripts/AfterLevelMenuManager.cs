@@ -14,11 +14,14 @@ public class AfterLevelMenuManager : MonoBehaviour {
   public Text coinsTotal;
 
   void Start() {
-    coinsTotal.text = "" + PlayerPrefs.GetInt("coins");
     info.text = "Moves: " + LevelManager.instance.currentLevel.numberOfMoves;
-    for (int i = 0; i < rewindHeads.Count; i++) { 
 
+    if (LevelManager.instance.currentLevel.completed) {
+      coinsRewardedThisLevel.text = "" + PlayerPrefs.GetInt("coins");
+      return;
     }
+    coinsTotal.text = "" + PlayerPrefs.GetInt("coins");
+    // coinsRewardedThisLevel.text = coins picked up & num rewinds left;
     StartCoroutine(RewindHeadCoinAnimation());
   }
 
@@ -32,12 +35,9 @@ public class AfterLevelMenuManager : MonoBehaviour {
   }
 
   public IEnumerator RewindHeadCoinAnimation() {
-
-    for (int i = 0; i < LevelManager.instance.currentLevel.numRewindsLeft; i++) {
-      
+    // TODO: Animate things
+    for (int i = 0; i < LevelManager.instance.currentLevel.numRewindsLeft; i++) { 
       yield return new WaitForSeconds(0.2f);
     }
-
-    // TODO: Animate things
   }
 }

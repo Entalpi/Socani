@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1423929469045644}
+  m_IsPrefabAsset: 1
+--- !u!1 &1423929469045644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4295487028902268}
+  - component: {fileID: 114185530393388624}
+  m_Layer: 0
+  m_Name: level8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4295487028902268
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423929469045644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114185530393388624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423929469045644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completed: 0
+  numberOfMoves: 0
+  numRewindsLeft: 0
+  unlocked: 0
+  unlockPrice: 4
+  numCoinsRewarded: 0
+  num_coins: 1
+  levelIndex: 7
+  tile_layers:
+  - {fileID: 2800000, guid: a393a638638377c4c951e57be0f05f33, type: 3}
+  - {fileID: 2800000, guid: 38c1178a012a02f47ba9f43329513b1d, type: 3}
+  - {fileID: 2800000, guid: 30ba357159501774ebbd470f7b254e10, type: 3}
+  dimensions: {x: 0, y: 0}
