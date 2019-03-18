@@ -14,9 +14,7 @@ public class BoardUI : MonoBehaviour {
   public Text numberOfMoves;
 
   // Rewind related
-  public Image rewindHead1;
-  public Image rewindHead2;
-  public Image rewindHead3;
+  public Image[] rewindHeads = new Image[3]; 
   public int numRewindsLeft = 3;
 
   // Use this for initialization
@@ -28,20 +26,19 @@ public class BoardUI : MonoBehaviour {
     numberOfMoves.text = "" + board.currentLevel.numberOfMoves;
   }
 
+  public void updateRewindHeads() {
+    for (int i = 0; i < numRewindsLeft; i++) {
+      rewindHeads[i].gameObject.SetActive(true);
+    }
+    for (int i = numRewindsLeft; i < 3; i++) {
+      rewindHeads[i].gameObject.SetActive(false);
+    }
+  }
+
   public void pressedRewindButton() {
     if (numRewindsLeft == 0) { return; }
-    switch (numRewindsLeft) {
-      case 1:
-        rewindHead1.gameObject.SetActive(false);
-        break;
-      case 2:
-        rewindHead2.gameObject.SetActive(false);
-        break;
-      case 3:
-        rewindHead3.gameObject.SetActive(false);
-        break;
-    }
     numRewindsLeft--;
+    updateRewindHeads();
     board.pressedRewindButton();
   }
 }

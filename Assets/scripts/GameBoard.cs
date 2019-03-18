@@ -202,7 +202,10 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedRestartButton() {
-		foreach(Vector2Int tilePosition in board.Keys) {
+    boardUI.numRewindsLeft = 3;
+    boardUI.updateRewindHeads();
+
+    foreach (Vector2Int tilePosition in board.Keys) {
 			foreach(GameObject gameObject in board[tilePosition]) {
 				Destroy(gameObject);
 			}
@@ -221,9 +224,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedRewindButton() {
-		if (moveHistory.Count == 0) {
-			return;
-		}
+		if (moveHistory.Count == 0) { return; }
     currentLevel.numberOfMoves--;
     const bool recordMove = false;
 		List<BoardMove> boardMoves = moveHistory.Pop();
