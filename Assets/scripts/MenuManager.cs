@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour {
   public GameObject soundButton;
 
   public void Play() {
-		StartCoroutine (GetComponent<Fading> ().LoadScene("scenes/levelselectionmenu"));
+		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
   } 
 
   public void ToggleMusic() {
