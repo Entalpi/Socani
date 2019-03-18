@@ -13,7 +13,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 3
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -48,7 +48,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101319354588378952
@@ -72,7 +72,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101678056023455884
@@ -96,7 +96,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101901030848404216
@@ -120,7 +120,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &1102155958297035524
@@ -233,16 +233,16 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102155958297035524}
-    m_Position: {x: 144, y: -84, z: 0}
+    m_Position: {x: 144, y: -96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102743854239453848}
-    m_Position: {x: -96, y: -180, z: 0}
+    m_Position: {x: -96, y: -168, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102661575283773652}
     m_Position: {x: -324, y: -96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102775095080220428}
-    m_Position: {x: -84, y: -12, z: 0}
+    m_Position: {x: -96, y: -24, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101678056023455884}
@@ -253,7 +253,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -72, y: -84, z: 0}
-  m_EntryPosition: {x: 156, y: 96, z: 0}
-  m_ExitPosition: {x: -252, y: 216, z: 0}
+  m_EntryPosition: {x: -72, y: 48, z: 0}
+  m_ExitPosition: {x: -72, y: 108, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102155958297035524}
+  m_DefaultState: {fileID: 1102775095080220428}
