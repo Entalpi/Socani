@@ -55,7 +55,7 @@ MonoBehaviour:
   numberOfMoves: 0
   numRewindsLeft: 0
   unlocked: 0
-  unlockPrice: 0
+  unlockPrice: 5
   numCoinsRewarded: 0
   num_coins: 0
   levelIndex: 8
