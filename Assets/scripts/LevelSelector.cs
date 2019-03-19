@@ -19,12 +19,26 @@ public class LevelSelector : MonoBehaviour {
       GameObject obj = Instantiate(buttonPrefab);
       Button btn = obj.GetComponent<Button>();
       if (btn) {
-        btn.GetComponentInChildren<Text>().text = string.Format("{0}", i + 1);
+        Text btnText = btn.GetComponentInChildren<Text>();
+        btnText.text = string.Format("{0}", i + 1);
+        
+        // Style button
+        if (!levels[i].unlocked) {
+          btnText.text = string.Format("{0}G", levels[i].unlockPrice);
+          btnText.color = SocaniColor.InformationText();
+        }
+
+        if (levels[i].completed) {
+          btnText.color = SocaniColor.PositiveText();
+        }
+
         int idx = i; // Using only 'i' does not work (C# lambda uses the variable value at i AFTER the loop is done)
         btn.onClick.AddListener(() => onButtonClicked(levels[idx]));
         btn.transform.SetParent(scrollView.transform, false);
       }
     }
+
+    StartCoroutine(AnimateCoinText());
 
     int numCoins = PlayerPrefs.GetInt("coins");
     if (numCoins > 0) {
@@ -33,6 +47,17 @@ public class LevelSelector : MonoBehaviour {
         Coin clone = Instantiate(coinPrefab, numCoinsText.transform);
         StartCoroutine(AnimateCoin(clone));
       }
+    }
+  }
+
+  public IEnumerator AnimateCoinText() {
+    const float dt = 0.05f;
+    float t = 0.0f;
+    while (true) {
+      t += dt;
+      float v = Mathf.Min(Mathf.Abs(Mathf.Cos(t)) + 0.5f, 1.5f);
+      numCoinsText.transform.localScale = new Vector3(v, v, v);
+      yield return 0.75f;
     }
   }
 
@@ -53,7 +78,16 @@ public class LevelSelector : MonoBehaviour {
     return new Vector3(r * Mathf.Cos(Random.Range(0.0f, 2.0f * Mathf.PI)), r * Mathf.Sin(Random.Range(0.0f, 2.0f * Mathf.PI)), 0.0f);
   }
 
+  public void DisplayLevelUnlockedAnimation(Level level) {
+    // ...
+  }
+
   private void onButtonClicked(Level level) {
+    int numCoins = PlayerPrefs.GetInt("coins");
+    if (level.unlockPrice > numCoins) { return; }
+
+    if (!level.unlocked) { DisplayLevelUnlockedAnimation(level); }
+
 		LevelManager.instance.currentLevel = level;
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
   }
