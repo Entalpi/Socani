@@ -852,7 +852,6 @@ MonoBehaviour:
   numCoinsText: {fileID: 955096440}
   coinPrefab: {fileID: 114036768827909468, guid: 8db28103e5c821d4db689d03b48b4c84,
     type: 2}
-  coinsImages: []
 --- !u!224 &1480498610
 RectTransform:
   m_ObjectHideFlags: 0

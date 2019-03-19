@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1065364984611342}
+  m_IsPrefabAsset: 1
+--- !u!1 &1065364984611342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4997964833141882}
+  - component: {fileID: 114110091428090520}
+  m_Layer: 0
+  m_Name: level9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4997964833141882
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065364984611342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15378788, y: -0.36114877, z: 0.06738281}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114110091428090520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065364984611342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completed: 0
+  numberOfMoves: 0
+  numRewindsLeft: 0
+  unlocked: 0
+  unlockPrice: 0
+  numCoinsRewarded: 0
+  num_coins: 0
+  levelIndex: 8
+  tile_layers:
+  - {fileID: 2800000, guid: 8e929aa2ec264a24e94d18320037be8d, type: 3}
+  - {fileID: 2800000, guid: 0ab8a2b5b7cc30c4da094fdbd6229613, type: 3}
+  - {fileID: 2800000, guid: 70e47709408a749439d2c8188a5e2f9b, type: 3}
+  - {fileID: 2800000, guid: 3521781bd565af04e90e7dd8b1552b56, type: 3}
+  - {fileID: 2800000, guid: 0fb83389e0a10e64c997d2fae29e2e4b, type: 3}
+  - {fileID: 2800000, guid: f7672f84c55c44a419582d956a5ac4d2, type: 3}
+  - {fileID: 2800000, guid: 9532031b53a9bd940a402ed6a911bbb7, type: 3}
+  - {fileID: 2800000, guid: 84bd9a98d777ed84195fef5ad33cae05, type: 3}
+  - {fileID: 2800000, guid: 3edfea8cb6d62e043ac5ecab52a79794, type: 3}
+  - {fileID: 2800000, guid: 9532031b53a9bd940a402ed6a911bbb7, type: 3}
+  - {fileID: 2800000, guid: 325d2def79766bc4b9c85189c4a72a94, type: 3}
+  - {fileID: 2800000, guid: 269bf7290705690468a233178ad03a1f, type: 3}
+  dimensions: {x: 0, y: 0}
