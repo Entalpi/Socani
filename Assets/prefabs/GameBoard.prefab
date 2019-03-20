@@ -56,19 +56,19 @@ MonoBehaviour:
     prefab: {fileID: 1440638646891008, guid: 8db28103e5c821d4db689d03b48b4c84, type: 2}
   - color: {r: 0.41960785, g: 0, b: 1, a: 1}
     prefab: {fileID: 1526215254421998, guid: 4724e8aa70ed06d44ad28e7f047686de, type: 2}
-  - color: {r: 0.18823531, g: 0, b: 0.43921572, a: 1}
+  - color: {r: 0.19215687, g: 0, b: 0.4509804, a: 1}
     prefab: {fileID: 1176300692010356, guid: cacbc21022d2f1c448565c1b4f553214, type: 2}
   - color: {r: 0.105882354, g: 1, b: 0, a: 1}
     prefab: {fileID: 1692681330582828, guid: 4f6aceeb401587b4a9e1139063f2fc2c, type: 2}
   - color: {r: 0.023529412, g: 0.21176471, b: 0, a: 1}
     prefab: {fileID: 1110589176704188, guid: 80c2346265a19a640aaacc8b91985687, type: 2}
-  - color: {r: 0.9921569, g: 0, b: 0.5254902, a: 1}
+  - color: {r: 1, g: 0, b: 0.5254902, a: 1}
     prefab: {fileID: 1825178236707724, guid: 87bed45702809f04094e27f971de5880, type: 2}
   - color: {r: 0.28235295, g: 0, b: 0.14901961, a: 1}
     prefab: {fileID: 1742351809737988, guid: d980f533b67b5a34f832402c141276d8, type: 2}
   - color: {r: 1, g: 0.31764707, b: 0, a: 1}
     prefab: {fileID: 1185707994632176, guid: d023df02927f6c4408014909b6b806ed, type: 2}
-  - color: {r: 0.8431373, g: 0, b: 1, a: 1}
+  - color: {r: 0.84313726, g: 0, b: 1, a: 1}
     prefab: {fileID: 1185707994632176, guid: d023df02927f6c4408014909b6b806ed, type: 2}
   currentLevel: {fileID: 0}
   menuPanel: {fileID: 0}
