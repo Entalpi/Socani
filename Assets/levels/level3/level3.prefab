@@ -51,7 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completed: 0
+  completed: 1
+  numberOfMoves: 14
+  numRewindsLeft: 3
+  unlocked: 1
+  unlockPrice: 0
+  numCoinsRewarded: 0
   num_coins: 1
   levelIndex: 2
   tile_layers:

@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1795540991714846}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1795540991714846
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4855927062387460}
   - component: {fileID: 114497351476026216}
@@ -30,7 +30,7 @@ GameObject:
 --- !u!4 &4855927062387460
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795540991714846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -43,7 +43,7 @@ Transform:
 --- !u!114 &114497351476026216
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795540991714846}
   m_Enabled: 1
@@ -51,7 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completed: 1
+  completed: 0
+  numberOfMoves: 0
+  numRewindsLeft: 0
+  unlocked: 0
+  unlockPrice: 3
+  numCoinsRewarded: 0
   num_coins: 1
   levelIndex: 5
   tile_layers:
@@ -61,3 +66,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 08191851e0c106c4cae5465e5b4be851, type: 3}
   - {fileID: 2800000, guid: 8065f19d088a44b4bb9d73b126fd039d, type: 3}
   - {fileID: 2800000, guid: 1529136feb9004e429dbf16c75688c0d, type: 3}
+  dimensions: {x: 0, y: 0}
