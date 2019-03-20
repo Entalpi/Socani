@@ -39,6 +39,8 @@ public class BackgroundAnimation : MonoBehaviour {
     currentTiles++;
 
     GameObject obj = new GameObject();
+    obj.name = "Falling brick";
+
     SpriteRenderer spriteRenderer = obj.AddComponent<SpriteRenderer>() as SpriteRenderer;
     spriteRenderer.sprite = Sprite.Create(tile, new Rect(0, 0, tile.width, tile.height), new Vector2(0.0f, 0.0f));
     Rigidbody2D rb2d = obj.AddComponent<Rigidbody2D>() as Rigidbody2D;
