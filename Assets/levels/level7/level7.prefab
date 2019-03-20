@@ -54,15 +54,18 @@ MonoBehaviour:
   completed: 0
   numberOfMoves: 0
   numRewindsLeft: 0
-  unlocked: 0
+  unlocked: 1
   unlockPrice: 3
   numCoinsRewarded: 0
   num_coins: 1
   levelIndex: 6
   tile_layers:
-  - {fileID: 2800000, guid: ebe39a2beedc66148ae4970b2fd10432, type: 3}
-  - {fileID: 2800000, guid: 3d77d42db3ecabf40a7ecde90cd479fa, type: 3}
-  - {fileID: 2800000, guid: 977b255012563b24d8c0a2e82ef2c309, type: 3}
-  - {fileID: 2800000, guid: 35fe18ca7dfef894c9b0cdeb8b32355a, type: 3}
-  - {fileID: 2800000, guid: 17d2717a083061e4ca435d8c9f28979d, type: 3}
+  - {fileID: 2800000, guid: 58e75656c2b948f428b2a3f1cd5b5a96, type: 3}
+  - {fileID: 2800000, guid: a2d680b22d423154dae74bed06a6f4ea, type: 3}
+  - {fileID: 2800000, guid: 2a95c0725f528e146a2f999a03d3f952, type: 3}
+  - {fileID: 2800000, guid: 7d77efd4faf40f1408776d43bbd8849f, type: 3}
+  - {fileID: 2800000, guid: fee4de20cd5e6e14ab543d81b02ccf58, type: 3}
+  - {fileID: 2800000, guid: 8e11b196f397a104f92b6e86dae17614, type: 3}
+  - {fileID: 2800000, guid: 9505728e9818c6443bcfe1b3851bed8c, type: 3}
+  - {fileID: 2800000, guid: 68a0716ba883b0b43882a7e485dde2f4, type: 3}
   dimensions: {x: 0, y: 0}
