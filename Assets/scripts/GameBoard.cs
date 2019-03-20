@@ -164,18 +164,29 @@ public class GameBoard : MonoBehaviour {
 		foreach (var key in board.Keys) {
 			var stack = board[key];
 			for (int z = 0; z < stack.Count; z++) {
-				GameObject obj = stack [z];
-				// Check if all the crate goals have a crate on top of them
-				if (obj.GetComponent<CrateGoal>()) {
-					z++;
-					if (z < stack.Count) {
-						if (stack [z].GetComponent<Crate>()) {
-							continue;
-						} 
-					}
-					return false;
-				}
-			}
+        // Check if all the crate goals have the correct crate on top of them
+        if (stack[z].GetComponent<CrateGoal>()) {
+          for (int i = 0; i < stack.Count; i++) {
+            if (stack[i].GetComponent<Crate>()) {
+              if (stack[z].GetComponent<CrateGoal>().crateColor == stack[i].GetComponent<Crate>().crateColor) {
+                continue;
+              }
+            }
+            return false;
+          }
+        }
+
+        if (stack[z].GetComponent<Crate>()) {
+          for (int i = 0; i < stack.Count; i++) {
+            if (stack[i].GetComponent<CrateGoal>()) {
+              if (stack[z].GetComponent<Crate>().crateColor == stack[i].GetComponent<CrateGoal>().crateColor) {
+                continue;
+              }
+            }
+            return false;
+          }
+        }
+      }
 		}
     currentLevel.numRewindsLeft = boardUI.numRewindsLeft;
     LevelManager.instance.levelCompleted(currentLevel);
