@@ -146,7 +146,7 @@ public class GameBoard : MonoBehaviour {
 	// Takes a board position returns the world position
 	public Vector3 board_to_world_position(Vector3Int pos) {
     Vector3 origo = transform.position;
-    return origo + new Vector3 (pos.x * Tile.Size.x, pos.y * Tile.Size.y, -pos.z);
+    return origo + new Vector3(pos.x * Tile.Size.x, pos.y * Tile.Size.y, -pos.z);
 	}
 
 	// Take a world position and return the board position
@@ -161,7 +161,7 @@ public class GameBoard : MonoBehaviour {
 	// Checks if all the crate goals are fulfilled and returns the result while loading the next level
 	public bool checkGamestate() {
 		foreach (var key in board.Keys) {
-			var stack = board [key];
+			var stack = board[key];
 			for (int z = 0; z < stack.Count; z++) {
 				GameObject obj = stack [z];
 				// Check if all the crate goals have a crate on top of them
@@ -184,7 +184,7 @@ public class GameBoard : MonoBehaviour {
 
   // Tries to find the relevant obj in the stack at pos and removes it from the board
   public bool remove_from_board(GameObject obj, Vector3Int pos) {
-    var stack = board[new Vector2Int(pos.x, pos.y)];
+    List<GameObject> stack = board[new Vector2Int(pos.x, pos.y)];
     for (int z = 0; z < stack.Count; z++) {
       if (obj.Equals(stack[z])) {
         stack.RemoveAt(z);
