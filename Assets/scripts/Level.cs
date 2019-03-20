@@ -24,7 +24,7 @@ public class Level : MonoBehaviour {
 
   /** FIXED PROPERTIES */
   // # of coins on the level 
-  public int num_coins = 0;
+  public int numCoins = 0;
   // User visible level number 
   public int levelIndex = 0;
   // Textures representing the level composition
@@ -41,20 +41,20 @@ public class Level : MonoBehaviour {
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
-  public Dictionary<Vector2Int, List<GameObject>> load(GameBoard game_board) {
+  public Dictionary<Vector2Int, List<GameObject>> load(GameBoard gameboard) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
 
     int maxWidth  = 0; // Dimensions of the loaded lvl in tiles
     int maxHeight = 0;
 
     for (int z = 0; z < tile_layers.Length; z++) {
-			Texture2D tile_layer = tile_layers[z];
+			Texture2D tileLayer = tile_layers[z];
 
-      if (tile_layer.width  > maxWidth)  { maxWidth = tile_layer.width; }
-      if (tile_layer.height > maxHeight) { maxHeight = tile_layer.height; }
+      if (tileLayer.width  > maxWidth)  { maxWidth = tileLayer.width; }
+      if (tileLayer.height > maxHeight) { maxHeight = tileLayer.height; }
 
-      for (int x = 0; x < tile_layer.width; x++) {
-				for (int y = 0; y < tile_layer.height; y++) {
+      for (int x = 0; x < tileLayer.width; x++) {
+				for (int y = 0; y < tileLayer.height; y++) {
 					// Generate a new tile
 					Color color = tile_layers[z].GetPixel(x, y);
 					if (color.a == 0.0f) { continue; }
@@ -64,16 +64,24 @@ public class Level : MonoBehaviour {
 						board[position] = new List<GameObject>(2);
 					}
 
-					for (int i = 0; i < game_board.mappings.Length; i++) {
-						TileMapping tile_mapping = game_board.mappings[i];
-						if (color.Equals(tile_mapping.color)) {
-              board[position].Add(tile_mapping.prefab);
+          bool foundMatchingColor = false;
+					for (int i = 0; i < gameboard.mappings.Length; i++) {
+						TileMapping tileMapping = gameboard.mappings[i];
+						if (color.Equals(tileMapping.color)) {
+              foundMatchingColor = true;
+
+              board[position].Add(tileMapping.prefab);
               // Construct level variables
-              if (tile_mapping.prefab.GetComponent<Coin>()) {
-                  num_coins++;
+              if (tileMapping.prefab.GetComponent<Coin>()) {
+                  numCoins++;
+              }
+              if (tileMapping.prefab.GetComponent<ForceField>()) {
+                tileMapping.prefab.GetComponent<ForceField>().directionFromColor(color);
               }
 						}
 					}
+
+          if (!foundMatchingColor) { Debug.Log(string.Format("Did not find matching color for color: {0}", color)); }
 				}
 			}
 		}
