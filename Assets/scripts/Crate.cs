@@ -2,4 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crate : MonoBehaviour {}
+public enum CrateColor { blue, red, green, normal }
+
+public class Crate : MonoBehaviour {
+  public CrateColor crateColor;
+}
