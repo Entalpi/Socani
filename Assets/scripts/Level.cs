@@ -28,7 +28,7 @@ public class Level : MonoBehaviour {
   // User visible level number 
   public int levelIndex = 0;
   // Textures representing the level composition
-	public Texture2D[] tile_layers;
+	public Texture2D[] tileLayers;
   // Calculated at load time
   public Vector2Int dimensions;
   
@@ -47,8 +47,8 @@ public class Level : MonoBehaviour {
     int maxWidth  = 0; // Dimensions of the loaded lvl in tiles
     int maxHeight = 0;
 
-    for (int z = 0; z < tile_layers.Length; z++) {
-			Texture2D tileLayer = tile_layers[z];
+    for (int z = 0; z < tileLayers.Length; z++) {
+			Texture2D tileLayer = tileLayers[z];
 
       if (tileLayer.width  > maxWidth)  { maxWidth = tileLayer.width; }
       if (tileLayer.height > maxHeight) { maxHeight = tileLayer.height; }
@@ -56,7 +56,7 @@ public class Level : MonoBehaviour {
       for (int x = 0; x < tileLayer.width; x++) {
 				for (int y = 0; y < tileLayer.height; y++) {
 					// Generate a new tile
-					Color color = tile_layers[z].GetPixel(x, y);
+					Color color = tileLayers[z].GetPixel(x, y);
 					if (color.a == 0.0f) { continue; }
 
 					var position = new Vector2Int(x, y);
