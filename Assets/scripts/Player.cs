@@ -13,12 +13,6 @@ public class Player : MonoBehaviour {
   private Rigidbody2D rb2D;
   private Animator animator;
 
-  // Animation constants
-  private const int WALK_STATE_LEFT = 1;
-  private const int WALK_STATE_UP = 2;
-  private const int WALK_STATE_RIGHT = 3;
-  private const int WALK_STATE_DOWN = 4;
-
 	void Start() {
     animator = GetComponent<Animator>();
     board = FindObjectOfType<GameBoard>();
