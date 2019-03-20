@@ -9,15 +9,18 @@ public class LevelSelector : MonoBehaviour {
   public GameObject scrollView;
   public GameObject buttonPrefab;
 
+  private GameObject[] buttons;
+
   public Text numCoinsText;
   public Coin coinPrefab;
 
 	// Use this for initialization
 	void Start () {
     Level[] levels = LevelManager.instance.levels;
+    buttons = new GameObject[levels.Length];
     for (int i = 0; i < levels.Length; i++) {
-      GameObject obj = Instantiate(buttonPrefab);
-      Button btn = obj.GetComponent<Button>();
+      buttons[i] = Instantiate(buttonPrefab);
+      Button btn = buttons[i].GetComponent<Button>();
       if (btn) {
         Text btnText = btn.GetComponentInChildren<Text>();
         btnText.text = string.Format("{0}", i + 1);
@@ -25,11 +28,11 @@ public class LevelSelector : MonoBehaviour {
         // Style button
         if (!levels[i].unlocked) {
           btnText.text = string.Format("{0}G", levels[i].unlockPrice);
-          btnText.color = SocaniColor.InformationText();
+          btnText.color = SocaniColor.InformationText;
         }
 
         if (levels[i].completed) {
-          btnText.color = SocaniColor.PositiveText();
+          btnText.color = SocaniColor.PositiveText;
         }
 
         int idx = i; // Using only 'i' does not work (C# lambda uses the variable value at i AFTER the loop is done)
@@ -80,6 +83,7 @@ public class LevelSelector : MonoBehaviour {
 
   public void DisplayLevelUnlockedAnimation(Level level) {
     // ...
+
   }
 
   private void onButtonClicked(Level level) {
@@ -88,7 +92,12 @@ public class LevelSelector : MonoBehaviour {
 
     if (!level.unlocked) { DisplayLevelUnlockedAnimation(level); }
 
-		LevelManager.instance.currentLevel = level;
+    Button btn = buttons[level.levelIndex].GetComponent<Button>();
+    Text btnText = btn.GetComponentInChildren<Text>();
+    btnText.text = string.Format("{0}", level.levelIndex + 1);
+    btnText.color = SocaniColor.InformationText;
+
+    LevelManager.instance.currentLevel = level;
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
   }
 }
