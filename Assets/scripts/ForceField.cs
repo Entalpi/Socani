@@ -5,10 +5,10 @@ using UnityEngine;
 public class ForceField : MonoBehaviour {
 
   // Color to direction mappings
-  public Color downColor = new Color(1.0f, 81 / 255, 0.0f);
-  public Color upColor   = new Color(215 / 255, 0.0f, 1.0f);
-  public Color leftColor;
-  public Color rightColor;
+  public static Color downColor = new Color(1.0f, 0.3176471f, 0.0f, 1.0f);
+  public static Color upColor   = new Color(0.8431373f, 0.0f, 1.0f, 1.0f);
+  public static Color leftColor;
+  public static Color rightColor;
 
   public enum Direction { up, down, left, right }
   public Direction forceDirection;
@@ -24,6 +24,7 @@ public class ForceField : MonoBehaviour {
   }
 
   public void directionFromColor(Color color) {
+    // WTF: Color.Equals(other) does not work here ...
     if (color == downColor) {
       forceDirection = Direction.down; 
     } else if (color == upColor) {
@@ -33,7 +34,7 @@ public class ForceField : MonoBehaviour {
     } else if (color == rightColor) {
       forceDirection = Direction.right;
     } else {
-      Debug.Log("Failed to map color to ForceField.Direction.");
+      Debug.Log(string.Format("Failed to map color ({0}) to ForceField.Direction.", color));
     }
   }
 }
