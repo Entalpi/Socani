@@ -113,7 +113,8 @@ public class GameBoard : MonoBehaviour {
 	
   // Checks if the board position is a valid position
   public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
-		if (pos.x < 0)  { return false; }
+    if (obj == null) { return false; }
+    if (pos.x < 0)  { return false; }
 		if (pos.y < 0)  { return false; }
 		Vector2Int delta_key = new Vector2Int(pos.x + delta.x, pos.y + delta.y);
 		Vector2Int from = new Vector2Int(pos.x, pos.y);
