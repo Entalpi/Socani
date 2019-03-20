@@ -13,14 +13,22 @@ public class ForceField : MonoBehaviour {
   public enum Direction { up, down, left, right }
   public Direction forceDirection;
 
-  public Rigidbody2D rb2D;
-
-  private void Start() {
-    rb2D = gameObject.GetComponent<Rigidbody2D>();
+  private void OnTriggerEnter2D(Collider2D collision) {
+    if (collision.gameObject.GetComponent<Tile>()) {
+      Vector3Int boardPos = collision.gameObject.GetComponent<Tile>().boardPosition;
+      FindObjectOfType<GameBoard>().valid_move(collision.gameObject, boardPos, DeltaFromDirection(forceDirection));
+    }
+    Debug.Log(string.Format("ForceField hit {0}.", collision.gameObject.name));
   }
 
-  private void OnCollisionEnter2D(Collision2D collision) {
-    Debug.Log(string.Format("ForceField hit {0}.", collision.gameObject.name));
+  public Vector3Int DeltaFromDirection(Direction direction) {
+    switch (direction) {
+      case Direction.up: return Vector3Int.up;
+      case Direction.down: return Vector3Int.down;
+      case Direction.left: return Vector3Int.left;
+      case Direction.right: return Vector3Int.right;
+      default: throw new System.Exception("This should not happen, ever.");
+    }
   }
 
   public void directionFromColor(Color color) {
