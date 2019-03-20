@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForceField : MonoBehaviour {
 
-  // Color to direction mappings
+  // Color to direction mappings to the tiles parsed in tile layers via Level.cs and as defined in GameBoard.cs
   public static Color downColor = new Color(1.0f, 0.3176471f, 0.0f, 1.0f);
   public static Color upColor   = new Color(0.8431373f, 0.0f, 1.0f, 1.0f);
   public static Color leftColor;
@@ -14,14 +14,17 @@ public class ForceField : MonoBehaviour {
   public Direction forceDirection;
 
   private void OnTriggerEnter2D(Collider2D collision) {
+    return;
     if (collision.gameObject.GetComponent<Tile>()) {
       Vector3Int boardPos = collision.gameObject.GetComponent<Tile>().boardPosition;
-      FindObjectOfType<GameBoard>().valid_move(collision.gameObject, boardPos, DeltaFromDirection(forceDirection));
+      Debug.Log(boardPos);
+      bool validMove = FindObjectOfType<GameBoard>().valid_move(collision.gameObject, boardPos, DeltaFromDirection(forceDirection));
+      Debug.Log(validMove);
     }
     Debug.Log(string.Format("ForceField hit {0}.", collision.gameObject.name));
   }
 
-  public Vector3Int DeltaFromDirection(Direction direction) {
+  public static Vector3Int DeltaFromDirection(Direction direction) {
     switch (direction) {
       case Direction.up: return Vector3Int.up;
       case Direction.down: return Vector3Int.down;

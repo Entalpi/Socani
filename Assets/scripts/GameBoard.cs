@@ -83,16 +83,16 @@ public class GameBoard : MonoBehaviour {
   private bool moveObject(GameObject obj, Vector2Int from, Vector2Int to, bool recordMove = true) {
     // Search for the object in the tile stack
     for (int z = 0; z < board[from].Count; z++) {
-      GameObject game_object = board[from][z];
-      if (obj.Equals(game_object)) {
+      GameObject gameobject = board[from][z];
+      if (obj.Equals(gameobject)) {
         board[from].RemoveAt(z);
         board[to].Add(obj);
 
 		    // Place objects on top of the tile
-		    Vector3Int newPosition = new Vector3Int(to.x, to.y, board [to].Count - 1);
         Tile tile = obj.GetComponent<Tile>();
         if (tile) {
-			    tile.boardPosition = newPosition; // Update tile board position
+          Vector3Int newPosition = new Vector3Int(to.x, to.y, board[to].Count - 1);
+          tile.boardPosition = newPosition; // Update tile board position
           // Start the transform movement
 			    StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
 			    AudioManager.instance.Play("move");
@@ -146,14 +146,14 @@ public class GameBoard : MonoBehaviour {
 
 	// Takes a board position returns the world position
 	public Vector3 board_to_world_position(Vector3Int pos) {
-    Vector3 origo = transform.position;
-    return origo + new Vector3(pos.x * Tile.Size.x, pos.y * Tile.Size.y, -pos.z);
+    Vector3 origin = transform.position;
+    return origin + new Vector3(pos.x * Tile.Size.x, pos.y * Tile.Size.y, -pos.z);
 	}
 
 	// Take a world position and return the board position
 	public Vector3Int world_to_board_position(Vector3 pos) {
-    Vector3 origo = transform.position;
-    pos -= origo;
+    Vector3 origin = transform.position;
+    pos -= origin;
 		pos.x /= Tile.Size.x;
 		pos.y /= Tile.Size.y;
 		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
