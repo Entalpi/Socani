@@ -28,7 +28,7 @@ public class LevelSelector : MonoBehaviour {
         // Style button
         if (!levels[i].unlocked) {
           btnText.text = string.Format("{0}G", levels[i].unlockPrice);
-          btnText.color = SocaniColor.InformationText;
+          btnText.color = SocaniColor.NegativeText;
         }
 
         if (levels[i].completed) {
@@ -81,23 +81,36 @@ public class LevelSelector : MonoBehaviour {
     return new Vector3(r * Mathf.Cos(Random.Range(0.0f, 2.0f * Mathf.PI)), r * Mathf.Sin(Random.Range(0.0f, 2.0f * Mathf.PI)), 0.0f);
   }
 
-  public void DisplayLevelUnlockedAnimation(Level level) {
-    // ...
-
+  public void DisplayLevelTooExpensiveAnimation(Level level) {
+    // TODO: Check the button or something
   }
 
-  private void onButtonClicked(Level level) {
-    int numCoins = PlayerPrefs.GetInt("coins");
-    if (level.unlockPrice > numCoins) { return; }
-
-    if (!level.unlocked) { DisplayLevelUnlockedAnimation(level); }
+  public void DisplayLevelUnlockedAnimation(Level level) {
+    uint numCoins = (uint)PlayerPrefs.GetInt("coins");
+    numCoinsText.text = string.Format("{0}", numCoins);
 
     Button btn = buttons[level.levelIndex].GetComponent<Button>();
     Text btnText = btn.GetComponentInChildren<Text>();
     btnText.text = string.Format("{0}", level.levelIndex + 1);
     btnText.color = SocaniColor.InformationText;
+  }
 
-    LevelManager.instance.currentLevel = level;
-		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
+  private void onButtonClicked(Level level) {
+    uint numCoins = (uint) PlayerPrefs.GetInt("coins");
+
+    if (!level.unlocked) {
+      if (level.unlockPrice > numCoins) {
+        DisplayLevelTooExpensiveAnimation(level);
+        return;
+      }
+
+      PlayerPrefs.SetInt("coins", (int)(numCoins - level.unlockPrice));
+      LevelManager.instance.levels[level.levelIndex].unlocked = true;
+
+      DisplayLevelUnlockedAnimation(level);
+    } else {
+      LevelManager.instance.currentLevel = level;
+      StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
+    }
   }
 }
