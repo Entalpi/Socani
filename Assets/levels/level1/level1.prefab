@@ -57,13 +57,13 @@ MonoBehaviour:
   unlocked: 1
   unlockPrice: 0
   numCoinsRewarded: 0
-  num_coins: 1
+  numCoins: 0
   levelIndex: 0
-  tile_layers:
+  tileLayers:
   - {fileID: 2800000, guid: 51f074ada433b554ebe1038edc6dcb01, type: 3}
   - {fileID: 2800000, guid: c883031713cbee7489d2b2e8b5c515f7, type: 3}
+  - {fileID: 2800000, guid: 6921f2042e79b7f449dddeb3c648c7bc, type: 3}
+  - {fileID: 2800000, guid: e86e686075ae1ee4cb6c0b7dc3da2391, type: 3}
   - {fileID: 2800000, guid: bab8fb4a7ab01514bafe6ed73ebc5711, type: 3}
   - {fileID: 2800000, guid: a858568b61241a343b94654d9e0c2c5d, type: 3}
-  - {fileID: 2800000, guid: e86e686075ae1ee4cb6c0b7dc3da2391, type: 3}
-  - {fileID: 2800000, guid: 6921f2042e79b7f449dddeb3c648c7bc, type: 3}
   dimensions: {x: 0, y: 0}
