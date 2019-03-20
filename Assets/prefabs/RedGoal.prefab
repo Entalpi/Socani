@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253357122077994}
   - component: {fileID: 212682079775586214}
-  - component: {fileID: 114459608611959200}
+  - component: {fileID: 114195849508255636}
   m_Layer: 0
   m_Name: RedGoal
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114459608611959200
+--- !u!114 &114195849508255636
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,12 +49,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1742351809737988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf65dd4ac4062f04bbbe5db076cd0751, type: 3}
+  m_Script: {fileID: 11500000, guid: e49bb0b74cfd71248af78ce8c725e4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardPosition: {x: 0, y: 0, z: 0}
-  moveable: 0
-  inverseMoveTime: 10
+  crateColor: 1
 --- !u!212 &212682079775586214
 SpriteRenderer:
   m_ObjectHideFlags: 1
