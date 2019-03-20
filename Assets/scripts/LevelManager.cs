@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour {
   // The lvl that is going be to played by the GameBoard
   public Level currentLevel; // Level serialized and saved 
 
+  // Enables everything in the game for testing purposes
+  public bool godMode = false; 
+
   void Awake() {
     if (instance == null) {
       instance = this;
@@ -22,6 +25,10 @@ public class LevelManager : MonoBehaviour {
     }
 
     DontDestroyOnLoad(this);
+
+    if (godMode) {
+      PlayerPrefs.SetInt("coins", 1000);
+    }
 
     // TODO: Load previous progress and set up the levels?
   }
