@@ -103,7 +103,8 @@ public class GameBoard : MonoBehaviour {
           Vector3Int newPosition = new Vector3Int(to.x, to.y, board[to].Count - 1);
           tile.boardPosition = newPosition; // Update tile board position
           // Start the transform movement
-			    StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
+          tile.transform.position = board_to_world_position(tile.boardPosition);
+			    // StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
 			    AudioManager.instance.Play("move");
         }
         if (recordMove) {
