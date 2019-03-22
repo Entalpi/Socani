@@ -54,12 +54,6 @@ public class Player : MonoBehaviour {
   }
 
   private void OnTriggerEnter2D(Collider2D collision) {
-    if (collision.gameObject.GetComponent<ForceField>()) {
-      Vector3Int boardPos = tile.boardPosition;
-      Debug.Log(boardPos);
-      bool validMove = board.valid_move(gameObject, boardPos, ForceField.DeltaFromDirection(collision.gameObject.GetComponent<ForceField>().forceDirection));
-      Debug.Log(validMove);
-    }
     Debug.Log(string.Format("Player hit {0}.", collision.gameObject.name));
   }
 

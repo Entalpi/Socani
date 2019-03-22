@@ -14,7 +14,6 @@ public class ForceField : MonoBehaviour {
   public Direction forceDirection;
 
   private void OnTriggerEnter2D(Collider2D collision) {
-    return;
     if (collision.gameObject.GetComponent<Tile>()) {
       Vector3Int boardPos = collision.gameObject.GetComponent<Tile>().boardPosition;
       Debug.Log(boardPos);
