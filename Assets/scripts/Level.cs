@@ -41,7 +41,7 @@ public class Level : MonoBehaviour {
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
-  public Dictionary<Vector2Int, List<GameObject>> load(GameBoard gameboard) {
+  public Dictionary<Vector2Int, List<GameObject>> load(GameBoard gameboard, ref Dictionary<Vector3Int, Color> tileMappings) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
 
     int maxWidth  = 0; // Dimensions of the loaded lvl in tiles
@@ -73,13 +73,12 @@ public class Level : MonoBehaviour {
               board[position].Add(tileMapping.prefab);
               // Construct level variables
               if (tileMapping.prefab.GetComponent<Coin>()) {
-                  numCoins++;
+                numCoins++;
               }
-              if (tileMapping.prefab.GetComponent<ForceField>()) {
-                tileMapping.prefab.GetComponent<ForceField>().directionFromColor(color);
-              }
-						}
-					}
+
+              tileMappings[new Vector3Int(x, y, board[position].Count - 1)] = tileMapping.color;
+            }
+          }
 
           if (!foundMatchingColor) { Debug.Log(string.Format("Did not find matching color for color: {0}", color)); }
 				}
