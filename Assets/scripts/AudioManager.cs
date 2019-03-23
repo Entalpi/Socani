@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour {
     // Singleton instance 
