@@ -15,7 +15,7 @@ public class ForceField : MonoBehaviour {
     if (collision.gameObject.GetComponent<Tile>()) {
       Vector3Int boardPos = collision.gameObject.GetComponent<Tile>().boardPosition;
       Debug.Log(boardPos);
-      bool validMove = FindObjectOfType<GameBoard>().valid_move(collision.gameObject, boardPos, DeltaFromDirection(forceDirection));
+      bool validMove = FindObjectOfType<GameBoard>().validMove(collision.gameObject, boardPos, DeltaFromDirection(forceDirection));
       Debug.Log(validMove);
     }
     Debug.Log(string.Format("ForceField hit {0}.", collision.gameObject.name));

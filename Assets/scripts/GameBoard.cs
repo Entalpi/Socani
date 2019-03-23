@@ -119,7 +119,7 @@ public class GameBoard : MonoBehaviour {
 	}
 	
   // Checks if the board position is a valid position
-  public bool valid_move(GameObject obj, Vector3Int pos, Vector3Int delta) {
+  public bool validMove(GameObject obj, Vector3Int pos, Vector3Int delta) {
     if (obj == null) { return false; }
     if (pos.x < 0)  { return false; }
 		if (pos.y < 0)  { return false; }
@@ -135,7 +135,7 @@ public class GameBoard : MonoBehaviour {
         Tile tile = gameobject.GetComponent<Tile>();
 				if (tile) {
 					if (tile.moveable) {
-            bool moveable = valid_move(gameobject, pos + delta, delta);
+            bool moveable = validMove(gameobject, pos + delta, delta);
 				    if (moveable) {
               // Move the object at (pos.x, pos.y, z) to (pos + delta)
 					    return moveObject(obj, from, to);
@@ -167,7 +167,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	// Checks if all the crate goals are fulfilled and returns the result while loading the next level
-	public bool checkGamestate() {
+	public bool CheckGamestate() {
 		foreach (var key in board.Keys) {
 			var stack = board[key];
 			for (int z = 0; z < stack.Count; z++) {

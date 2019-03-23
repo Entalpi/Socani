@@ -30,24 +30,24 @@ public class Player : MonoBehaviour {
 		bool did_move = false;
 		if (Input.GetKey("up")) {
       animator.Play("Walking Up");
-      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.up);
+      did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.up);
 		}
     else if (Input.GetKey("down")) {
       animator.Play("Walking Down");
-      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.down);
+      did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.down);
     }
     else if (Input.GetKey("left")) {
       animator.Play("Walking Left");
-      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.left);
+      did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.left);
     }
     else if (Input.GetKey("right")) {
       animator.Play("Walking Right");
-      did_move = board.valid_move(gameObject, tile.boardPosition, Vector3Int.right);
+      did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.right);
     }
     if (did_move) {
 			board.endMove();
 			since_last_move = 0.0f;
-      board.checkGamestate();
+      board.CheckGamestate();
     }
   }
 
