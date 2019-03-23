@@ -173,25 +173,16 @@ public class GameBoard : MonoBehaviour {
 			for (int z = 0; z < stack.Count; z++) {
         // Check if all the crate goals have the correct crate on top of them
         if (stack[z].GetComponent<CrateGoal>()) {
+          bool nextTile = false;
           for (int i = 0; i < stack.Count; i++) {
             if (stack[i].GetComponent<Crate>()) {
-              if (stack[z].GetComponent<CrateGoal>().crateColor == stack[i].GetComponent<Crate>().crateColor) {
-                continue;
+              if (stack[z].GetComponent<CrateGoal>().crateColor.Equals(stack[i].GetComponent<Crate>().crateColor)) {
+                nextTile = true;
               }
             }
-            return false;
           }
-        }
-
-        if (stack[z].GetComponent<Crate>()) {
-          for (int i = 0; i < stack.Count; i++) {
-            if (stack[i].GetComponent<CrateGoal>()) {
-              if (stack[z].GetComponent<Crate>().crateColor == stack[i].GetComponent<CrateGoal>().crateColor) {
-                continue;
-              }
-            }
-            return false;
-          }
+          if (!nextTile) { return false; }
+          if (nextTile) { continue; }
         }
       }
 		}
