@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameBoard : MonoBehaviour {
@@ -207,8 +208,20 @@ public class GameBoard : MonoBehaviour {
 	// Menu interactions
 	public GameObject menuPanel;
 
+  IEnumerator animateMenuDisplay(bool show) {
+    const uint dt = 10;
+    for (int i = 0; i <= dt; i++) {
+      menuPanel.GetComponent<CanvasGroup>().alpha = show ? i * (1.0f / dt) : 1.0f - i * (1.0f / dt);
+      yield return null;
+    }
+    if (!show) {
+      menuPanel.SetActive(!menuPanel.activeSelf);
+    }
+  }
+
 	public void pressedMenuButton() {
-		menuPanel.SetActive (!menuPanel.activeSelf);
+    menuPanel.SetActive(!menuPanel.activeSelf);
+    StartCoroutine(animateMenuDisplay(true));
 	}
 
 	public void pressedRestartButton() {
@@ -230,7 +243,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedMenuCancelButton() {
-		menuPanel.SetActive(!menuPanel.activeSelf);
+    StartCoroutine(animateMenuDisplay(false));
 	}
 
 	public void pressedRewindButton() {
