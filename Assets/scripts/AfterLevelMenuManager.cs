@@ -14,13 +14,12 @@ public class AfterLevelMenuManager : MonoBehaviour {
 
   void Start() {
     info.text = "Moves: " + LevelManager.instance.currentLevel.numberOfMoves;
+    coinsRewardedThisLevel.text = "";
+    uint coinsRewarded = (uint)LevelManager.instance.currentLevel.numRewindsLeft + LevelManager.instance.currentLevel.numCoinsRewarded;
+    coinsTotal.text = "" + (PlayerPrefs.GetInt("coins") - coinsRewarded);
 
-    if (LevelManager.instance.currentLevel.completed) {
-      coinsRewardedThisLevel.text = "" + PlayerPrefs.GetInt("coins");
-      return;
-    }
-    coinsTotal.text = "" + PlayerPrefs.GetInt("coins");
-    // coinsRewardedThisLevel.text = coins picked up & num rewinds left;
+    if (LevelManager.instance.currentLevel.completed) { return; }
+
     StartCoroutine(RewindHeadCoinAnimation());
   }
 
@@ -34,9 +33,20 @@ public class AfterLevelMenuManager : MonoBehaviour {
   }
 
   public IEnumerator RewindHeadCoinAnimation() {
-    // TODO: Animate things
-    for (int i = 0; i < LevelManager.instance.currentLevel.numRewindsLeft; i++) { 
-      yield return new WaitForSeconds(0.2f);
+    const float dt = 0.2f; // 0.2f gives retro feel
+
+    for (int j = 0; j < (int) (1.0f / dt) + 2; j++) {
+      for (int i = 0; i < LevelManager.instance.currentLevel.numRewindsLeft; i++) {
+        rewindHeads[i].transform.localScale = new Vector3(j * dt, j * dt, 1.0f);
+      }
+      yield return new WaitForSeconds(dt);
+    }
+
+    uint coinsRewarded = (uint)LevelManager.instance.currentLevel.numRewindsLeft + LevelManager.instance.currentLevel.numCoinsRewarded;
+    for (int i = 0; i < coinsRewarded; i++) {
+      coinsRewardedThisLevel.text = "+" + (i + 1);
+      coinsTotal.text = "" + (PlayerPrefs.GetInt("coins") - coinsRewarded + i + 1);
+      yield return new WaitForSeconds(dt);
     }
   }
 }
