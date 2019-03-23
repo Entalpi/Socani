@@ -10,8 +10,8 @@ public class ForceField : MonoBehaviour {
 
   public enum Direction { up, down, left, right }
   public Direction forceDirection;
-
-  private void OnTriggerEnter2D(Collider2D collision) {
+  
+  private void OnTriggerStay2D(Collider2D collision) {
     if (collision.gameObject.GetComponent<Tile>()) {
       Vector3Int boardPos = collision.gameObject.GetComponent<Tile>().boardPosition;
       Debug.Log(boardPos);
