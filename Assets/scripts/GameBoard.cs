@@ -252,7 +252,7 @@ public class GameBoard : MonoBehaviour {
     const bool recordMove = false;
 		List<BoardMove> boardMoves = moveHistory.Pop();
 		for (int i = 0; i < boardMoves.Count; i++) {
-			BoardMove boardMove = boardMoves [i];
+			BoardMove boardMove = boardMoves[i];
 			moveObject(boardMove.movee, boardMove.to, boardMove.from, recordMove);
 		}
 	}
