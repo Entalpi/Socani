@@ -16,7 +16,7 @@ public class LevelSelector : MonoBehaviour {
 	void Start () {
     Level[] levels = LevelManager.instance.levels;
     buttons = new GameObject[levels.Length];
-    for (int i = 0; i < levels.Length; i++) {
+    for (uint i = 0; i < levels.Length; i++) {
       buttons[i] = Instantiate(buttonPrefab);
       Button btn = buttons[i].GetComponent<Button>();
       if (btn) {
@@ -33,8 +33,8 @@ public class LevelSelector : MonoBehaviour {
           btnText.color = SocaniColor.PositiveText;
         }
 
-        int idx = i; // Using only 'i' does not work (C# lambda uses the variable value at i AFTER the loop is done)
-        btn.onClick.AddListener(() => onButtonClicked(levels[idx]));
+        uint idx = i; // Using only 'i' does not work (C# lambda uses the variable value at i AFTER the loop is done)
+        btn.onClick.AddListener(() => onButtonClicked(levels[idx], idx));
         btn.transform.SetParent(scrollView.transform, false);
       }
     }
@@ -56,7 +56,7 @@ public class LevelSelector : MonoBehaviour {
     float t = 0.0f;
     while (true) {
       t += dt;
-      float v = Mathf.Min(Mathf.Abs(Mathf.Cos(t)) + 0.5f, 1.5f);
+      float v = Mathf.Min(Mathf.Abs(Mathf.Cos(t)) + 0.75f, 1.25f);
       numCoinsText.transform.localScale = new Vector3(v, v, v);
       yield return 0.75f;
     }
@@ -71,7 +71,7 @@ public class LevelSelector : MonoBehaviour {
     while (true) {
       coin.transform.localPosition = new Vector3(radius * Mathf.Cos(thetaX), radius * Mathf.Sin(thetaY));
       thetaX += deltaTheta; thetaY += deltaTheta;
-      yield return 0.2f;
+      yield return null;
     }
   }
 
@@ -79,11 +79,19 @@ public class LevelSelector : MonoBehaviour {
     return new Vector3(r * Mathf.Cos(Random.Range(0.0f, 2.0f * Mathf.PI)), r * Mathf.Sin(Random.Range(0.0f, 2.0f * Mathf.PI)), 0.0f);
   }
 
-  public void DisplayLevelTooExpensiveAnimation(Level level) {
-    // TODO: Check the button or something
+  IEnumerator DisplayLevelTooExpensiveAnimation(Level level, uint idx) {
+    const uint dt = 10;
+    const float shakeLng = 10.0f;
+    Vector3 originalPosition = buttons[idx].transform.position;
+    for (int i = 0; i < dt; i++) {
+      Vector3 position = originalPosition + new Vector3(shakeLng * Mathf.Sin(2 * Mathf.PI * (i / dt)), 0.0f, 0.0f);
+      buttons[idx].transform.position = position;
+      yield return null;
+    }
   }
 
   public void DisplayLevelUnlockedAnimation(Level level) {
+    // TODO: Animate things
     uint numCoins = (uint)PlayerPrefs.GetInt("coins");
     numCoinsText.text = string.Format("{0}", numCoins);
 
@@ -93,12 +101,12 @@ public class LevelSelector : MonoBehaviour {
     btnText.color = SocaniColor.InformationText;
   }
 
-  private void onButtonClicked(Level level) {
+  private void onButtonClicked(Level level, uint idx) {
     uint numCoins = (uint) PlayerPrefs.GetInt("coins");
 
     if (!level.unlocked) {
       if (level.unlockPrice > numCoins) {
-        DisplayLevelTooExpensiveAnimation(level);
+        StartCoroutine(DisplayLevelTooExpensiveAnimation(level, idx));
         return;
       }
 
