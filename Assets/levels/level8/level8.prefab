@@ -55,12 +55,9 @@ MonoBehaviour:
   numberOfMoves: 0
   numRewindsLeft: 0
   unlocked: 0
-  unlockPrice: 4
   numCoinsRewarded: 0
-  num_coins: 1
+  unlockPrice: 3
+  numCoins: 0
   levelIndex: 7
-  tile_layers:
-  - {fileID: 2800000, guid: a393a638638377c4c951e57be0f05f33, type: 3}
-  - {fileID: 2800000, guid: 38c1178a012a02f47ba9f43329513b1d, type: 3}
-  - {fileID: 2800000, guid: 30ba357159501774ebbd470f7b254e10, type: 3}
+  tileLayers: []
   dimensions: {x: 0, y: 0}
