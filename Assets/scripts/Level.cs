@@ -16,12 +16,12 @@ public class Level : MonoBehaviour {
   public int numRewindsLeft = 0;
   // Is the level unlocked
   public bool unlocked = false;
-  // Unlock price in coins
-  public uint unlockPrice = 0;
   // Number of coins rewarded for the completion of the level
   public uint numCoinsRewarded = 0;
 
   /** FIXED PROPERTIES */
+  // Unlock price in coins
+  public uint unlockPrice = 0;
   // # of coins on the level 
   public int numCoins = 0;
   // User visible level number 
