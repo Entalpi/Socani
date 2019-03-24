@@ -12,7 +12,10 @@ public class LevelManager : MonoBehaviour {
   public Level currentLevel; // Level serialized and saved 
 
   // Enables everything in the game for testing purposes
-  public bool godMode = false; 
+  public bool godMode = false;
+
+  // If enabled on startup, resets all progress
+  public bool reset = false;
 
   void Awake() {
     if (instance == null) {
@@ -24,11 +27,20 @@ public class LevelManager : MonoBehaviour {
 
     DontDestroyOnLoad(this);
 
-    if (godMode) {
-      PlayerPrefs.SetInt("coins", 1000);
+    if (reset) {
+      for (int i = 0; i < 3; i++) {
+        levels[i].reset();
+        levels[i].unlocked = true;
+      }
+      for (int i = 3; i < levels.Length; i++) {
+        levels[i].reset();
+      }
+      PlayerPrefs.SetInt("coins", 0);
     }
 
-    // TODO: Load previous progress and set up the levels?
+    if (godMode) {
+      PlayerPrefs.SetInt("coins", 18);
+    }
   }
 
   public Level getLevel() {
