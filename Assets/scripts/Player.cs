@@ -70,7 +70,7 @@ public class Player : MonoBehaviour, IEndDragHandler {
         animator.Play("Walking Up");
         did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.up);
         break;
-      case Direction.Down;
+      case Direction.Down:
         animator.Play("Walking Down");
         did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.down);
         break;
@@ -94,9 +94,9 @@ public class Player : MonoBehaviour, IEndDragHandler {
     float positiveX = Mathf.Abs(dragVector.x);
     float positiveY = Mathf.Abs(dragVector.y);
     if (positiveX > positiveY) {
-      if (dragVector.x > 0) { return Direction.Right } else { return Direction.Left; }
+      if (dragVector.x > 0) { return Direction.Right; } else { return Direction.Left; }
     } else {
-      if (dragVector.y > 0) { return Direction.Up } else { return Direction.Down; }
+      if (dragVector.y > 0) { return Direction.Up; } else { return Direction.Down; }
     }
   }
 }
