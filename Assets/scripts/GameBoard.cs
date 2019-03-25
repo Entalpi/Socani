@@ -60,9 +60,11 @@ public class GameBoard : MonoBehaviour {
         Vector3 worldPosition = board_to_world_position(boardPosition);
         GameObject obj = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
         obj.transform.localScale = new Vector3(scale.x, scale.y, 1.0f);
+
         if (obj.GetComponent<Tile>()) {
-        obj.GetComponent<Tile>().boardPosition = boardPosition;
+          obj.GetComponent<Tile>().boardPosition = boardPosition;
         }
+
         if (obj.GetComponent<ForceField>()) {
           var key = new Vector3Int(pos.x, pos.y, z);
           var value = new Color(0.0f, 0.0f, 0.0f);
