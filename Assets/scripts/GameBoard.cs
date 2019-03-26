@@ -226,6 +226,7 @@ public class GameBoard : MonoBehaviour {
     StartCoroutine(animateMenuDisplay(true));
 	}
 
+  // FIXME: Spawning clones, destroy?
 	public void pressedRestartButton() {
     boardUI.numRewindsLeft = 3;
     boardUI.updateRewindHeads();
