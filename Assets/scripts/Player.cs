@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Player : MonoBehaviour, IEndDragHandler {
+public class Player : MonoBehaviour {
 	// Private
-	private const float MOVE_COOLDOWN = 0.25f;
-	private float since_last_move = 0.0f;
+	private const float MOVECOOLDOWN = 0.25f;
+  public float timeSinceLastMove = 0.0f;
 
 	// Player board tile representation
-	private Tile tile; 
-	private GameBoard board;
+	public Tile tile;
+  public GameBoard board;
   private Rigidbody2D rb2D;
-  private Animator animator;
+  public Animator animator;
 
 	void Start() {
     animator = GetComponent<Animator>();
@@ -26,8 +25,8 @@ public class Player : MonoBehaviour, IEndDragHandler {
 	}
  
 	void Update() {
-		since_last_move += Time.deltaTime;
-    if (since_last_move <= MOVE_COOLDOWN) { return; }
+		timeSinceLastMove += Time.deltaTime;
+    if (timeSinceLastMove <= MOVECOOLDOWN) { return; }
 		bool did_move = false;
 		if (Input.GetKey("up")) {
       animator.Play("Walking Up");
@@ -47,7 +46,7 @@ public class Player : MonoBehaviour, IEndDragHandler {
     }
     if (did_move) {
 			board.endMove();
-			since_last_move = 0.0f;
+			timeSinceLastMove = 0.0f;
       board.CheckGamestate();
     }
   }
@@ -58,45 +57,5 @@ public class Player : MonoBehaviour, IEndDragHandler {
 
   private void OnCollisionEnter2D(Collision2D collision) {
     Debug.Log(string.Format("Player hit {0}.", collision.gameObject.name));
-  }
-
-  private enum Direction { Up, Down, Right, Left }
-
-  public void OnEndDrag(PointerEventData eventData) {
-    Vector3 dragVector = (eventData.position - eventData.pressPosition).normalized;
-    bool did_move = false;
-    switch (swipeDirection(dragVector)) {
-      case Direction.Up:
-        animator.Play("Walking Up");
-        did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.up);
-        break;
-      case Direction.Down:
-        animator.Play("Walking Down");
-        did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.down);
-        break;
-      case Direction.Left:
-        animator.Play("Walking Left");
-        did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.left);
-        break;
-      case Direction.Right:
-        animator.Play("Walking Right");
-        did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.right);
-        break;
-    }
-    if (did_move) {
-      board.endMove();
-      since_last_move = 0.0f;
-      board.CheckGamestate();
-    }
-  }
-
-  private Direction swipeDirection(Vector3 dragVector) {
-    float positiveX = Mathf.Abs(dragVector.x);
-    float positiveY = Mathf.Abs(dragVector.y);
-    if (positiveX > positiveY) {
-      if (dragVector.x > 0) { return Direction.Right; } else { return Direction.Left; }
-    } else {
-      if (dragVector.y > 0) { return Direction.Up; } else { return Direction.Down; }
-    }
   }
 }
