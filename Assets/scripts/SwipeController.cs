@@ -6,8 +6,6 @@ public class SwipeController : EventTrigger {
   private enum Direction { Up, Down, Right, Left }
 
   public override void OnEndDrag(PointerEventData eventData) {
-    Debug.Log("OnEndDrag ended");
-
     Player player = FindObjectOfType<Player>();
     if (player == null) { Debug.Log("Player null in SwipeController"); }
 
