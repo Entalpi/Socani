@@ -3,10 +3,15 @@
 public class ForceField : MonoBehaviour {
 
   // Color to direction mappings to the tiles parsed in tile layers via Level.cs and as defined in GameBoard.cs
-  public static Color downColor = new Color(1.0f, 0.3176471f, 0.0f, 1.0f);
-  public static Color upColor   = new Color(0.8431373f, 0.0f, 1.0f, 1.0f);
-  public static Color leftColor;
-  public static Color rightColor;
+  public Color downColor = new Color(1.0f, 0.3176471f, 0.0f, 1.0f);
+  public Color upColor   = new Color(0.8431373f, 0.0f, 1.0f, 1.0f);
+  public Color leftColor;
+  public Color rightColor;
+
+  public Sprite downSprite;
+  public Sprite upSprite;
+  public Sprite leftSprite;
+  public Sprite rightSprite;
 
   public enum Direction { up, down, left, right }
   public Direction forceDirection;
@@ -31,16 +36,21 @@ public class ForceField : MonoBehaviour {
     }
   }
 
+  // Inits the ForceField from the given color
   public void directionFromColor(Color color) {
     // WTF: Color.Equals(other) does not work here ...
     if (color == downColor) {
-      forceDirection = Direction.down; 
+      forceDirection = Direction.down;
+      GetComponent<SpriteRenderer>().sprite = downSprite;
     } else if (color == upColor) {
       forceDirection = Direction.up;
+      GetComponent<SpriteRenderer>().sprite = upSprite;
     } else if (color == leftColor) {
       forceDirection = Direction.left;
+      GetComponent<SpriteRenderer>().sprite = leftSprite;
     } else if (color == rightColor) {
       forceDirection = Direction.right;
+      GetComponent<SpriteRenderer>().sprite = rightSprite;
     } else {
       Debug.Log(string.Format("Failed to map color ({0}) to ForceField.Direction.", color));
     }
