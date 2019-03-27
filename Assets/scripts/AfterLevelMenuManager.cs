@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class AfterLevelMenuManager : MonoBehaviour {
 
-  public Text info;
-	public GameObject levelSelectionButton;
-
+	public GameObject nextLevelButton;
   public List<Image> rewindHeads;
   public Text coinsRewardedThisLevel;
   public Text coinsTotal;
+  public Text info;
 
   void Start() {
     info.text = "Moves: " + LevelManager.instance.currentLevel.numberOfMoves;
@@ -20,11 +19,32 @@ public class AfterLevelMenuManager : MonoBehaviour {
 
     if (LevelManager.instance.currentLevel.completed) { return; }
 
+    if (LevelManager.instance.nextLevel() == null) { nextLevelButton.SetActive(false); }
+
+    if (!LevelManager.instance.nextLevel().unlocked) {
+      if (LevelManager.instance.nextLevel().unlockPrice > PlayerPrefs.GetInt("coins")) {
+        nextLevelButton.GetComponent<Text>().text = "Watch ad";
+      } else {
+        nextLevelButton.GetComponent<Text>().text = "Unlock level";
+      }
+    }
+
     StartCoroutine(RewindHeadCoinAnimation());
   }
 
   public void nextLevelButtonPressed() {
-		LevelManager.instance.nextLevel();
+    int levelIndex = LevelManager.instance.currentLevel.levelIndex + 1;
+    if (levelIndex >= LevelManager.instance.levels.Length) { return; }
+
+    if (!LevelManager.instance.nextLevel().unlocked) {
+      if (LevelManager.instance.nextLevel().unlockPrice > PlayerPrefs.GetInt("coins")) {
+        // TODO: Watch ad
+      } else {
+        // TODO: Spend gold, unlock next level
+      }
+    }
+
+		LevelManager.instance.loadNextLevel();
 		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
 	}
 
