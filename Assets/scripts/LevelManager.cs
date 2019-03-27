@@ -52,14 +52,21 @@ public class LevelManager : MonoBehaviour {
 		}
   }
 
-	public bool nextLevel() {
+  public bool loadNextLevel() {
     // Out of levels! End of game?
-    Debug.Log("Loading level:" + currentLevel.levelIndex + 1);
+    Debug.Log("Loading level:" + (currentLevel.levelIndex + 1));
     if (levels.Length <= currentLevel.levelIndex + 1) {
 			return false;
 		}
 		currentLevel = levels[currentLevel.levelIndex + 1];
 		return true;
+  }
+
+	public Level nextLevel() {
+    if (levels.Length <= currentLevel.levelIndex + 1) {
+			return null;
+		}
+		return levels[currentLevel.levelIndex + 1];
 	}
 
 	// Returns whether or not it found the level 
