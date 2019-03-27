@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour {
 	// Private
-	private const float MOVECOOLDOWN = 0.25f;
+	public const float MOVECOOLDOWN = 0.25f;
   public float timeSinceLastMove = 0.0f;
 
 	// Player board tile representation
