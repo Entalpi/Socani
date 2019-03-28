@@ -12,7 +12,7 @@ public class BackgroundAnimation : MonoBehaviour {
   void Start() {
     float width = Mathf.Abs(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 100.0f, 0.0f, 0.0f)).x);
     for (int i = 0; i < numberTiles; i++) {
-      Invoke("spawnTile", Random.Range(0.0f, width));
+      Invoke("spawnTile", Random.Range(0.0f, width)); // FIXME: width? As time?
     }
   }
 
