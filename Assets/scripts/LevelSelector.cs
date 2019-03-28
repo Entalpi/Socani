@@ -81,10 +81,10 @@ public class LevelSelector : MonoBehaviour {
 
   IEnumerator DisplayLevelTooExpensiveAnimation(Level level, uint idx) {
     const uint dt = 10;
-    const float shakeLng = 10.0f;
+    const float shakeLng = 0.1f;
     Vector3 originalPosition = buttons[idx].transform.position;
-    for (int i = 0; i < dt; i++) {
-      Vector3 position = originalPosition + new Vector3(shakeLng * Mathf.Sin(2 * Mathf.PI * (i / dt)), 0.0f, 0.0f);
+    for (int i = 0; i < dt + 1; i++) {
+      Vector3 position = originalPosition + new Vector3(shakeLng * Mathf.Sin(2 * Mathf.PI * (i / (float)dt)), 0.0f, 0.0f);
       buttons[idx].transform.position = position;
       yield return null;
     }
