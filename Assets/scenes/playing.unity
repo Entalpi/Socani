@@ -702,6 +702,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1826740222572898, guid: ba90fc63ee7963a4881989c75a4ef376, type: 3}
+      propertyPath: m_Name
+      value: LevelManager
+      objectReference: {fileID: 0}
     - target: {fileID: 4942948540275800, guid: ba90fc63ee7963a4881989c75a4ef376, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -734,12 +738,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114590633813330254, guid: ba90fc63ee7963a4881989c75a4ef376,
-        type: 3}
-      propertyPath: currentLevel
-      value: 
-      objectReference: {fileID: 114215779067947470, guid: 5c65acb88a0421646a47705ff7f4614e,
-        type: 3}
+    - target: {fileID: 4942948540275800, guid: ba90fc63ee7963a4881989c75a4ef376, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942948540275800, guid: ba90fc63ee7963a4881989c75a4ef376, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942948540275800, guid: ba90fc63ee7963a4881989c75a4ef376, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba90fc63ee7963a4881989c75a4ef376, type: 3}
 --- !u!1 &597749269

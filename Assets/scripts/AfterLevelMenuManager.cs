@@ -17,8 +17,6 @@ public class AfterLevelMenuManager : MonoBehaviour {
     uint coinsRewarded = (uint)LevelManager.instance.currentLevel.numRewindsLeft + LevelManager.instance.currentLevel.numCoinsRewarded;
     coinsTotal.text = "" + (PlayerPrefs.GetInt("coins") - coinsRewarded);
 
-    if (LevelManager.instance.currentLevel.completed) { return; }
-
     if (LevelManager.instance.nextLevel() == null) { nextLevelButton.SetActive(false); }
 
     if (!LevelManager.instance.nextLevel().unlocked) {
