@@ -29,11 +29,11 @@ public class LevelManager : MonoBehaviour {
 
     if (reset) {
       for (int i = 0; i < 3; i++) {
-        levels[i].reset();
+        levels[i].Reset();
         levels[i].unlocked = true;
       }
       for (int i = 3; i < levels.Length; i++) {
-        levels[i].reset();
+        levels[i].Reset();
       }
       PlayerPrefs.SetInt("coins", 0);
     }

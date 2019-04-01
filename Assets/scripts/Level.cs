@@ -32,7 +32,7 @@ public class Level : MonoBehaviour {
   public Vector2Int dimensions;
   
   // Resets all progress on the Level
-  public void reset() {
+  public void Reset() {
     completed = false;
     numberOfMoves = 0;
     unlocked = false;
@@ -40,7 +40,7 @@ public class Level : MonoBehaviour {
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
-  public Dictionary<Vector2Int, List<GameObject>> load(GameBoard gameboard, ref Dictionary<Vector3Int, Color> tileMappings) {
+  public Dictionary<Vector2Int, List<GameObject>> Load(GameBoard gameboard, ref Dictionary<Vector3Int, Color> tileMappings) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
 
     int maxWidth  = 0; // Dimensions of the loaded lvl in tiles

@@ -24,7 +24,7 @@ public class BoardUI : MonoBehaviour {
     numberOfMoves.text = "" + board.currentLevel.numberOfMoves;
   }
 
-  public void updateRewindHeads() {
+  public void UpdateRewindHeads() {
     for (uint i = 0; i < numRewindsLeft; i++) {
       rewindHeads[i].gameObject.SetActive(true);
     }
@@ -33,10 +33,10 @@ public class BoardUI : MonoBehaviour {
     }
   }
 
-  public void pressedRewindButton() {
+  public void PressedRewindButton() {
     if (numRewindsLeft == 0) { return; }
     numRewindsLeft--;
-    updateRewindHeads();
+    UpdateRewindHeads();
     board.pressedRewindButton();
   }
 }

@@ -40,12 +40,12 @@ public class GameBoard : MonoBehaviour {
 
   public void LoadLevel() {
 		currentLevel = LevelManager.instance.getLevel();
-    currentLevel.reset();
+    currentLevel.Reset();
 		moveHistory.Clear();
 
     // Mapping between prefabs filled in the board and their color that matched during loading of the level
     Dictionary<Vector3Int, Color> tileMappings = new Dictionary<Vector3Int, Color>();
-    board = currentLevel.load(this, ref tileMappings);  // Load the current level
+    board = currentLevel.Load(this, ref tileMappings);  // Load the current level
 
     // Rescale tile size to fit the screen based on the Level dimensions and pixel scr size
     float scaleX = Mathf.Min(Screen.width  / (100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x + 0)), 1.0f);
@@ -233,7 +233,7 @@ public class GameBoard : MonoBehaviour {
 	public void pressedRestartButton() {
     inputEnabled = true;
     boardUI.numRewindsLeft = 3;
-    boardUI.updateRewindHeads();
+    boardUI.UpdateRewindHeads();
 
     foreach (Vector2Int tilePosition in board.Keys) {
 			foreach(GameObject gameObject in board[tilePosition]) {
