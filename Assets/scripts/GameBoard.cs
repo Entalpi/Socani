@@ -231,6 +231,7 @@ public class GameBoard : MonoBehaviour {
 
   // FIXME: Spawning clones, destroy?
 	public void pressedRestartButton() {
+    inputEnabled = true;
     boardUI.numRewindsLeft = 3;
     boardUI.updateRewindHeads();
 
