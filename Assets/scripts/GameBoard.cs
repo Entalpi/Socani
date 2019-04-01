@@ -7,6 +7,8 @@ public class GameBoard : MonoBehaviour {
 
 	public TileMapping[] mappings;
 
+  public bool inputEnabled = true;
+
 	public Level currentLevel;
 	public Dictionary<Vector2Int, List<GameObject>> board;
 
@@ -222,6 +224,7 @@ public class GameBoard : MonoBehaviour {
   }
 
 	public void pressedMenuButton() {
+    inputEnabled = false;
     menuPanel.SetActive(!menuPanel.activeSelf);
     StartCoroutine(animateMenuDisplay(true));
 	}
@@ -246,6 +249,7 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedMenuCancelButton() {
+    inputEnabled = true;
     StartCoroutine(animateMenuDisplay(false));
 	}
 

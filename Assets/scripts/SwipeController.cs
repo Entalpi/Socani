@@ -5,7 +5,14 @@ public class SwipeController : EventTrigger {
 
   private enum Direction { Up, Down, Right, Left }
 
+  private GameBoard board;
+
+  private void Start() {
+    board = FindObjectOfType<GameBoard>();
+  }
+
   public override void OnEndDrag(PointerEventData eventData) {
+    if (!board.inputEnabled) { return; }
     Player player = FindObjectOfType<Player>();
     if (player == null) { Debug.Log("Player null in SwipeController"); }
 
