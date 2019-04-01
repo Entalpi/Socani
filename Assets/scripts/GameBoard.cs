@@ -212,7 +212,7 @@ public class GameBoard : MonoBehaviour {
 	// Menu interactions
 	public GameObject menuPanel;
 
-  IEnumerator animateMenuDisplay(bool show) {
+  private IEnumerator animateMenuDisplay(bool show) {
     const uint dt = 10;
     for (int i = 0; i <= dt; i++) {
       menuPanel.GetComponent<CanvasGroup>().alpha = show ? i * (1.0f / dt) : 1.0f - i * (1.0f / dt);
