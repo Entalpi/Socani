@@ -25,7 +25,7 @@ public class BoardUI : MonoBehaviour {
   }
 
   public void updateRewindHeads() {
-    for (int i = 0; i < numRewindsLeft; i++) {
+    for (uint i = 0; i < numRewindsLeft; i++) {
       rewindHeads[i].gameObject.SetActive(true);
     }
     for (uint i = numRewindsLeft; i < 3; i++) {
