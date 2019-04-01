@@ -13,7 +13,7 @@ public class Level : MonoBehaviour {
   // Number of moves used when completed
   public uint numberOfMoves = 0;
   // Number of rewinds left when completed
-  public int numRewindsLeft = 0;
+  public uint numRewindsLeft = 0;
   // Is the level unlocked
   public bool unlocked = false;
   // Number of coins rewarded for the completion of the level

@@ -73,13 +73,15 @@ public class LevelManager : MonoBehaviour {
 	public bool levelCompleted(Level level) {
 		Level levelPrefab = Array.Find(levels, match => match.levelIndex == level.levelIndex);
     if (!levelPrefab.completed) {
-      PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + level.numRewindsLeft);
+      int coinsAwarded = PlayerPrefs.GetInt("coins") + (int) level.numRewindsLeft + (int) level.numCoinsRewarded;
+      PlayerPrefs.SetInt("coins", coinsAwarded);
       PlayerPrefs.Save();
     }
 		if (levelPrefab) {
       levelPrefab.completed = true;
       levelPrefab.numberOfMoves = level.numberOfMoves;
-      levelPrefab.numRewindsLeft = level.numRewindsLeft; 
+      levelPrefab.numRewindsLeft = level.numRewindsLeft;
+      levelPrefab.numCoinsRewarded = level.numCoinsRewarded;
       return true;
 		}
 		return false;

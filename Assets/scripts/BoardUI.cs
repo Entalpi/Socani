@@ -13,7 +13,7 @@ public class BoardUI : MonoBehaviour {
 
   // Rewind related
   public Image[] rewindHeads = new Image[3]; 
-  public int numRewindsLeft = 3;
+  public uint numRewindsLeft = 3;
 
   // Use this for initialization
   void Start() {
@@ -28,7 +28,7 @@ public class BoardUI : MonoBehaviour {
     for (int i = 0; i < numRewindsLeft; i++) {
       rewindHeads[i].gameObject.SetActive(true);
     }
-    for (int i = numRewindsLeft; i < 3; i++) {
+    for (uint i = numRewindsLeft; i < 3; i++) {
       rewindHeads[i].gameObject.SetActive(false);
     }
   }
