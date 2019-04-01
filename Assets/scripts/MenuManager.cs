@@ -6,7 +6,12 @@ public class MenuManager : MonoBehaviour {
   public GameObject soundButton;
 
   public void Play() {
-		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+    if (PlayerPrefs.GetInt("is_first_run", 1) == 1) {
+      PlayerPrefs.SetInt("is_first_run", 0);
+      StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
+    } else {
+      StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+    }
   } 
 
   public void ToggleMusic() {
