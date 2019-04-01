@@ -39,8 +39,9 @@ public class LevelManager : MonoBehaviour {
     }
 
     if (godMode) {
-      PlayerPrefs.SetInt("coins", 18);
+      PlayerPrefs.SetInt("coins", 50);
     }
+    PlayerPrefs.Save();
   }
 
   public Level getLevel() {
