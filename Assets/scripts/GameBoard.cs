@@ -106,8 +106,7 @@ public class GameBoard : MonoBehaviour {
           tile.boardPosition = newPosition; // Update tile board position
           // Start the transform movement
           tile.transform.position = board_to_world_position(tile.boardPosition);
-			    // StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
-			    AudioManager.instance.Play("move");
+			    // FIXME: StartCoroutine(tile.smoothMovement(board_to_world_position(newPosition)));
         }
         if (recordMove) {
           // Add move to history
@@ -224,6 +223,7 @@ public class GameBoard : MonoBehaviour {
   }
 
 	public void pressedMenuButton() {
+    AudioManager.instance.Play("click");
     inputEnabled = false;
     menuPanel.SetActive(!menuPanel.activeSelf);
     StartCoroutine(animateMenuDisplay(true));
@@ -231,6 +231,7 @@ public class GameBoard : MonoBehaviour {
 
   // FIXME: Spawning clones, destroy?
 	public void pressedRestartButton() {
+    AudioManager.instance.Play("click");
     inputEnabled = true;
     boardUI.numRewindsLeft = 3;
     boardUI.UpdateRewindHeads();
@@ -246,16 +247,19 @@ public class GameBoard : MonoBehaviour {
 	}
 
 	public void pressedLevelsButton() {
-		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+    AudioManager.instance.Play("click");
+    StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
 	}
 
 	public void pressedMenuCancelButton() {
+    AudioManager.instance.Play("click");
     inputEnabled = true;
     StartCoroutine(animateMenuDisplay(false));
 	}
 
 	public void pressedRewindButton() {
-		if (moveHistory.Count == 0) { return; }
+    AudioManager.instance.Play("click");
+    if (moveHistory.Count == 0) { return; }
     currentLevel.numberOfMoves--;
     const bool recordMove = false;
 		List<BoardMove> boardMoves = moveHistory.Pop();

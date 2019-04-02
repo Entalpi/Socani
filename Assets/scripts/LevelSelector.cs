@@ -106,10 +106,12 @@ public class LevelSelector : MonoBehaviour {
 
     if (!level.unlocked) {
       if (level.unlockPrice > numCoins) {
+        AudioManager.instance.Play("error");
         StartCoroutine(DisplayLevelTooExpensiveAnimation(level, idx));
         return;
       }
 
+      AudioManager.instance.Play("click");
       PlayerPrefs.SetInt("coins", (int)(numCoins - level.unlockPrice));
       LevelManager.instance.levels[level.levelIndex].unlocked = true;
 

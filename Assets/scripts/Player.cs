@@ -45,9 +45,12 @@ public class Player : MonoBehaviour {
       did_move = board.validMove(gameObject, tile.boardPosition, Vector3Int.right);
     }
     if (did_move) {
+      AudioManager.instance.Play("step");
 			board.endMove();
 			timeSinceLastMove = 0.0f;
-      board.CheckGamestate();
+      if (board.CheckGamestate()) {
+        AudioManager.instance.Play("bonus");
+      }
     }
   }
 

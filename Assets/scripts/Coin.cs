@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour {
                 // TODO: Animate, positive feeling, negative feeling
                 Destroy(gameObject);
             } else {
-              Debug.Log("Crap"); // Should not happen ... 
+              Debug.LogError("Crap"); // Should not happen ...  
             }
         }
     }
