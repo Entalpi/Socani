@@ -3,10 +3,10 @@
 public class ForceField : MonoBehaviour {
 
   // Color to direction mappings to the tiles parsed in tile layers via Level.cs and as defined in GameBoard.cs
-  public Color downColor = new Color(1.0f, 0.3176471f, 0.0f, 1.0f);
-  public Color upColor   = new Color(0.8431373f, 0.0f, 1.0f, 1.0f);
-  public Color leftColor;
-  public Color rightColor;
+  public Color downColor;
+  public Color upColor;
+  public Color leftColor = new Color(1.0f, 0.3176471f, 0.0f, 1.0f);
+  public Color rightColor = new Color(0.8431373f, 0.0f, 1.0f, 1.0f);
 
   public Sprite downSprite;
   public Sprite upSprite;

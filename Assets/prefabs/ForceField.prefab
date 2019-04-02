@@ -93,10 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6c27104706daf4ab230d3ffb1a19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downColor: {r: 1, g: 0.3176471, b: 0, a: 1}
-  upColor: {r: 0.8431373, g: 0, b: 1, a: 1}
-  leftColor: {r: 0, g: 0, b: 0, a: 0}
-  rightColor: {r: 0, g: 0, b: 0, a: 0}
+  downColor: {r: 0, g: 0, b: 0, a: 0}
+  upColor: {r: 0, g: 0, b: 0, a: 0}
+  leftColor: {r: 1, g: 0.3176471, b: 0, a: 1}
+  rightColor: {r: 0.8431373, g: 0, b: 1, a: 1}
   downSprite: {fileID: 21300000, guid: cddf9b127c63f4b8cbb9d8de8e7dc7ef, type: 3}
   upSprite: {fileID: 21300000, guid: cd33a9fe5cbb945ce9b49dcd8d342711, type: 3}
   leftSprite: {fileID: 21300000, guid: 6a43f47ba19dd49ac95ec52d57c94ea5, type: 3}
