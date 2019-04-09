@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 114919944565962558, guid: 4f0fe349eda9873458f0c09aaa522573, type: 3}
   - {fileID: 114497351476026216, guid: 54200988998a8ac4d9daa8804ec9c672, type: 3}
   - {fileID: 114160729706809534, guid: 7282bf7f034e9e44da6ff8bba2df9138, type: 3}
+  - {fileID: 4939999043909785155, guid: 03001e6c3de866f489db4bed15528a91, type: 3}
   currentLevel: {fileID: 114215779067947470, guid: 5c65acb88a0421646a47705ff7f4614e,
     type: 3}
   godMode: 1
