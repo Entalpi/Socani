@@ -78,7 +78,6 @@ public class AudioManager : MonoBehaviour {
     if (s.type == Sound.SoundType.Music && !music || s.type == Sound.SoundType.Effect && !effect) {
       return;
     }
-    Debug.Log("Playing: " + name);
     s.source.Play();
   }
 }
