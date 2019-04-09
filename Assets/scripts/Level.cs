@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using UnityEngine;
 
 /// <summary>
@@ -30,6 +32,8 @@ public class Level : MonoBehaviour {
 	public Texture2D[] tileLayers;
   // Calculated at load time
   public Vector2Int dimensions;
+  // Tiled level in .tmx format
+  public string tiledLevelTMXData;
   
   // Resets all progress on the Level
   public void Reset() {
@@ -39,12 +43,51 @@ public class Level : MonoBehaviour {
     numCoinsRewarded = 0;
   }
 
+  void loadTMXFile(string tmxFile) {
+    XmlDocument xmlDoc = new XmlDocument();
+    xmlDoc.Load(tmxFile);
+    Debug.Log(xmlDoc.ChildNodes.Count);
+    for (int i = 0; i < xmlDoc.ChildNodes.Count; i++) {
+      XmlNode childNode = xmlDoc.ChildNodes[i];
+      if (childNode.Name == "map") {
+        Debug.Log(childNode.Attributes.GetNamedItem("width"));
+        Debug.Log(childNode.Attributes.GetNamedItem("height"));
+        Debug.Log(childNode.Attributes.GetNamedItem("tileWidth"));
+        Debug.Log(childNode.Attributes.GetNamedItem("tileHeight"));
+        if (childNode.FirstChild.Name == "tileset") {
+          Debug.Log(childNode.FirstChild.Attributes.GetNamedItem("source"));
+        }
+        foreach (XmlNode layers in childNode.ChildNodes) {
+
+        }
+      }
+    }
+
+    /*
+    string xmlPathPattern = "//Questions/Question";
+    XmlNodeList myNodeList = xmlDoc.SelectNodes(xmlPathPattern);
+    foreach (XmlNode node in myNodeList) {
+      XmlNode questionText = node.FirstChild;
+      XmlNode answer = questionText.NextSibling;
+      totVal += "questionText: " + Name.InnerXml + "\n answer: " + Tag.InnerXml + "\n\n";
+      Debug.Log("List" + totVal);
+      uiText.text = totVal;
+    }
+    */
+  }
+
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
   public Dictionary<Vector2Int, List<GameObject>> Load(GameBoard gameboard, ref Dictionary<Vector3Int, Color> tileMappings) {
 		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
 
     int maxWidth  = 0; // Dimensions of the loaded lvl in tiles
     int maxHeight = 0;
+
+    if (tiledLevelTMXData.Length > 0) {
+      Debug.Log("Loading TMX");
+      loadTMXFile(tiledLevelTMXData);
+      return;
+    }
 
     for (int z = 0; z < tileLayers.Length; z++) {
 			Texture2D tileLayer = tileLayers[z];
