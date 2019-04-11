@@ -43,37 +43,71 @@ public class Level : MonoBehaviour {
     numCoinsRewarded = 0;
   }
 
-  void loadTMXFile(string tmxFile) {
+  static Dictionary<int, GameObject> loadTileset(string filepath) {
     XmlDocument xmlDoc = new XmlDocument();
-    xmlDoc.Load(tmxFile);
-    Debug.Log(xmlDoc.ChildNodes.Count);
-    for (int i = 0; i < xmlDoc.ChildNodes.Count; i++) {
-      XmlNode childNode = xmlDoc.ChildNodes[i];
-      if (childNode.Name == "map") {
-        Debug.Log(childNode.Attributes.GetNamedItem("width"));
-        Debug.Log(childNode.Attributes.GetNamedItem("height"));
-        Debug.Log(childNode.Attributes.GetNamedItem("tileWidth"));
-        Debug.Log(childNode.Attributes.GetNamedItem("tileHeight"));
-        if (childNode.FirstChild.Name == "tileset") {
-          Debug.Log(childNode.FirstChild.Attributes.GetNamedItem("source"));
-        }
-        foreach (XmlNode layers in childNode.ChildNodes) {
-
+    xmlDoc.Load("Assets/Resources/levels/levels" + "/" + filepath); // HACK: Tiled uses relative filepaths ..
+    Dictionary<int, GameObject> tileset = new Dictionary<int, GameObject>();
+    foreach (XmlNode childNode in xmlDoc.ChildNodes) {
+      if (childNode.Name == "tileset") {
+        foreach (XmlNode tile in childNode.ChildNodes) {
+          if (tile.Name == "tile") {
+            int id = int.Parse(tile.Attributes.GetNamedItem("id").Value);
+            foreach (XmlNode property in tile.FirstChild.ChildNodes) { // Assumption
+              if (property.Attributes.GetNamedItem("name")?.Value == "prefab_name") {
+                string prefabName = property.Attributes.GetNamedItem("value").Value;
+                Debug.Log("prefabs/" + prefabName);
+                tileset[id] = Resources.Load<GameObject>("prefabs/" + prefabName);
+                if (tileset[id] == null) {
+                  Debug.LogError("Lets start question our life choices");
+                }
+                Debug.Log("Loaded " + "prefabs/" + prefabName + " with id =" + id);
+              }
+            }
+          }
         }
       }
     }
+    return tileset;
+  }
 
-    /*
-    string xmlPathPattern = "//Questions/Question";
-    XmlNodeList myNodeList = xmlDoc.SelectNodes(xmlPathPattern);
-    foreach (XmlNode node in myNodeList) {
-      XmlNode questionText = node.FirstChild;
-      XmlNode answer = questionText.NextSibling;
-      totVal += "questionText: " + Name.InnerXml + "\n answer: " + Tag.InnerXml + "\n\n";
-      Debug.Log("List" + totVal);
-      uiText.text = totVal;
+  Dictionary<Vector2Int, List<GameObject>> loadTMXFile(string tmxFile) {
+    XmlDocument xmlDoc = new XmlDocument();
+    xmlDoc.Load(tmxFile);
+    foreach (XmlNode childNode in xmlDoc.ChildNodes) {
+      if (childNode.Name == "map") {
+        int width = int.Parse(childNode.Attributes.GetNamedItem("width")?.Value);
+        int height = int.Parse(childNode.Attributes.GetNamedItem("height")?.Value);
+        Dictionary<int, GameObject> tileset;
+        if (childNode.FirstChild.Name == "tileset") {
+          string tileSetPath = childNode.FirstChild.Attributes.GetNamedItem("source").Value;
+          tileset = loadTileset(tileSetPath);
+        } else {
+          Debug.LogError("Tileset missing from level .tmx");
+          return null;
+        }
+        Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
+        foreach (XmlNode layer in childNode.ChildNodes) {
+          if (layer.Name == "layer") {
+            string tileLayer = layer.FirstChild.InnerText; // CSV 
+            string[] tiles = tileLayer.Split(',');
+            for (int x = 0; x < width; x++) {
+              for (int y = 0; y < height; y++) {
+                // NOTE: .tmx, 0 = empty thus all indices are + 1 and need to be decremented
+                int tileIdx = int.Parse(tiles[x * width + y]) - 1;
+                if (tileIdx <= -1) { continue; }
+                var position = new Vector2Int(x, y);
+                if (!board.ContainsKey(position)) {
+                  board[position] = new List<GameObject>(2);
+                }
+                board[position].Add(tileset[tileIdx]);
+              }
+            }
+          }
+        }
+        return board; // XML parsing succeeded
+      }
     }
-    */
+    return null; // XML parsing failed
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
@@ -85,8 +119,7 @@ public class Level : MonoBehaviour {
 
     if (tiledLevelTMXData.Length > 0) {
       Debug.Log("Loading TMX");
-      loadTMXFile(tiledLevelTMXData);
-      return;
+      return loadTMXFile(tiledLevelTMXData);
     }
 
     for (int z = 0; z < tileLayers.Length; z++) {

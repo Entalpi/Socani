@@ -54,7 +54,7 @@
  </tile>
  <tile id="25">
   <properties>
-   <property name="prefab_name" value="crate"/>
+   <property name="prefab_name" value="Crate"/>
   </properties>
   <image width="128" height="128" source="../assets/Crates/crate_02.png"/>
  </tile>
@@ -131,6 +131,9 @@
   <image width="128" height="128" source="../assets/Crates/crate_26.png"/>
  </tile>
  <tile id="50">
+  <properties>
+   <property name="prefab_name" value="CrateGoal"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_27.png"/>
  </tile>
  <tile id="51">
@@ -191,6 +194,9 @@
   <image width="128" height="128" source="../assets/Blocks/block_01.png"/>
  </tile>
  <tile id="70">
+  <properties>
+   <property name="prefab_name" value="Wall"/>
+  </properties>
   <image width="128" height="128" source="../assets/Blocks/block_02.png"/>
  </tile>
  <tile id="71">
@@ -221,6 +227,9 @@
   <image width="128" height="128" source="../assets/Ground/ground_03.png"/>
  </tile>
  <tile id="80">
+  <properties>
+   <property name="prefab_name" value="Ground"/>
+  </properties>
   <image width="128" height="128" source="../assets/Ground/ground_04.png"/>
  </tile>
  <tile id="81">

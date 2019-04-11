@@ -53,4 +53,4 @@ MonoBehaviour:
   levelIndex: 0
   tileLayers: []
   dimensions: {x: 0, y: 0}
-  tiledLevelTMXData: Assets/levels/level10/level10.tmx
+  tiledLevelTMXData: Assets/Resources/levels/level10/level10.tmx
