@@ -118,7 +118,7 @@ public class LevelSelector : MonoBehaviour {
       DisplayLevelUnlockedAnimation(level);
     } else {
       LevelManager.instance.currentLevel = level;
-      StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
+      StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/playing"));
     }
   }
 }

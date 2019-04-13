@@ -77,6 +77,7 @@ public class Level : MonoBehaviour {
       if (childNode.Name == "map") {
         int width = int.Parse(childNode.Attributes.GetNamedItem("width")?.Value);
         int height = int.Parse(childNode.Attributes.GetNamedItem("height")?.Value);
+        dimensions = new Vector2Int(width, height);
         Dictionary<int, GameObject> tileset;
         if (childNode.FirstChild.Name == "tileset") {
           string tileSetPath = childNode.FirstChild.Attributes.GetNamedItem("source").Value;

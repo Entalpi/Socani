@@ -192,7 +192,7 @@ public class GameBoard : MonoBehaviour {
 		}
     currentLevel.numRewindsLeft = boardUI.numRewindsLeft;
     LevelManager.instance.levelCompleted(currentLevel);
-		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/afterlevelmenu"));
+		StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/afterlevelmenu"));
 		return true;
 	}
 
@@ -248,7 +248,7 @@ public class GameBoard : MonoBehaviour {
 
 	public void pressedLevelsButton() {
     AudioManager.instance.Play("click");
-    StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+    StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/levelselectionmenu"));
 	}
 
 	public void pressedMenuCancelButton() {

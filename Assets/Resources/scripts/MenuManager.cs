@@ -10,9 +10,9 @@ public class MenuManager : MonoBehaviour {
 
     if (PlayerPrefs.GetInt("is_first_run", 1) == 1) {
       PlayerPrefs.SetInt("is_first_run", 0);
-      StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
+      StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/playing"));
     } else {
-      StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+      StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/levelselectionmenu"));
     }
   } 
 
