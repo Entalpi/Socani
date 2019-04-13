@@ -46,12 +46,12 @@ public class AfterLevelMenuManager : MonoBehaviour {
     }
 
 		LevelManager.instance.loadNextLevel();
-		StartCoroutine(GetComponent<Fading>().LoadScene("scenes/playing"));
+		StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/playing"));
 	}
 
 	public void LevelSelectionButtonPressed() {
     AudioManager.instance.Play("click");
-    StartCoroutine(GetComponent<Fading>().LoadScene("scenes/levelselectionmenu"));
+    StartCoroutine(GetComponent<Fading>().LoadScene("Resources/scenes/levelselectionmenu"));
   }
 
   public IEnumerator RewindHeadCoinAnimation() {
