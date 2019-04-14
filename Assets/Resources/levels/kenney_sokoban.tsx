@@ -35,6 +35,9 @@
   <image width="128" height="128" source="../assets/Environment/environment_11.png"/>
  </tile>
  <tile id="19">
+  <properties>
+   <property name="prefab_name" value="Coin"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_12.png"/>
  </tile>
  <tile id="20">
@@ -47,6 +50,9 @@
   <image width="128" height="128" source="../assets/Environment/environment_15.png"/>
  </tile>
  <tile id="23">
+  <properties>
+   <property name="prefab_name" value="Player"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_16.png"/>
  </tile>
  <tile id="24">
