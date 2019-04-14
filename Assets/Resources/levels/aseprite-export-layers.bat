@@ -1,6 +1,5 @@
 D:
 cd \SteamLibrary\steamapps\common\Aseprite
-:: dir /b /o:gn
 @set ASEPRITE=Aseprite.exe
 @set INPUT_NAME=level7
 @set OUTPUT_NAME=%INPUT_NAME%
