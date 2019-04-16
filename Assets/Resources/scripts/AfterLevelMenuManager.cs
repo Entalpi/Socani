@@ -34,7 +34,7 @@ public class AfterLevelMenuManager : MonoBehaviour {
   public void nextLevelButtonPressed() {
     AudioManager.instance.Play("click");
 
-    int levelIndex = LevelManager.instance.currentLevel.levelIndex + 1;
+    uint levelIndex = LevelManager.instance.currentLevel.levelIndex + 1;
     if (levelIndex >= LevelManager.instance.levels.Length) { return; }
 
     if (!LevelManager.instance.nextLevel().unlocked) {

@@ -27,7 +27,7 @@ public class Level : MonoBehaviour {
   // # of coins on the level 
   public int numCoins = 0;
   // User visible level number 
-  public int levelIndex = 0;
+  public uint levelIndex = 0;
   // Textures representing the level composition
 	public Texture2D[] tileLayers;
   // Calculated at load time
