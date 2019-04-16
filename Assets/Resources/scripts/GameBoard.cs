@@ -167,7 +167,7 @@ public class GameBoard : MonoBehaviour {
     pos -= origin;
 		pos.x /= Tile.Size.x;
 		pos.y /= Tile.Size.y;
-		return new Vector3Int((int) pos.x, (int) pos.y, (int) -pos.z);
+		return new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(-pos.z));
 	}
 
 	// Checks if all the crate goals are fulfilled and returns the result while loading the next level
