@@ -27,6 +27,11 @@ public class LevelManager : MonoBehaviour {
 
     DontDestroyOnLoad(this);
 
+    // Automatically assign level indices
+    for (uint i = 0; i < levels.Length; i++) {
+      levels[i].levelIndex = i;
+    }
+
     if (reset) {
       for (int i = 0; i < 3; i++) {
         levels[i].Reset();
