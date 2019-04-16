@@ -55,12 +55,11 @@ public class Level : MonoBehaviour {
             foreach (XmlNode property in tile.FirstChild.ChildNodes) { // Assumption
               if (property.Attributes.GetNamedItem("name")?.Value == "prefab_name") {
                 string prefabName = property.Attributes.GetNamedItem("value").Value;
-                Debug.Log("prefabs/" + prefabName);
                 tileset[id] = Resources.Load<GameObject>("prefabs/" + prefabName);
                 if (tileset[id] == null) {
-                  Debug.LogError("Lets start question our life choices");
+                  Debug.LogError("Lets start to question our life choices");
                 }
-                Debug.Log("Loaded " + "prefabs/" + prefabName + " with id =" + id);
+                Debug.Log("Loaded " + "prefabs/" + prefabName + " with id = " + id);
               }
             }
           }
