@@ -48,7 +48,7 @@ MonoBehaviour:
   numRewindsLeft: 0
   unlocked: 0
   numCoinsRewarded: 0
-  unlockPrice: 0
+  unlockPrice: 4
   numCoins: 0
   levelIndex: 0
   tileLayers: []
