@@ -90,10 +90,10 @@ public class Level : MonoBehaviour {
           if (layer.Name == "layer") {
             string tileLayer = layer.FirstChild.InnerText; // CSV 
             string[] tiles = tileLayer.Split(',');
-            for (int x = 0; x < width; x++) {
-              for (int y = 0; y < height; y++) {
+            for (int y = 0; y < height; y++) {
+              for (int x = 0; x < width; x++) {
                 // NOTE: .tmx, 0 = empty thus all indices are + 1 and need to be decremented
-                int tileIdx = int.Parse(tiles[x * width + y]) - 1;
+                int tileIdx = int.Parse(tiles[y * width + x]) - 1;
                 if (tileIdx <= -1) { continue; }
                 var position = new Vector2Int(x, y);
                 if (!board.ContainsKey(position)) {
