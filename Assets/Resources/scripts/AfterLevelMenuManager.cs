@@ -20,14 +20,15 @@ public class AfterLevelMenuManager : MonoBehaviour {
 
     if (LevelManager.instance.nextLevel() == null) { nextLevelButton.SetActive(false); }
 
-    if (!LevelManager.instance.nextLevel().unlocked) {
-      if (LevelManager.instance.nextLevel().unlockPrice > PlayerPrefs.GetInt("coins")) {
-        nextLevelButton.GetComponent<Text>().text = "Watch ad";
-      } else {
-        nextLevelButton.GetComponent<Text>().text = "Unlock level";
+    if (LevelManager.instance.nextLevel() != null) {
+      if (!LevelManager.instance.nextLevel().unlocked) {
+        if (LevelManager.instance.nextLevel().unlockPrice > PlayerPrefs.GetInt("coins")) {
+          nextLevelButton.GetComponent<Text>().text = "Watch ad";
+        } else {
+          nextLevelButton.GetComponent<Text>().text = "Unlock level";
+        }
       }
     }
-
     StartCoroutine(RewindHeadCoinAnimation());
   }
 
