@@ -100,6 +100,11 @@ public class Level : MonoBehaviour {
                   board[position] = new List<GameObject>(2);
                 }
                 board[position].Add(tileset[tileIdx]);
+
+                // Construct level variables
+                if (tileset[tileIdx].GetComponent<Coin>()) {
+                  numCoins++;
+                }
               }
             }
           }
