@@ -57,9 +57,9 @@ public class GameBoard : MonoBehaviour {
     foreach (Vector2Int pos in board.Keys) {
       var tiles = board[pos];
       for (int z = 0; z < tiles.Count; z++) {
-        GameObject tilePrefab = tiles[z];
         Vector3Int boardPosition = new Vector3Int(pos.x, pos.y, z);
         Vector3 worldPosition = board_to_world_position(boardPosition);
+        GameObject tilePrefab = tiles[z];
         GameObject obj = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
         obj.transform.localScale = new Vector3(scale.x, scale.y, 1.0f);
 
@@ -67,6 +67,7 @@ public class GameBoard : MonoBehaviour {
           obj.GetComponent<Tile>().boardPosition = boardPosition;
         }
 
+        // FIXME: This approach wont work using Tiled maps 
         if (obj.GetComponent<ForceField>()) {
           var key = new Vector3Int(pos.x, pos.y, z);
           var value = new Color(0.0f, 0.0f, 0.0f);
