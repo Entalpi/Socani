@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="75" columns="0">
+<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="79" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="8">
   <image width="128" height="128" source="../assets/Environment/environment_01.png"/>
@@ -51,7 +51,7 @@
  </tile>
  <tile id="23">
   <properties>
-   <property name="prefab_name" value="Player"/>
+   <property name="prefab_name" value="PlayerSpawn"/>
   </properties>
   <image width="128" height="128" source="../assets/Environment/environment_16.png"/>
  </tile>
@@ -243,5 +243,33 @@
  </tile>
  <tile id="82">
   <image width="128" height="128" source="../assets/Ground/ground_06.png"/>
+ </tile>
+ <tile id="87">
+  <properties>
+   <property name="direction" value="up"/>
+   <property name="prefab_name" value="ForceField"/>
+  </properties>
+  <image width="50" height="50" source="../assets/arrowUp.png"/>
+ </tile>
+ <tile id="88">
+  <properties>
+   <property name="direction" value="down"/>
+   <property name="prefab_name" value="ForceField"/>
+  </properties>
+  <image width="50" height="50" source="../assets/arrowDown.png"/>
+ </tile>
+ <tile id="89">
+  <properties>
+   <property name="direction" value="left"/>
+   <property name="prefab_name" value="ForceField"/>
+  </properties>
+  <image width="50" height="50" source="../assets/arrowLeft.png"/>
+ </tile>
+ <tile id="90">
+  <properties>
+   <property name="direction" value="right"/>
+   <property name="prefab_name" value="ForceField"/>
+  </properties>
+  <image width="50" height="50" source="../assets/arrowRight.png"/>
  </tile>
 </tileset>
