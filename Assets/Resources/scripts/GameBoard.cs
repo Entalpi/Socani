@@ -44,8 +44,7 @@ public class GameBoard : MonoBehaviour {
 		moveHistory.Clear();
 
     // Mapping between prefabs filled in the board and their color that matched during loading of the level
-    Dictionary<Vector3Int, Color> tileMappings = new Dictionary<Vector3Int, Color>();
-    board = currentLevel.Load(this, ref tileMappings);  // Load the current level
+    board = currentLevel.Load();  // Load the current level
 
     // Rescale tile size to fit the screen based on the Level dimensions and pixel scr size
     float scaleX = Mathf.Min(Screen.width  / (100.0f * Tile.OriginalSize.x * (currentLevel.dimensions.x + 0)), 1.0f);
@@ -59,25 +58,13 @@ public class GameBoard : MonoBehaviour {
       for (int z = 0; z < tiles.Count; z++) {
         Vector3Int boardPosition = new Vector3Int(pos.x, pos.y, z);
         Vector3 worldPosition = board_to_world_position(boardPosition);
-        GameObject tilePrefab = tiles[z];
-        GameObject obj = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
-        obj.transform.localScale = new Vector3(scale.x, scale.y, 1.0f);
-
+        GameObject obj = board[pos][z];
         if (obj.GetComponent<Tile>()) {
           obj.GetComponent<Tile>().boardPosition = boardPosition;
         }
-
-        // FIXME: This approach wont work using Tiled maps 
-        if (obj.GetComponent<ForceField>()) {
-          var key = new Vector3Int(pos.x, pos.y, z);
-          var value = new Color(0.0f, 0.0f, 0.0f);
-          if (tileMappings.TryGetValue(key, out value)) {
-            obj.GetComponent<ForceField>().directionFromColor(value);
-          }
-        }
-
+        obj.transform.position = worldPosition;
+        obj.transform.localScale = new Vector3(scale.x, scale.y, 1.0f);
         obj.transform.SetParent(transform);
-        board[pos][z] = obj;
       }
     }
   }
