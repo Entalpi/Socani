@@ -43,7 +43,29 @@ public class Level : MonoBehaviour {
     numCoinsRewarded = 0;
   }
 
-  static Dictionary<int, GameObject> loadTileset(string filepath) {
+  static void parseTileProperties(GameObject obj, int id, Dictionary<int, Dictionary<string, string>> tileProperties) {
+    if (obj.GetComponent<ForceField>()) {
+      if (tileProperties[id].ContainsKey("direction")) {
+        switch (tileProperties[id]["direction"]) {
+          case "left":
+            obj.GetComponent<ForceField>().ForceDirection = ForceField.Direction.left;
+            break;
+          case "right":
+            obj.GetComponent<ForceField>().ForceDirection = ForceField.Direction.right;
+            break;
+          case "down":
+            obj.GetComponent<ForceField>().ForceDirection = ForceField.Direction.down;
+            break;
+          case "up":
+            obj.GetComponent<ForceField>().ForceDirection = ForceField.Direction.up;
+            break;
+        }
+      }
+    }
+  }
+
+  // Loads the tileset referenced by the level.tmx file into a dictionary lookup
+  static Dictionary<int, GameObject> loadTileset(string filepath, ref Dictionary<int, Dictionary<string, string>> tilesetProperties) {
     XmlDocument xmlDoc = new XmlDocument();
     xmlDoc.Load("Assets/Resources/levels/levels" + "/" + filepath); // HACK: Tiled uses relative filepaths ..
     Dictionary<int, GameObject> tileset = new Dictionary<int, GameObject>();
@@ -60,6 +82,14 @@ public class Level : MonoBehaviour {
                   Debug.LogError("Lets start to question our life choices");
                 }
                 Debug.Log("Loaded " + "prefabs/" + prefabName + " with id = " + id);
+
+                // Adds the properties of the tile to a dictionary for lookup later on
+                foreach (XmlNode prop in tile.FirstChild.ChildNodes) { // Assumption
+                  if (!tilesetProperties.ContainsKey(id)) {
+                    tilesetProperties[id] = new Dictionary<string, string>();
+                  }
+                  tilesetProperties[id][prop.Attributes.GetNamedItem("name")?.Value] = prop.Attributes.GetNamedItem("value")?.Value;
+                }
               }
             }
           }
@@ -78,9 +108,10 @@ public class Level : MonoBehaviour {
         int height = int.Parse(childNode.Attributes.GetNamedItem("height")?.Value);
         dimensions = new Vector2Int(width, height);
         Dictionary<int, GameObject> tileset;
+        Dictionary<int, Dictionary<string, string>> tilesetProperties = new Dictionary<int, Dictionary<string, string>>();
         if (childNode.FirstChild.Name == "tileset") {
           string tileSetPath = childNode.FirstChild.Attributes.GetNamedItem("source").Value;
-          tileset = loadTileset(tileSetPath);
+          tileset = loadTileset(tileSetPath, ref tilesetProperties);
         } else {
           Debug.LogError("Tileset missing from level .tmx");
           return null;
@@ -99,7 +130,10 @@ public class Level : MonoBehaviour {
                 if (!board.ContainsKey(position)) {
                   board[position] = new List<GameObject>(2);
                 }
-                board[position].Add(tileset[tileIdx]);
+
+                GameObject obj = Instantiate(tileset[tileIdx]);
+                parseTileProperties(obj, tileIdx, tilesetProperties);
+                board[position].Add(obj);
 
                 // Construct level variables
                 if (tileset[tileIdx].GetComponent<Coin>()) {
@@ -116,55 +150,11 @@ public class Level : MonoBehaviour {
   }
 
   // Loads the tile layers in to a Dictionary with the tile position as key and a list of tiles as the value
-  public Dictionary<Vector2Int, List<GameObject>> Load(GameBoard gameboard, ref Dictionary<Vector3Int, Color> tileMappings) {
-		Dictionary<Vector2Int, List<GameObject>> board = new Dictionary<Vector2Int, List<GameObject>>();
-
-    int maxWidth  = 0; // Dimensions of the loaded lvl in tiles
-    int maxHeight = 0;
-
+  public Dictionary<Vector2Int, List<GameObject>> Load() {
     if (tiledLevelTMXData.Length > 0) {
-      Debug.Log("Loading TMX");
       return loadTMXFile(tiledLevelTMXData);
-    }
-
-    for (int z = 0; z < tileLayers.Length; z++) {
-			Texture2D tileLayer = tileLayers[z];
-
-      if (tileLayer.width  > maxWidth)  { maxWidth = tileLayer.width; }
-      if (tileLayer.height > maxHeight) { maxHeight = tileLayer.height; }
-
-      for (int x = 0; x < tileLayer.width; x++) {
-				for (int y = 0; y < tileLayer.height; y++) {
-					// Generate a new tile
-					Color color = tileLayers[z].GetPixel(x, y);
-					if (color.a == 0.0f) { continue; }
-
-					var position = new Vector2Int(x, y);
-					if (!board.ContainsKey(position)) {
-						board[position] = new List<GameObject>(2);
-					}
-
-          bool foundMatchingColor = false;
-					for (int i = 0; i < gameboard.mappings.Length; i++) {
-						TileMapping tileMapping = gameboard.mappings[i];
-						if (color.Equals(tileMapping.color)) {
-              foundMatchingColor = true;
-
-              board[position].Add(tileMapping.prefab);
-              // Construct level variables
-              if (tileMapping.prefab.GetComponent<Coin>()) {
-                numCoins++;
-              }
-
-              tileMappings[new Vector3Int(x, y, board[position].Count - 1)] = tileMapping.color;
-            }
-          }
-
-          if (!foundMatchingColor) { Debug.Log(string.Format("Did not find matching color for color: {0}", color)); }
-				}
-			}
-		}
-    dimensions = new Vector2Int(maxWidth, maxHeight);
-		return board;
+    } 
+    Debug.LogError("Failed to load level ...");
+    return null;
 	}
 }
