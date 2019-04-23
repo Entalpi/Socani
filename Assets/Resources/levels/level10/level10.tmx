@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="7" height="6" tilewidth="128" tileheight="128" infinite="0" nextlayerid="9" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="7" height="6" tilewidth="128" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="1">
  <tileset firstgid="1" source="../kenney_sokoban.tsx"/>
  <layer id="4" name="Ground" width="7" height="6">
   <data encoding="csv">
 81,81,81,81,81,81,81,
-81,81,91,81,81,89,81,
 81,81,81,81,81,81,81,
 81,81,81,81,81,81,81,
-81,81,88,81,81,90,81,
+81,81,81,81,81,81,81,
+81,81,81,81,81,81,81,
 81,81,81,81,81,81,81
 </data>
  </layer>
@@ -48,6 +48,16 @@
 0,0,0,24,0,0,0,
 0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,
+0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="9" name="ForceFields" width="7" height="6">
+  <data encoding="csv">
+0,0,0,0,0,0,0,
+0,0,91,0,0,89,0,
+0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,
+0,0,88,0,0,90,0,
 0,0,0,0,0,0,0
 </data>
  </layer>
