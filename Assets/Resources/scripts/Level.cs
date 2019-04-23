@@ -62,6 +62,42 @@ public class Level : MonoBehaviour {
         }
       }
     }
+    if (obj.GetComponent<Crate>()) {
+      if (tileProperties[id].ContainsKey("color")) {
+        switch (tileProperties[id]["color"]) {
+          case "red":
+            obj.GetComponent<Crate>().Color = CrateColor.red;
+            break;
+          case "blue":
+            obj.GetComponent<Crate>().Color = CrateColor.blue;
+            break;
+          case "green":
+            obj.GetComponent<Crate>().Color = CrateColor.green;
+            break;
+          case "normal":
+            obj.GetComponent<Crate>().Color = CrateColor.normal;
+            break;
+        }
+      }
+    }
+    if (obj.GetComponent<CrateGoal>()) {
+      if (tileProperties[id].ContainsKey("color")) {
+        switch (tileProperties[id]["color"]) {
+          case "red":
+            obj.GetComponent<CrateGoal>().Color = CrateColor.red;
+            break;
+          case "blue":
+            obj.GetComponent<CrateGoal>().Color = CrateColor.blue;
+            break;
+          case "green":
+            obj.GetComponent<CrateGoal>().Color = CrateColor.green;
+            break;
+          case "normal":
+            obj.GetComponent<CrateGoal>().Color = CrateColor.normal;
+            break;
+        }
+      }
+    }
   }
 
   // Loads the tileset referenced by the level.tmx file into a dictionary lookup
@@ -81,7 +117,7 @@ public class Level : MonoBehaviour {
                 if (tileset[id] == null) {
                   Debug.LogError("Lets start to question our life choices");
                 }
-                Debug.Log("Loaded " + "prefabs/" + prefabName + " with id = " + id);
+                // Debug.Log("Loaded " + "prefabs/" + prefabName + " with id = " + id);
 
                 // Adds the properties of the tile to a dictionary for lookup later on
                 foreach (XmlNode prop in tile.FirstChild.ChildNodes) { // Assumption

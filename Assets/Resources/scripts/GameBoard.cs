@@ -168,7 +168,7 @@ public class GameBoard : MonoBehaviour {
           bool nextTile = false;
           for (int i = 0; i < stack.Count; i++) {
             if (stack[i].GetComponent<Crate>()) {
-              if (stack[z].GetComponent<CrateGoal>().crateColor.Equals(stack[i].GetComponent<Crate>().crateColor)) {
+              if (stack[z].GetComponent<CrateGoal>().Color.Equals(stack[i].GetComponent<Crate>().Color)) {
                 nextTile = true;
               }
             }
