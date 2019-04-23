@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="79" columns="0">
+<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="78" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="8">
   <image width="128" height="128" source="../assets/Environment/environment_01.png"/>
@@ -31,9 +31,6 @@
  <tile id="17">
   <image width="128" height="128" source="../assets/Environment/environment_10.png"/>
  </tile>
- <tile id="18">
-  <image width="128" height="128" source="../assets/Environment/environment_11.png"/>
- </tile>
  <tile id="19">
   <properties>
    <property name="prefab_name" value="Coin"/>
@@ -60,17 +57,30 @@
  </tile>
  <tile id="25">
   <properties>
+   <property name="color" value="normal"/>
    <property name="prefab_name" value="Crate"/>
   </properties>
   <image width="128" height="128" source="../assets/Crates/crate_02.png"/>
  </tile>
  <tile id="26">
+  <properties>
+   <property name="color" value="red"/>
+   <property name="prefab_name" value="Crate"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_03.png"/>
  </tile>
  <tile id="27">
+  <properties>
+   <property name="color" value="blue"/>
+   <property name="prefab_name" value="Crate"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_04.png"/>
  </tile>
  <tile id="28">
+  <properties>
+   <property name="color" value="green"/>
+   <property name="prefab_name" value="Crate"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_05.png"/>
  </tile>
  <tile id="29">
@@ -138,17 +148,30 @@
  </tile>
  <tile id="50">
   <properties>
+   <property name="color" value="normal"/>
    <property name="prefab_name" value="CrateGoal"/>
   </properties>
   <image width="128" height="128" source="../assets/Crates/crate_27.png"/>
  </tile>
  <tile id="51">
+  <properties>
+   <property name="color" value="red"/>
+   <property name="prefab_name" value="CrateGoal"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_28.png"/>
  </tile>
  <tile id="52">
+  <properties>
+   <property name="color" value="blue"/>
+   <property name="prefab_name" value="CrateGoal"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_29.png"/>
  </tile>
  <tile id="53">
+  <properties>
+   <property name="color" value="green"/>
+   <property name="prefab_name" value="CrateGoal"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_30.png"/>
  </tile>
  <tile id="54">

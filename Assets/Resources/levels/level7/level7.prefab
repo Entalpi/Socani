@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1309081508666404}
-  m_IsPrefabAsset: 1
 --- !u!1 &1309081508666404
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4887678943580294}
@@ -29,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4887678943580294
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309081508666404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -42,21 +33,22 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114160729706809534
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309081508666404}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completed: 1
-  numberOfMoves: 1
+  completed: 0
+  numberOfMoves: 0
   numRewindsLeft: 3
-  unlocked: 1
-  unlockPrice: 3
+  unlocked: 0
   numCoinsRewarded: 0
+  unlockPrice: 3
   numCoins: 0
   levelIndex: 6
   tileLayers:
@@ -69,3 +61,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 2a95c0725f528e146a2f999a03d3f952, type: 3}
   - {fileID: 2800000, guid: 7d77efd4faf40f1408776d43bbd8849f, type: 3}
   dimensions: {x: 0, y: 0}
+  tiledLevelTMXData: Assets/Resources/levels/level7/level7.tmx
