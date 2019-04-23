@@ -126,7 +126,7 @@ public class Level : MonoBehaviour {
                 // NOTE: .tmx, 0 = empty thus all indices are + 1 and need to be decremented
                 int tileIdx = int.Parse(tiles[y * width + x]) - 1;
                 if (tileIdx <= -1) { continue; }
-                var position = new Vector2Int(x, y);
+                var position = new Vector2Int(x, (height - y)); // NOTE: Tiled origin is top left (GameBoard is bottom left)
                 if (!board.ContainsKey(position)) {
                   board[position] = new List<GameObject>(2);
                 }
