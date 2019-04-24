@@ -2,30 +2,67 @@
 <tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="77" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="8">
+  <properties>
+   <property name="color" value="normal"/>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-start" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_01.png"/>
  </tile>
  <tile id="9">
+  <properties>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-end" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_02.png"/>
  </tile>
  <tile id="11">
+  <properties>
+   <property name="color" value="red"/>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-start" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_04.png"/>
  </tile>
  <tile id="12">
+  <properties>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-end" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_05.png"/>
  </tile>
  <tile id="13">
   <image width="128" height="128" source="../assets/Environment/environment_06.png"/>
  </tile>
  <tile id="14">
+  <properties>
+   <property name="color" value="blue"/>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-start" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_07.png"/>
  </tile>
  <tile id="15">
+  <properties>
+   <property name="color" value="blue"/>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-end" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_08.png"/>
  </tile>
  <tile id="16">
+  <properties>
+   <property name="color" value="green"/>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-start" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_09.png"/>
  </tile>
  <tile id="17">
+  <properties>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-end" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_10.png"/>
  </tile>
  <tile id="19">
@@ -35,9 +72,18 @@
   <image width="128" height="128" source="../assets/Environment/environment_12.png"/>
  </tile>
  <tile id="20">
+  <properties>
+   <property name="color" value="steel"/>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-start" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_13.png"/>
  </tile>
  <tile id="21">
+  <properties>
+   <property name="prefab_name" value="teleporter"/>
+   <property name="teleporter-end" type="bool" value="true"/>
+  </properties>
   <image width="128" height="128" source="../assets/Environment/environment_14.png"/>
  </tile>
  <tile id="22">
@@ -81,6 +127,10 @@
   <image width="128" height="128" source="../assets/Crates/crate_05.png"/>
  </tile>
  <tile id="29">
+  <properties>
+   <property name="color" value="steel"/>
+   <property name="prefab_name" value="Crate"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_06.png"/>
  </tile>
  <tile id="30">
@@ -172,6 +222,10 @@
   <image width="128" height="128" source="../assets/Crates/crate_30.png"/>
  </tile>
  <tile id="54">
+  <properties>
+   <property name="color" value="steel"/>
+   <property name="prefab_name" value="CrateGoal"/>
+  </properties>
   <image width="128" height="128" source="../assets/Crates/crate_31.png"/>
  </tile>
  <tile id="55">
