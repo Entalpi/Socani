@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="78" columns="0">
+<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="77" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="8">
   <image width="128" height="128" source="../assets/Environment/environment_01.png"/>
  </tile>
  <tile id="9">
   <image width="128" height="128" source="../assets/Environment/environment_02.png"/>
- </tile>
- <tile id="10">
-  <image width="128" height="128" source="../assets/Environment/environment_03.png"/>
  </tile>
  <tile id="11">
   <image width="128" height="128" source="../assets/Environment/environment_04.png"/>
