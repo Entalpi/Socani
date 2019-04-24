@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1425815805847354
+--- !u!1 &5234690229510832588
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4939426623166876}
-  - component: {fileID: 114428229559543658}
+  - component: {fileID: 5238625864000656722}
+  - component: {fileID: 5276937025819572252}
   m_Layer: 0
-  m_Name: level4
+  m_Name: level6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4939426623166876
+--- !u!4 &5238625864000656722
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425815805847354}
+  m_GameObject: {fileID: 5234690229510832588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114428229559543658
+--- !u!114 &5276937025819572252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425815805847354}
+  m_GameObject: {fileID: 5234690229510832588}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eba79f6235f20f04ebe5fada44e74d72, type: 3}
@@ -45,18 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completed: 0
   numberOfMoves: 0
-  numRewindsLeft: 3
+  numRewindsLeft: 1
   unlocked: 0
   numCoinsRewarded: 0
   unlockPrice: 2
   numCoins: 0
-  levelIndex: 3
+  levelIndex: 5
   tileLayers:
-  - {fileID: 2800000, guid: de3729c2edabe9142be95f5f87c692ff, type: 3}
-  - {fileID: 2800000, guid: be3cd004392861448802a3182433d8b0, type: 3}
-  - {fileID: 2800000, guid: f95368761a6387243863ac29b2cb3260, type: 3}
-  - {fileID: 2800000, guid: 4806b8e7239e84d47a204bd6db7d13d0, type: 3}
-  - {fileID: 2800000, guid: 5c562ebbd2096f548920c7ad174de179, type: 3}
-  - {fileID: 2800000, guid: 8be57d37a73338543a0cd8b85448e667, type: 3}
+  - {fileID: 2800000, guid: 22ce93ff5e758594caafc0ae1a41b167, type: 3}
+  - {fileID: 2800000, guid: d500fbc3919e86146942b5780d8ebb03, type: 3}
+  - {fileID: 2800000, guid: 6c0fccee991008b448ec688db536acc8, type: 3}
+  - {fileID: 2800000, guid: 2fd589011db710744bd010af092072d0, type: 3}
+  - {fileID: 2800000, guid: de91efbc37988444193ab96fb213304f, type: 3}
+  - {fileID: 2800000, guid: f8c38366b6774724b90162c4a920e65b, type: 3}
   dimensions: {x: 0, y: 0}
-  tiledLevelTMXData: Assets/Resources/levels/level4/level4.tmx
+  tiledLevelTMXData: Assets/Resources/levels/level6/level6.tmx
