@@ -34,7 +34,7 @@ public class GameBoard : MonoBehaviour {
 		menuPanel.SetActive(false); // Hide menu per default
     LoadLevel();
     Vector3 position = new Vector3(-currentLevel.dimensions.x * Tile.Size.x / 2.0f, -currentLevel.dimensions.y * Tile.Size.y / 2.0f, 10f);
-    position += new Vector3(Tile.Size.x / 2.0f, Tile.Size.y / 2.0f, 0.0f);
+    position += new Vector3(Tile.Size.x / 2.0f, 0.0f, 0.0f);
     transform.position = position;
   }
 
