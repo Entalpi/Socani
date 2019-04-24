@@ -23,7 +23,7 @@ public class AfterLevelMenuManager : MonoBehaviour {
     if (LevelManager.instance.nextLevel() != null) {
       if (!LevelManager.instance.nextLevel().unlocked) {
         if (LevelManager.instance.nextLevel().unlockPrice > PlayerPrefs.GetInt("coins")) {
-          nextLevelButton.GetComponent<Text>().text = "Watch ad";
+          nextLevelButton.GetComponent<Text>().text = "Watch ad"; // FIXME
         } else {
           nextLevelButton.GetComponent<Text>().text = "Unlock level";
         }
