@@ -45,12 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completed: 0
   numberOfMoves: 0
-  numRewindsLeft: 0
-  unlocked: 1
+  numRewindsLeft: 1
+  unlocked: 0
   numCoinsRewarded: 0
   unlockPrice: 2
   numCoins: 0
-  levelIndex: 4
+  levelIndex: 5
   tileLayers:
   - {fileID: 2800000, guid: 22ce93ff5e758594caafc0ae1a41b167, type: 3}
   - {fileID: 2800000, guid: d500fbc3919e86146942b5780d8ebb03, type: 3}
