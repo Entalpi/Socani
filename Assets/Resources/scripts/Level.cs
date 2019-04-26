@@ -115,7 +115,7 @@ public class Level : MonoBehaviour {
                 string prefabName = property.Attributes.GetNamedItem("value").Value;
                 tileset[id] = Resources.Load<GameObject>("prefabs/" + prefabName);
                 if (tileset[id] == null) {
-                  Debug.LogError("Lets start to question our life choices");
+                  Debug.LogError("prefabs/" + prefabName + " is null in tileset");
                 }
                 // Debug.Log("Loaded " + "prefabs/" + prefabName + " with id = " + id);
 
