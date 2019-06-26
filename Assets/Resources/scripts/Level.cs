@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -190,7 +191,8 @@ public class Level : MonoBehaviour {
     if (tiledLevelTMXData.Length > 0) {
       return loadTMXFile(tiledLevelTMXData);
     } 
+
     Debug.LogError("Failed to load level ...");
     return null;
-	}
+  }
 }
