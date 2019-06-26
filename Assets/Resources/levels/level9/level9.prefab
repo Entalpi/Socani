@@ -46,7 +46,7 @@ MonoBehaviour:
   completed: 0
   numberOfMoves: 0
   numRewindsLeft: 0
-  unlocked: 0
+  unlocked: 1
   numCoinsRewarded: 0
   unlockPrice: 4
   numCoins: 0
@@ -65,3 +65,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 70e47709408a749439d2c8188a5e2f9b, type: 3}
   - {fileID: 2800000, guid: 84bd9a98d777ed84195fef5ad33cae05, type: 3}
   dimensions: {x: 0, y: 0}
+  tiledLevelTMXData: Assets/Resources/levels/level9/level9.tmx
