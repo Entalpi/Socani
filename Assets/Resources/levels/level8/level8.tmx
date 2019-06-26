@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="12" height="7" tilewidth="128" tileheight="128" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="12" height="7" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="1">
  <tileset firstgid="1" source="../kenney_sokoban.tsx"/>
- <layer id="1" name="Tile Layer 1" width="12" height="7">
+ <layer id="4" name="Tile Layer 1" width="12" height="7">
   <data encoding="csv">
 0,0,81,81,81,81,81,81,81,81,0,0,
 81,81,81,81,81,81,81,81,81,81,81,81,
@@ -12,7 +12,7 @@
 0,0,81,81,81,81,81,81,81,81,0,0
 </data>
  </layer>
- <layer id="2" name="walls" width="12" height="7">
+ <layer id="5" name="walls" width="12" height="7">
   <data encoding="csv">
 0,0,71,71,71,71,71,71,71,71,0,0,
 71,71,71,0,0,71,0,0,0,0,71,71,
@@ -23,7 +23,7 @@
 0,0,71,71,71,71,71,71,71,71,0,0
 </data>
  </layer>
- <layer id="3" name="crates" width="12" height="7">
+ <layer id="6" name="crates" width="12" height="7">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,51,0,0,
