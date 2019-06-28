@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.3" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="77" columns="0">
+<tileset version="1.2" tiledversion="1.2.4" name="kenney_sokoban" tilewidth="128" tileheight="128" tilecount="78" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="8">
   <properties>
@@ -345,5 +345,12 @@
    <property name="prefab_name" value="ForceField"/>
   </properties>
   <image width="50" height="50" source="../assets/arrowRight.png"/>
+ </tile>
+ <tile id="91">
+  <properties>
+   <property name="prefab_name" value="Forcefield"/>
+   <property name="switchable" type="bool" value="true"/>
+  </properties>
+  <image width="32" height="32" source="../assets/switchable_forcefield_tile.png"/>
  </tile>
 </tileset>

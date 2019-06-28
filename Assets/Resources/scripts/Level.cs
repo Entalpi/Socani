@@ -62,6 +62,11 @@ public class Level : MonoBehaviour {
             break;
         }
       }
+      if (tileProperties[id].ContainsKey("switchable")) {
+        if (tileProperties[id]["switchable"] == "true") {
+          obj.GetComponent<ForceField>().Switchable = true;
+        }
+      }
     }
     if (obj.GetComponent<Crate>()) {
       if (tileProperties[id].ContainsKey("color")) {

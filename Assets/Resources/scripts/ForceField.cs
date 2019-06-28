@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
 
 public class ForceField : MonoBehaviour {
+  // Player clickable to switch force direction
+  public bool switchable = false; // 'backing field' ...
+  public bool Switchable {
+    set {
+      gameObject.GetComponent<SpriteRenderer>().color = SocaniColor.ActionableText;
+      ForceDirection = ForceDirection;
+      switchable = value;
+    }
+    get { return switchable; }
+  }
+
   public Sprite downSprite;
   public Sprite upSprite;
   public Sprite leftSprite;
@@ -28,7 +39,27 @@ public class ForceField : MonoBehaviour {
     }
     get { return forceDirection; }
   }
-  
+
+  private void OnMouseDown() {
+    // Rotate through all forcefield directions
+    if (Switchable) {
+      switch (ForceDirection) {
+        case Direction.up:
+          ForceDirection = Direction.right;
+          break;
+        case Direction.right:
+          ForceDirection = Direction.down;
+          break;
+        case Direction.down:
+          ForceDirection = Direction.left;
+          break;
+        case Direction.left:
+          ForceDirection = Direction.up;
+          break;
+      }
+    }
+  }
+
   private void OnTriggerStay2D(Collider2D collision) {
     if (collision.gameObject.GetComponent<Tile>()) {
       Vector3Int boardPos = collision.gameObject.GetComponent<Tile>().boardPosition;
