@@ -998,6 +998,27 @@ PrefabInstance:
       objectReference: {fileID: 364570808}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1370dbf389acae545aee273434a5b3b6, type: 3}
+--- !u!1 &741446317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1826740222572898, guid: ba90fc63ee7963a4881989c75a4ef376,
+    type: 3}
+  m_PrefabInstance: {fileID: 579054139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &741446320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741446317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1205acd3f3c4574c926ac2f995fb0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameId: LINGTORP.SOCANI.ID
+  placementId: AdBanner
+  testMode: 1
 --- !u!1 &750588748
 GameObject:
   m_ObjectHideFlags: 0
