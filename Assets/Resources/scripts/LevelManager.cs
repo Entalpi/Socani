@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Analytics;
 using System;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class LevelManager : MonoBehaviour {
@@ -79,9 +81,14 @@ public class LevelManager : MonoBehaviour {
 	public bool levelCompleted(Level level) {
 		Level levelPrefab = Array.Find(levels, match => match.levelIndex == level.levelIndex);
     if (!levelPrefab.completed) {
+      // Completed the level for the first time
       int coinsAwarded = PlayerPrefs.GetInt("coins") + (int) level.numRewindsLeft + (int) level.numCoinsRewarded;
       PlayerPrefs.SetInt("coins", coinsAwarded);
       PlayerPrefs.Save();
+      AnalyticsEvent.Custom("Level Completed", new Dictionary<string, object>{
+        { "level_id", level.levelIndex },
+        { "time_elapsed", Time.timeSinceLevelLoad }
+      });
     }
 		if (levelPrefab) {
       levelPrefab.completed = true;
