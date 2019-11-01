@@ -1,5 +1,5 @@
 # Socani
-[Socani gameplay](https://raw.githubusercontent.com/Entalpi/Socani/master/screenshots/socani-lvl6.gif?token=AAMTLIWEPZPCUN7ZCPEYI3C5YUMTO)
+![Socani gameplay](https://raw.githubusercontent.com/Entalpi/Socani/master/screenshots/socani-lvl6.gif?token=AAMTLIWEPZPCUN7ZCPEYI3C5YUMTO)
 Socani is a free and open source fresh take on the classic [Sokoban](https://en.wikipedia.org/wiki/Sokoban) game. 
 
 ## Create custom maps
